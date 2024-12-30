@@ -7,7 +7,32 @@
     /* width: 5px; */
 }
 
-.box{
+input[type="checkbox"] {
+    appearance: none; /* Ẩn giao diện mặc định */
+    -webkit-appearance: none; /* Ẩn giao diện trên Safari */
+    width: 20px;
+    height: 20px;
+    border: 2px solid gray;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    margin-right: 8px;
+    background-color: white;
+  }
 
+  /* Khi được chọn */
+  input[type="checkbox"]:checked {
+    background-color: #f472b6; /* Màu hồng khi được tích */
+    border-color: #f472b6;
+    position: relative;
+  }
 
-}
+  /* Tạo dấu tích màu trắng */
+  input[type="checkbox"]:checked::after {
+    content: '✔'; /* Dấu tích */
+    position: absolute;
+    color: white; /* Màu trắng */
+    font-size: 14px;
+    top: -2px;
+    left: 3px;
+  }
