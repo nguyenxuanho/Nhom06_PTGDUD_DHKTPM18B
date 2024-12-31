@@ -36,3 +36,12 @@ input[type="checkbox"] {
     top: -2px;
     left: 3px;
   }
+
+  .Toastify__toast{
+    height: 84px;
+    width: 350px;
+  }
+  .Toastify__toast svg{
+    width: 25px;
+    height: 25px;
+  }
