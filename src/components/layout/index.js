@@ -102,8 +102,10 @@ const LayoutDefault = function () {
               </div>
               <ul className="pl-0">
                 <li className="text-center inline-block px-3 py-3 hover:text-blue-500 cursor-pointer text-gray-700">
-                  <i className="fa-solid fa-house mx-3"></i>
-                  <span className='relative top-0.5 text-xl font-semibold'>Trang chủ</span>
+                  <Link to={"/"}>
+                    <i className="fa-solid fa-house mx-3"></i>
+                    <span className='relative top-0.5 text-xl font-semibold'>Trang chủ</span>
+                  </Link>
                 </li>
                 <li className="text-center inline-block px-3 py-3 hover:text-blue-500 cursor-pointer text-gray-700">
                   <i className="fa-solid fa-users mx-3"></i>
@@ -120,10 +122,12 @@ const LayoutDefault = function () {
               </ul>
             </div>
             <div className="header-right flex items-center">
-              <div className="cursor-pointer flex items-center justify-center mx-9 px-4 rounded-xl py-3 bg-blue-100">
-                <i className="fa-solid fa-box relative top-0.5 text-blue-500"></i>
-                <h2 className="text-base px-3 text-blue-500 font-semibold">Danh sách đơn hàng</h2>
-              </div>
+              <Link to={"/account/order"}>
+                <div className="cursor-pointer flex items-center justify-center mx-9 px-4 rounded-xl py-3 bg-blue-100">
+                  <i className="fa-solid fa-box relative top-0.5 text-blue-500"></i>
+                  <h2 className="text-base px-3 text-blue-500 font-semibold">Danh sách đơn hàng</h2>
+                </div>
+              </Link>
               <div className='mr-7 relative' >
                 <div className='cursor-pointer relative flex items-center justify-center' onClick={() => setOpenCart(!isOpenCart)}>
                   <i className="fa-solid fa-cart-shopping px-3 py-3 bg-blue-100 rounded-full mx-2"></i>
@@ -176,7 +180,13 @@ const LayoutDefault = function () {
                       <p className='uppercase font-normal'>Tổng tiền:</p>
                       <p className='text-blue-500 font-semibold'>0 đ</p>
                     </div>
-                    <Button className='py-5 mb-5 text-white font-medium bg-blue-500 mx-3' style={{ width: "95%" }}>XEM GIỎ HÀNG</Button>
+                    <Link 
+                      to={"/cart"} 
+                      style={{width: "95%"}} 
+                      className='block py-2 text-center rounded-xl mb-5 text-white font-medium bg-blue-500 mx-3'
+                    >
+                      XEM GIỎ HÀNG
+                    </Link>
                   </div>
                 }
               </div>
