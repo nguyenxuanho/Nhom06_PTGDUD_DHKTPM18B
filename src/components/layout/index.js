@@ -1,6 +1,6 @@
 import { Button, Image } from "antd";
 import { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Slide, ToastContainer } from "react-toastify";
 
 import "./style.css"
@@ -181,10 +181,23 @@ const LayoutDefault = function () {
                 }
               </div>
               <div className="flex items-center justify-center cursor-pointer">
-                <img className="avatar size-14 rounded-full" src={"/avatar.png"} alt="Example" />
+                {/* <img className="avatar size-14 rounded-full" src={"/avatar.png"} alt="Example" /> */}
+
+                {/* Nếu đã đăng nhập tài khoản thì mặc định sẽ như này */}
+                {/* <i className='fas fa-user-circle text-5xl text-blue-600'></i>
                 <div className='user mx-5'>
                   <h2 className='text-sm font-normal'>Xin chào</h2>
                   <h2 className="text-xl font-bold">Nguyễn Xuân Hồ</h2>
+                </div> */}
+
+                {/* Chưa đăng nhập tài khoản */}
+                <div className="flex items-center mr-5">
+                  <Link className="font-semibold hover:text-blue-500 text-lg border-solid border-r-2 pr-2 border-stone-200" to={"/user/login"}>
+                    Đăng nhập
+                  </Link>
+                  <Link className="font-semibold hover:text-blue-500 text-lg border-solid border-l-2 pl-2 border-stone-200" to={"/user/signup"}>
+                    Đăng ký
+                  </Link>
                 </div>
               </div>
             </div>
