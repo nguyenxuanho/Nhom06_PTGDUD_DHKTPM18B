@@ -1,0 +1,20 @@
+.category_list:hover .category_ul{
+    display: block;
+}
+
+.category_ul{
+    display: none;
+    top: 150%;
+    left: 0;
+}
+
+.category_ul::before{
+    content: "";
+    display: block;
+    height: 50px;
+    position: absolute;
+    top: -7%;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+}
