@@ -11,13 +11,18 @@ const Signup = function () {
         <>
             <div className="container h-lvh w-full flex items-center justify-center pt-3 bg-slate-50">
                 <div className="max-h-max px-5 bg-white border-2 border-solid border-blue-300 rounded-2xl shadow-xl" style={{ width: "600px" }}>
-                    <div className="flex items-center justify-center py-5 border-b-2 border-solid border-blue-300">
-                        <Link to={"/user/login"} className="text-2xl hover:text-black text-stone-500 font-bold uppercase p-3 border-solid border-r-2 border-stone-200">
-                            Đăng nhập
+                    <div className="relative">
+                        <Link className="hover:text-blue-500" to={"/"}>
+                            <i className="fa-solid font-bold text-3xl fa-arrow-left absolute left-0 top-1/3"></i>
                         </Link>
-                        <Link to={"/user/signup"} className="text-2xl hover:text-black text-black font-bold uppercase p-3 border-solid border-l-2 border-stone-100">
-                            Đăng ký
-                        </Link>
+                        <div className="flex items-center justify-center py-5 border-b-2 border-solid border-blue-300">
+                            <Link to={"/user/login"} className="text-2xl hover:text-black text-stone-500 font-bold uppercase p-3 border-solid border-r-2 border-stone-200">
+                                Đăng nhập
+                            </Link>
+                            <Link to={"/user/signup"} className="text-2xl hover:text-black text-black font-bold uppercase p-3 border-solid border-l-2 border-stone-100">
+                                Đăng ký
+                            </Link>
+                        </div>
                     </div>
                     <Form className="mt-5">
                         <Form.Item name="fullname">
