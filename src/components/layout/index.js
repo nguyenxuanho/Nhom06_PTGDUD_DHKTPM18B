@@ -124,12 +124,16 @@ const LayoutDefault = function () {
                     </Link>
                 </li>
                 <li onClick={handleClickStatus} className="text-center item-menu inline-block px-3 py-3 hover:text-blue-500 cursor-pointer text-gray-700">
-                  <i className="fa-solid fa-phone mx-3"></i>
-                  <span className='relative top-0.5 text-xl font-semibold'>Liên lạc</span>
+                  <Link to={"/contact"}>
+                    <i className="fa-solid fa-phone mx-3"></i>
+                    <span className='relative top-0.5 text-xl font-semibold'>Liên lạc</span>
+                  </Link>
                 </li>
                 <li onClick={handleClickStatus} className="text-center item-menu inline-block px-3 py-3 hover:text-blue-500 cursor-pointer text-gray-700">
-                  <i className="fa-solid fa-street-view mx-3"></i>
-                  <span className='relative top-0.5 text-xl font-semibold'>Sitemap</span>
+                  <Link to={"/sitemap"}>
+                    <i className="fa-solid fa-street-view mx-3"></i>
+                    <span className='relative top-0.5 text-xl font-semibold'>Sitemap</span>
+                  </Link>
                 </li>
               </ul>
             </div>

@@ -5,11 +5,14 @@ import Account from "../components/account/index";
 import AccountOrder from "../components/account/order";
 import Cart from "../components/cart";
 import Category from "../components/category";
+import Contact from "../components/contact";
 import Home from "../components/home";
 import LayoutDefault from "../components/layout";
 import OrderSuccess from "../components/order";
 import NotFound from "../components/page404";
+import Policy from "../components/policy";
 import Product from "../components/product";
+import Sitemap from "../components/sitemap";
 import Login from "../components/user/login";
 import Signup from "../components/user/signup";
 
@@ -57,6 +60,18 @@ export const routes = [
             {
                 path: '/about',
                 element: <About />
+            },
+            {
+                path: '/contact',
+                element: <Contact />
+            },
+            {
+                path: '/policy',
+                element: <Policy />
+            },
+            {
+                path: '/sitemap',
+                element: <Sitemap />
             },
             {
                 path: '*',
