@@ -23,7 +23,7 @@ const LayoutDefault = function () {
 
 
 
-      if (window.scrollY >= (document.body.scrollHeight / 4)) {
+      if (window.scrollY >= (document.body.scrollHeight / 2)) {
         if (!headerFix.classList.contains("fixed")) {
           headerFix.classList.add("fixed");
           headerFix.classList.add("left-0");
@@ -72,6 +72,16 @@ const LayoutDefault = function () {
 
   }, []);
 
+  const handleClickStatus = (e) => {
+    const elementLi = e.target.closest("li")
+    const allItemMenu = elementLi.closest("ul").querySelectorAll("li");
+
+    allItemMenu.forEach(item => item.classList.remove("active"));
+
+    elementLi.classList.add("active");
+    
+  }
+
 
 
 
@@ -101,21 +111,23 @@ const LayoutDefault = function () {
                 <img src={"/logo.svg"} alt="Example" />
               </div>
               <ul className="pl-0">
-                <li className="text-center inline-block px-3 py-3 hover:text-blue-500 cursor-pointer text-gray-700">
+                <li onClick={handleClickStatus} className="text-center item-menu active inline-block px-3 py-3 hover:text-blue-500 cursor-pointer text-gray-700">
                   <Link to={"/"}>
                     <i className="fa-solid fa-house mx-3"></i>
                     <span className='relative top-0.5 text-xl font-semibold'>Trang chủ</span>
                   </Link>
                 </li>
-                <li className="text-center inline-block px-3 py-3 hover:text-blue-500 cursor-pointer text-gray-700">
-                  <i className="fa-solid fa-users mx-3"></i>
-                  <span className='relative top-0.5 text-xl font-semibold'>Giới thiệu</span>
+                <li onClick={handleClickStatus} className="text-center item-menu inline-block px-3 py-3 hover:text-blue-500 cursor-pointer text-gray-700">
+                    <Link to={"/about"}>
+                      <i className="fa-solid fa-users mx-3"></i>
+                      <span className='relative top-0.5 text-xl font-semibold'>Giới thiệu</span>
+                    </Link>
                 </li>
-                <li className="text-center inline-block px-3 py-3 hover:text-blue-500 cursor-pointer text-gray-700">
+                <li onClick={handleClickStatus} className="text-center item-menu inline-block px-3 py-3 hover:text-blue-500 cursor-pointer text-gray-700">
                   <i className="fa-solid fa-phone mx-3"></i>
                   <span className='relative top-0.5 text-xl font-semibold'>Liên lạc</span>
                 </li>
-                <li className="text-center inline-block px-3 py-3 hover:text-blue-500 cursor-pointer text-gray-700">
+                <li onClick={handleClickStatus} className="text-center item-menu inline-block px-3 py-3 hover:text-blue-500 cursor-pointer text-gray-700">
                   <i className="fa-solid fa-street-view mx-3"></i>
                   <span className='relative top-0.5 text-xl font-semibold'>Sitemap</span>
                 </li>

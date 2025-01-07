@@ -1,3 +1,4 @@
+import About from "../components/about";
 import Address from "../components/account/address";
 import Password from "../components/account/changePassword";
 import Account from "../components/account/index";
@@ -6,6 +7,8 @@ import Cart from "../components/cart";
 import Category from "../components/category";
 import Home from "../components/home";
 import LayoutDefault from "../components/layout";
+import OrderSuccess from "../components/order";
+import NotFound from "../components/page404";
 import Product from "../components/product";
 import Login from "../components/user/login";
 import Signup from "../components/user/signup";
@@ -47,6 +50,18 @@ export const routes = [
                 path: '/account/order',
                 element: <AccountOrder />
             },
+            {
+                path: '/order/success',
+                element: <OrderSuccess />
+            },
+            {
+                path: '/about',
+                element: <About />
+            },
+            {
+                path: '*',
+                element: <NotFound />
+            }
         ]
     },
     {
