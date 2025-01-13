@@ -82,6 +82,13 @@ const LayoutDefault = function () {
     
   }
 
+  const handleChangeType = (e) => {
+    if(e.target.value.trim() === "")
+      setIsVisible(false)
+    else if (!isVisible)
+       setIsVisible(true)
+  }
+
 
 
 
@@ -234,7 +241,7 @@ const LayoutDefault = function () {
               <input
                 className="shadow-inner focus:outline-blue-600 text-lg rounded-lg bg-slate-50 border-blue-200 w-full px-5 py-2.5 "
                 placeholder="Nhập tên sản phẩm cần tìm ..."
-                onFocus={() => setIsVisible(!isVisible)}
+                onChange={handleChangeType}
               />
               {isVisible && (
                 <div className='rounded-xl overflow-y-scroll shadow-md absolute z-40 min-h-64 max-h-96 w-full bg-slate-50' style={{ top: "120%" }}>

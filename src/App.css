@@ -96,3 +96,34 @@
 .text-logo-fix{
   font-size: 30px;
 }
+
+/* Điều chỉnh mũi tên */
+
+.slick-prev, .slick-next {
+  width: 30px !important;
+  height: 50px !important;
+  font-size: 100px !important;
+  z-index: 1;
+  /* background-color: rgba(0, 0, 0, 0.5); Nền mờ */
+  border-radius: 50%; /* Bo tròn */
+  color: rgb(61, 22, 255) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slick-prev::after, .slick-next::after {
+  width: 25px !important;
+  height: 25px !important;
+  border-inline-width: 8px 0 !important;
+  border-block-width: 8px 0 !important;
+  color: rgb(61, 22, 255) !important;
+}
+
+
+
+.slick-prev::before, .slick-next::before {
+  font-size: 100px !important;
+  color: rgb(61, 22, 255) !important;
+  opacity: 1;
+}
