@@ -17,22 +17,23 @@ const CardProduct = (prop) => {
 
     return (
         <>
-            <div className={'card rounded-lg bg-white h-96 ' + prop?.css} >
+            <div className={'card rounded-lg bg-white ' + prop?.css} >
                     <Tooltip
                         title={<DetailTooltip />}
                         color="blue"
                         placement="rightTop"
+                        className="pointer-events-none lg:pointer-events-auto"
                         overlayInnerStyle={tooltipStyle} // Custom style cho Tooltip
                     >
                         <div className='card-img hover:-translate-y-2 transition-all'>
                             <Image
                                 src="https://hoanghapccdn.com/media/product/250_4429_hhpc_white_13900k_sky_two_ha1s.jpg"
-                                style={{ width: "250px", height: "200px" }}
+                                className="w-250 h-200"
                             />
                         </div>
                     </Tooltip>
                 <div className='card-content mb-3 text-center'>
-                    <h2 className='font-medium cursor-pointer hover:text-blue-500 text-base line-clamp-2'>
+                    <h2 className='font-medium cursor-pointer hover:text-blue-500 text-sm lg:text-base line-clamp-2'>
                         HHPC CORE i7 12700K | 32GB | NVIDIA RTX 3050 6G
                     </h2>
                     <h2 className='font-bold cursor-default text-xl my-1 text-blue-400'>
@@ -40,7 +41,7 @@ const CardProduct = (prop) => {
                     </h2>
                     <div className='font-medium cursor-default text-xs my-1 '>
                         <span className='line-through text-slate-400 mr-2'>22,000,000 đ</span>
-                        <span className='text-red-500'>(Tiết kiệm 12%)</span>
+                        <span className='block lg:inline-block text-red-500'>(Tiết kiệm 12%)</span>
                     </div>
 
                 </div>
@@ -55,7 +56,7 @@ const CardProduct = (prop) => {
                             <p>Quà tặng</p>
                         </div>
                     </div>
-                    <div className='text-base cart-icon flex items-center px-6 cursor-pointer hover:text-white'>
+                    <div className='text-base cart-icon flex items-center px-3 xl:px-6 cursor-pointer hover:text-white'>
                         <i className="fa-solid fa-cart-shopping"></i>
                     </div>
                 </div>

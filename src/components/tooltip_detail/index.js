@@ -4,7 +4,7 @@ const DetailTooltip = () => {
 
     return (
         <>
-           <div className="p-0" style={{maxWidth: "390px"}}>
+           <div className="p-0 lg:block hidden" style={{maxWidth: "390px"}}>
                 <h2 className="px-5 font-bold">HHPC CORE i7 12700K | 32GB | NVIDIA RTX 3050 6G</h2>
                 <div className="bg-white text-black px-5 border-stone-200 border-solid border-2">
                     <div className="my-2 py-3  border-stone-200 border-solid border-b-2">
