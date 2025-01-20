@@ -64,15 +64,17 @@ const OrderSuccess = function () {
             key: 'img',
             render: (_, { img }) => {
                 return <Image style={{ width: "100px" }} src={img} />
-            }
+            },
+            width: 300,
         },
         {
             title: 'Tên sản phẩm',
             dataIndex: 'productName',
             key: 'productName',
             render: (_, { productName }) => {
-                return <h2 className='font-bold line-clamp-2 text-base'>{productName}</h2>
-            }
+                return <h2 className='font-medium lg:font-bold line-clamp-2 text-sm lg:text-base'>{productName}</h2>
+            },
+            width: 1200
         },
         {
             title: 'Giá tiền',
@@ -80,7 +82,8 @@ const OrderSuccess = function () {
             key: 'price',
             render: (_, { price }) => {
                 return <h2 className='font-semibold text-orange-500 text-base'>{price}</h2>
-            }
+            },
+            width: 300
         },
         {
             title: 'Số lượng',
@@ -90,7 +93,8 @@ const OrderSuccess = function () {
                 return <Tag className="px-5 font-semibold text-center text-base" color="blue">
                     {quanity}
                 </Tag>
-            }
+            },
+            width: 300
         },
         {
             title: 'Thành tiền',
@@ -98,7 +102,8 @@ const OrderSuccess = function () {
             key: 'subtotal',
             render: (_, { subtotal }) => {
                 return <h2 className='font-bold text-blue-500 text-base'>{subtotal}</h2>
-            }
+            },
+            width: 300
         },
     ];
 
@@ -110,14 +115,14 @@ const OrderSuccess = function () {
 
     return (
         <>
-            <div className="container pt-3 bg-slate-50">
+            <div className="md:pt-3 pt-52 bg-slate-50">
 
-                <div className='mx-32 content-header flex items-center'>
+                <div className='mx-5 xl:mx-32 content-header flex items-center'>
                     <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
                     <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
                     <h3 className="font-medium text-lg text-stone-500 mr-3">Đặt hàng thành công</h3>
                 </div>
-                <div className='mx-32 my-5 bg-white shadow-xl'>
+                <div className='mx-5 xl:mx-32 my-5 bg-white shadow-xl'>
                     <Result
                         status="success"
                         className='font-medium'
@@ -126,37 +131,37 @@ const OrderSuccess = function () {
                     />
                 </div>
 
-                <div className='mx-32 my-5 py-2 px-5 bg-white shadow-xl'>
+                <div className='mx-5 xl:mx-32 my-5 py-2 px-5 bg-white shadow-xl'>
                     <h2 className='py-3 border-solid border-b-2 border-blue-300 text-2xl font-bold'>Danh sách đơn hàng</h2>
-                    <Table pagination={pagination}  className='my-5' dataSource={dataSource} columns={columns} />
-                    <div className='my-2 text-right font-bold text-xl'>
+                    <Table pagination={pagination}  scroll={{ x: 700}}  className='my-5 overflow-y-scroll' dataSource={dataSource} columns={columns} />
+                    <div className='my-2 text-right font-bold text-xl'> 
                         Tổng thành tiền:
                         <span className='mx-2 text-3xl text-red-500'>49,999,999 đ</span>
                     </div>
                 </div>
 
-                <div className='mx-32 my-5 py-2 px-5 bg-white shadow-xl'>
+                <div className='mx-5 xl:mx-32 my-5 py-2 px-5 bg-white shadow-xl'>
                     <h2 className='py-3 border-solid border-b-2 border-blue-300 text-2xl font-bold'>Thông tin khách hàng</h2>
                     <div className='my-4'>
-                        <div className='my-2 w-1/2 border-b-2 border-solid border-stone-200 py-2 flex items-center text-lg'>
-                            <h2 className='w-1/4 font-bold'>Họ và tên: </h2>
-                            <p className='font-semibold w-3/4 text-blue-500'>Nguyễn Xuân Hồ</p>
+                        <div className='my-2 w-full lg:w-1/2 border-b-2 border-solid border-stone-200 py-2 flex items-center text-lg'>
+                            <h2 className='w-2/4 lg:w-1/4 font-bold'>Họ và tên: </h2>
+                            <p className='font-semibold w-2/4 lg:w-3/4 text-blue-500'>Nguyễn Xuân Hồ</p>
                         </div>
-                        <div className='my-2 w-1/2 border-b-2 border-solid border-stone-200 py-2 flex items-center text-lg'>
-                            <h2 className='w-1/4 font-bold'>Số điện thoại: </h2>
-                            <p className='font-semibold w-3/4 text-blue-500'>0987654321</p>
+                        <div className='my-2 w-full lg:w-1/2 border-b-2 border-solid border-stone-200 py-2 flex items-center text-lg'>
+                            <h2 className='w-2/4 lg:w-1/4 font-bold'>Số điện thoại: </h2>
+                            <p className='font-semibold w-2/4 lg:w-3/4 text-blue-500'>0987654321</p>
                         </div>
-                        <div className='my-2 w-1/2 border-b-2 border-solid border-stone-200 py-2 flex items-center text-lg'>
-                            <h2 className='w-1/4 font-bold'>Địa chỉ: </h2>
-                            <p className='font-semibold w-3/4 text-blue-500 line-clamp-2'>Nguyễn Văn Bảo 12 Gò Vấp</p>
+                        <div className='my-2 w-full lg:w-1/2 border-b-2 border-solid border-stone-200 py-2 flex items-center text-lg'>
+                            <h2 className='w-2/4 lg:w-1/4 font-bold'>Địa chỉ: </h2>
+                            <p className='font-semibold w-2/4 lg:w-3/4 text-blue-500 line-clamp-2'>Nguyễn Văn Bảo 12 Gò Vấp</p>
                         </div>
-                        <div className='my-2 w-1/2 border-b-2 border-solid border-stone-200 py-2 flex items-center text-lg'>
-                            <h2 className='w-1/4 font-bold'>Email: </h2>
-                            <p className='font-semibold w-3/4 text-blue-500'>xuanhodcbas@gmail.com</p>
+                        <div className='my-2 w-full lg:w-1/2 border-b-2 border-solid border-stone-200 py-2 flex items-center text-lg'>
+                            <h2 className='w-2/4 lg:w-1/4 font-bold'>Email: </h2>
+                            <p className='font-semibold w-2/4 lg:w-3/4 text-blue-500'>xuanhodcbas@gmail.com</p>
                         </div>
-                        <div className='my-2 w-1/2 border-b-2 border-solid border-stone-200 py-2 flex items-center text-lg'>
-                            <h2 className='w-1/4 font-bold'>Ghi chú: </h2>
-                            <p className='font-semibold w-3/4 text-blue-500'>Đóng gói cho cẩn thận vô</p>
+                        <div className='my-2 w-full lg:w-1/2 border-b-2 border-solid border-stone-200 py-2 flex items-center text-lg'>
+                            <h2 className='w-2/4 lg:w-1/4 font-bold'>Ghi chú: </h2>
+                            <p className='font-semibold w-2/4 lg:w-3/4 text-blue-500'>Đóng gói cho cẩn thận vô</p>
                         </div>
                     </div>
                 </div>

@@ -10,15 +10,15 @@ const Product = function () {
 
     return (
         <>
-            <div className="container pt-3 bg-slate-50">
-                <div className='mx-32 content-header flex items-center'>
+            <div className="md:pt-3 pt-52 bg-slate-50">
+                <div className='mx-5 xl:mx-32 content-header flex items-center'>
                     <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
                     <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
                     <Link to="/collection/123" className="font-medium text-lg text-stone-500 mr-3 header-nav active">PC Render, Edit Video</Link>
                     <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
                     <h3 className="font-medium text-lg text-stone-500 mr-3">HHPC Adobe</h3>
                 </div>
-                <div className='mx-32 content-body my-5 p-4 bg-white shadow-lg'>
+                <div className='mx-5 xl:mx-32 content-body my-5 p-4 bg-white shadow-lg'>
                     <h1 className='font-bold text-xl line-clamp-1 py-2 border-solid border-b-2 border-blue-200'>PC ĐỒ HỌA CORE i5 12600K | 16G | NVIDIA RTX 3060 12G</h1>
                     <div className='grid grid-flow-row grid-cols-12 my-3 gap-16'>
                         <div className='col-span-4'>
@@ -88,7 +88,7 @@ const Product = function () {
 
                     </div>
                 </div>
-                <div className='mx-32 content-body my-5 p-4 bg-white shadow-lg'>
+                <div className='mx-5 xl:mx-32 content-body my-5 p-4 bg-white shadow-lg'>
                     <h1 className='font-bold text-xl line-clamp-1 py-2 border-solid border-b-2 border-blue-200'>Thông số kỹ thuật</h1>
                     <div className='grid grid-flow-row grid-cols-12 my-3 gap-10'>
                         <div className='col-span-1 font-bold'>
@@ -210,7 +210,7 @@ const Product = function () {
 
                     </div>
                 </div>
-                <div className='mx-32 content-body my-5 p-4 bg-white shadow-lg'>
+                <div className='mx-5 xl:mx-32 content-body my-5 p-4 bg-white shadow-lg'>
                     <h1 className='font-bold text-xl line-clamp-1 py-2 border-solid border-b-2 border-blue-200'>Sản phẩm tương tự</h1>
                     <div className='flex my-3 gap-16'>
                         <div className='basis-1/5'>

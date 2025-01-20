@@ -9,15 +9,15 @@ const AccountOrder = function () {
 
     return (
         <>
-            <div className="container pt-3 bg-slate-50">
+            <div className="md:pt-3 pt-52 bg-slate-50">
 
-                <div className='mx-32 content-header flex items-center'>
+                <div className='mx-5 xl:mx-32 content-header flex items-center'>
                     <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
                     <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
                     <h3 className="font-medium text-lg text-stone-500 mr-3">Account</h3>
                 </div>
-                <div className='mx-32 my-5 grid grid-flow-row grid-cols-12 gap-9'>
-                    <div className='col-span-3'>
+                <div className='mx-5 xl:mx-32 my-5 grid grid-flow-row grid-cols-12 gap-9'>
+                    <div className='col-span-12 lg:col-span-3'>
                         <div className='flex items-center'>
                             <i className='fas fa-user-circle text-5xl text-blue-600'></i>
                             <div className='mx-4'>
@@ -59,12 +59,12 @@ const AccountOrder = function () {
 
                         </ul>
                     </div>
-                    <div className='col-span-9 p-6 bg-white rounded-2xl shadow-xl'>
+                    <div className='col-span-12 lg:col-span-9 p-6 bg-white rounded-2xl shadow-xl'>
                         <h2 className='text-xl font-bold pb-3 border-solid border-b-2 border-blue-200'>Danh sách đơn hàng</h2>
-                        <div className='grid grid-flow-row grid-cols-12 gap-2 my-4'>
-                            <div className='col-span-3'>
+                        <div className='grid grid-flow-row grid-cols-12 gap-3 my-4'>
+                            <div className='col-span-6 md:col-span-4 xl:col-span-3'>
                                 <Badge.Ribbon className='py-1.5 font-semibold' placement='start' text="Đã giao đơn hàng" color='green'>
-                                    <div className='border-blue-300 p-2 border-2 border-solid card rounded-lg bg-white h-96' >
+                                    <div className='border-blue-300 p-2 border-2 border-solid card rounded-lg bg-white' >
                                         <div className='card-img hover:-translate-y-2 transition-all'>
                                             <Image
                                                 src="https://hoanghapccdn.com/media/product/250_4429_hhpc_white_13900k_sky_two_ha1s.jpg"
@@ -97,9 +97,9 @@ const AccountOrder = function () {
                                     </div>
                                 </Badge.Ribbon>
                             </div>
-                            <div className='col-span-3'>
+                            <div className='col-span-6 md:col-span-4 xl:col-span-3'>
                                 <Badge.Ribbon className='py-1.5 font-semibold' placement='start' text="Đơn hàng đang giao" color='purple'>
-                                    <div className='border-blue-300 p-2 border-2 border-solid card rounded-lg bg-white h-96' >
+                                    <div className='border-blue-300 p-2 border-2 border-solid card rounded-lg bg-white' >
                                         <div className='card-img hover:-translate-y-2 transition-all'>
                                             <Image
                                                 src="https://hoanghapccdn.com/media/product/250_4429_hhpc_white_13900k_sky_two_ha1s.jpg"
@@ -132,9 +132,9 @@ const AccountOrder = function () {
                                     </div>
                                 </Badge.Ribbon>
                             </div>
-                            <div className='col-span-3'>
+                            <div className='col-span-6 md:col-span-4 xl:col-span-3'>
                                 <Badge.Ribbon className='py-1.5 font-semibold' placement='start' text="Đã hủy đơn hàng" color='red'>
-                                    <div className='border-blue-300 p-2 border-2 border-solid card rounded-lg bg-white h-96' >
+                                    <div className='border-blue-300 p-2 border-2 border-solid card rounded-lg bg-white' >
                                         <div className='card-img hover:-translate-y-2 transition-all'>
                                             <Image
                                                 src="https://hoanghapccdn.com/media/product/250_4429_hhpc_white_13900k_sky_two_ha1s.jpg"

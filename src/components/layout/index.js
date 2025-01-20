@@ -276,7 +276,9 @@ const LayoutDefault = function () {
                   }}
                   placement="bottomLeft"
               > 
-                <i className='fas fa-user-circle text-5xl text-blue-600'></i>
+                <Link to={"/account/detail"}>
+                  <i className='fas fa-user-circle text-5xl text-blue-600'></i>
+                </Link>
                 {/* <img className="avatar mr-3 size-12 md:size-14  rounded-full" src={"/avatar.png"} alt="Example" /> */}
               </Dropdown>
 

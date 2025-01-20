@@ -20,18 +20,18 @@ const Cart = function(){
   
   return (
     <>
-      <div className="container pt-3 bg-slate-50">
+      <div className="md:pt-3 pt-52 bg-slate-50">
         
-          <div className='mx-32 content-header flex items-center'>
+          <div className='mx-5 xl:mx-32 content-header flex items-center'>
               <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
               <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
               <h3 className="font-medium text-lg text-stone-500 mr-3">Thông tin giỏ hàng</h3>
           </div>
-          <h1 className='mx-32 py-2 border-b-blue-400 border-solid border-b-2 w-1/3 font-bold text-3xl uppercase text-blue-500'>Giỏ hàng của tôi
+          <h1 className='mx-5 xl:mx-32 py-2 border-b-blue-400 border-solid border-b-2 md:w-2/3 xl:w-1/3 font-bold text-3xl uppercase text-blue-500'>Giỏ hàng của tôi
             <span className='ml-2 text-sm border-none text-stone-400 lowercase font-medium'>(1 sản phẩm)</span>
           </h1>
-          <div className='mx-32 my-5 content-body grid grid-flow-row grid-cols-12 gap-8 '>
-            <div className='col-span-7 max-h-max bg-white shadow-lg rounded-lg'>
+          <div className='mx-5 xl:mx-32 my-5 content-body grid grid-flow-row grid-cols-12 gap-8 '>
+            <div className='col-span-12 lg:col-span-7 max-h-max bg-white shadow-lg rounded-lg'>
                 <div className='cart-list-product overflow-y-scroll' style={{maxHeight: "550px"}}>
                     <CartProduct />
                     <CartProduct />
@@ -47,7 +47,7 @@ const Cart = function(){
                     <p className='font-bold text-blue-500 text-2xl'>49.050.000 VNĐ</p>
                 </div>
             </div>
-            <div className='col-span-5 py-3 px-5 border-solid border-2 rounded-lg shadow-xl border-blue-500'>
+            <div className='col-span-12 lg:col-span-5 py-3 px-5 border-solid border-2 rounded-lg shadow-xl border-blue-500'>
                 <h2 className='font-bold text-xl text-blue-500'>Thông tin thanh toán</h2>
                 <p className='my-5 font-medium text-base text-stone-500'>
                     Để tiếp tục đặt hàng, quý khách xin vui lòng 
@@ -77,7 +77,7 @@ const Cart = function(){
                     </Form.Item>
                     <Button type='primary' htmlType='submit' className='h-24 block text-center w-full'>
                         <h2 className='font-bold uppercase text-2xl'>Đặt hàng</h2>
-                        <div className=''>Tư vấn viên sẽ gọi điện thoại để xác nhận không mua cũng không sao</div>
+                        <div className='text-xs'>Tư vấn viên sẽ gọi điện thoại để xác nhận không mua cũng không sao</div>
                     </Button>
                 </Form>
             </div>

@@ -4,7 +4,7 @@ const Policy = function(){
   
   return (
     <>
-      <div className="container pt-3 bg-slate-50">
+      <div className="md:pt-3 pt-52 bg-slate-50">
         
           <div className='mx-32 content-header flex items-center'>
               <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>

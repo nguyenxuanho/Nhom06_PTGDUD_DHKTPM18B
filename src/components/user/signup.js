@@ -9,8 +9,8 @@ const Signup = function () {
 
     return (
         <>
-            <div className="container h-lvh w-full flex items-center justify-center pt-3 bg-slate-50">
-                <div className="max-h-max px-5 bg-white border-2 border-solid border-blue-300 rounded-2xl shadow-xl" style={{ width: "600px" }}>
+            <div className="md:pt-3 h-lvh w-full flex items-center justify-center bg-slate-50">
+                <div className="max-h-max px-5 bg-white border-2 border-solid border-blue-300 rounded-2xl shadow-xl w-470 md:w-600">
                     <div className="relative">
                         <Link className="hover:text-blue-500" to={"/"}>
                             <i className="fa-solid font-bold text-3xl fa-arrow-left absolute left-0 top-1/3"></i>
@@ -50,7 +50,7 @@ const Signup = function () {
                             </Button>
                         </Form.Item>
                     </Form>
-                    <div className="flex items-center justify-between py-5">
+                    <div className="flex text-xs md:text-base items-center justify-between py-5">
                         <div className="text-stone-500 cursor-default">Bạn đã có tài khoản?
                             <Link to={"/user/login"} className="text-blue-500 font-bold"> Đăng nhập ngay</Link>
                         </div>
