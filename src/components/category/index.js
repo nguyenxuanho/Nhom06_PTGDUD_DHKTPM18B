@@ -1,13 +1,23 @@
 import './style.css'
 import { Link } from 'react-router-dom'
 
-import { Button, Carousel, Checkbox, Image } from 'antd'
+import { Button, Carousel, Checkbox, Drawer, Image } from 'antd'
 import { useState } from 'react'
 import CardProduct from '../card_product'
 
 
 const Category = function () {
   const [isDisplayRow, setDisplayRow] = useState(false);
+
+  const [open, setOpen] = useState(false);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
 
   const prices = [
     {
@@ -82,18 +92,33 @@ const Category = function () {
 
   return (
     <>
-      <div className="container pt-3 bg-slate-50">
+      <Drawer title="Bộ lọc sản phẩm" placement='bottom' onClose={onClose} open={open} height={550}>
 
-        <div className='mx-32 content-header flex items-center'>
+          <div className='mb-5'>
+            <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Khoảng giá</h3>
+            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={prices} />
+          </div>
+          <div className='my-5'>
+            <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>CPU</h3>
+            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={cpu} />
+          </div>
+          <div className='my-5'>
+            <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Ram</h3>
+            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={ram} />
+          </div>
+          <Button className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
+      </Drawer>
+      <div className="md:pt-3 pt-52 bg-slate-50">
+        <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
           <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
           <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
           <h3 className="font-medium text-lg text-stone-500 mr-3">PC Render, Edit Video</h3>
         </div>
-        <h1 className='mx-32 py-2 border-b-blue-400 border-solid border-b-2 w-1/3 font-bold text-3xl uppercase text-blue-500'>PC Render, Edit Video
+        <h1 className='mx-5 xl:mx-32 py-2 border-b-blue-400 border-solid border-b-2 md:w-2/3 xl:w-1/3 font-bold text-xl lg:text-3xl uppercase text-blue-500'>PC Render, Edit Video
           <span className='ml-2 text-sm border-none text-stone-400 lowercase font-medium'>(Tổng 103 sản phẩm)</span>
         </h1>
-        <div className='mx-32 my-5 content-body grid grid-flow-row grid-cols-12 gap-12 '>
-          <div className='col-span-3 p-5 rounded-2xl bg-white shadow-lg max-h-max'>
+        <div className='mx-5 xl:mx-32 my-5 content-body grid grid-flow-row grid-cols-12 lg:gap-12 '>
+          <div className='hidden lg:block lg:col-span-3 p-5 rounded-2xl bg-white shadow-lg max-h-max'>
             <Button className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
             <div className='my-5'>
               <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Khoảng giá</h3>
@@ -108,7 +133,7 @@ const Category = function () {
               <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={ram} />
             </div>
           </div>
-          <div className='col-span-9'>
+          <div className='col-span-12 lg:col-span-9'>
             <Carousel autoplay arrows autoplaySpeed={2000} dots={false} >
               <Image
                 src='https://hoanghapccdn.com/media/banner/21_Octa0a03c4c5a78b9ab93161040af23626c.jpg'
@@ -129,57 +154,61 @@ const Category = function () {
                 alt="AnhGiangSinh"
               />
             </Carousel>
-            <div className='mt-5 mb-28 shadow-lg px-3 py-5 bg-white rounded-md'>
-              <div className='filter-header flex items-center justify-between'>
+            <div className='mt-5 mb-28  shadow-lg px-3 py-5 bg-white rounded-md'>
+              <div className='filter-header lg:flex items-center justify-between'>
                 <div className='list-btn'>
-                  <Button className='button py-4 px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 active font-bold text-base'>Hàng mới</Button>
-                  <Button className='button py-4 px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>Giá tăng dần</Button>
-                  <Button className='button py-4 px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>Giá giảm dần</Button>
-                  <Button className='button py-4 px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>A đến Z</Button>
+                  <Button className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 active font-bold text-base'>Hàng mới</Button>
+                  <Button className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>Giá tăng dần</Button>
+                  <Button className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>Giá giảm dần</Button>
+                  <Button className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>A đến Z</Button>
                 </div>
-                <div className='type-bar text-2xl'>
-                  <i onClick={() => setDisplayRow(false)} className={"fa-solid text-stone-400 cursor-pointer fa-table-cells-large mr-5 hover:text-blue-500 " + (isDisplayRow === false ? "active" : "")}></i>
-                  <i onClick={() => setDisplayRow(true)} className={"fa-solid text-stone-400 cursor-pointer fa-list hover:text-blue-500 " + (isDisplayRow === true ? "active" : "")}></i>
+                <div className='type-bar flex items-center justify-between text-right my-5 md:my-0 text-2xl'>
+                  <div onClick={showDrawer} className='py-2 cursor-pointer px-4 rounded-2xl lg:hidden text-base bg-blue-100 text-blue-500'>Bộ lọc
+                    <i className="ml-2 fa-solid fa-filter"></i>
+                  </div>
+                  <div>
+                    <i onClick={() => setDisplayRow(false)} className={"fa-solid text-stone-400 cursor-pointer fa-table-cells-large mr-5 hover:text-blue-500 " + (isDisplayRow === false ? "active" : "")}></i>
+                    <i onClick={() => setDisplayRow(true)} className={"fa-solid text-stone-400 cursor-pointer fa-list hover:text-blue-500 " + (isDisplayRow === true ? "active" : "")}></i>
+                  </div>
                 </div>
               </div>
               {isDisplayRow ?
                 <div className='content-list-product-row mt-6 '>
                   <div className='my-2 p-3.5 border-solid border-2 border-stone-100'>
                     <div className='card rounded-lg bg-white flex' >
-                      <div className='card-img w-1/4 hover:-translate-y-2 transition-all'>
+                      <div className='card-img w-1/3 md:w-1/5 hover:-translate-y-2 transition-all'>
                         <Image
                           preview={false}
                           src="https://hoanghapccdn.com/media/product/250_4429_hhpc_white_13900k_sky_two_ha1s.jpg"
-                          style={{ width: "180px", height: "180px" }}
                         />
                       </div>
-                      <div className='card-content w-3/4'>
-                        <h2 className='font-medium cursor-pointer hover:text-blue-500 text-base line-clamp-2'>
+                      <div className='card-content ml-1 w-2/3 md:w-4/5 relative'>
+                        <h2 className='font-medium absolute top-0 left-0 right-0 cursor-pointer hover:text-blue-500 text-sm md:text-base line-clamp-1 md:line-clamp-2'>
                           HHPC CORE i7 12700K | 32GB | NVIDIA RTX 3050 6G
                         </h2>
-                        <div className='my-8'>
-                          <h2 className='font-bold cursor-default text-xl my-1 text-blue-500'>
+                        <div className='absolute bottom-1/3 left-0 right-0'>
+                          <h2 className='font-bold cursor-default text-lg md:text-xl my-1 text-blue-500'>
                             19,000,000 đ
                           </h2>
-                          <div className='font-medium cursor-default text-xs my-1 '>
+                          <div className='font-medium cursor-default text-xs md:text-lg my-1 '>
                             <span className='line-through text-slate-400 mr-2'>22,000,000 đ</span>
                             <span className='text-red-500'>(Tiết kiệm 12%)</span>
                           </div>
                         </div>
-                        <div className='card-footer flex item-center justify-between'>
-                          <div className='status flex text-base cursor-default'>
+                        <div className='card-footer absolute bottom-0 left-0 right-0 flex item-center justify-between'>
+                          <div className='status flex text-xs md:text-base cursor-default'>
                             <div className='flex items-center text-green-600'>
                               <i className="fa-regular fa-circle-check mr-2"></i>
-                              <p>Còn hàng</p>
+                              <p className='hidden sm:block'>Còn hàng</p>
                             </div>
                             <div className='flex mx-4 text-stone-500 items-center'>
                               <i className="fa-solid fa-gift mr-2"></i>
-                              <p>Quà tặng</p>
+                              <p className='hidden sm:block'>Quà tặng</p>
                             </div>
                           </div>
                           <div className='text-base cart-icon py-2 flex  items-center px-6 cursor-pointer hover:text-white'>
                             <i className="fa-solid fa-cart-shopping"></i>
-                            <p className='ml-3 relative font-semibold -top-0.5'>Thêm vào giỏ</p>
+                            <p className='hidden md:block ml-3 relative font-semibold -top-0.5'>Thêm vào giỏ</p>
                           </div>
                         </div>
 
@@ -188,20 +217,20 @@ const Category = function () {
                   </div>
                 </div>
                 :
-                <div className='content-list-product-col grid grid-flow-row grid-cols-12 gap-2 mt-6 '>
-                  <div className='col-span-3 p-2 border-solid border-2 border-stone-100'>
+                <div className='content-list-product-col grid grid-flow-row grid-cols-12 gap-0.5 md:gap-2 mt-6 '>
+                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
                     <CardProduct />
                   </div>
-                  <div className='col-span-3 p-2 border-solid border-2 border-stone-100'>
+                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
                     <CardProduct />
                   </div>
-                  <div className='col-span-3 p-2 border-solid border-2 border-stone-100'>
+                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
                     <CardProduct />
                   </div>
-                  <div className='col-span-3 p-2 border-solid border-2 border-stone-100'>
+                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
                     <CardProduct />
                   </div>
-                  <div className='col-span-3 p-2 border-solid border-2 border-stone-100'>
+                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
                     <CardProduct />
                   </div>
                 </div>

@@ -18,12 +18,12 @@ const Address = function(){
     <>
       <div className="md:pt-3 pt-52 bg-slate-50">
         
-          <div className='mx-5 xl:mx-32 content-header flex items-center'>
+          <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
               <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
               <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
               <h3 className="font-medium text-lg text-stone-500 mr-3">Account</h3>
           </div>
-          <div className='mx-5 xl:mx-32 my-5 grid grid-flow-row grid-cols-12 gap-9'>
+          <div className='mx-5 xl:mx-32 my-5 grid grid-flow-row grid-cols-12 gap-0 lg:gap-9'>
             <div className='col-span-12 lg:col-span-3'>
                 <div className='flex items-center'>
                     <i className='fas fa-user-circle text-5xl text-blue-600'></i>
@@ -78,7 +78,7 @@ const Address = function(){
                     <Form.Item className='font-bold text-3xl' name="number-home" label="Số nhà">
                         <Input className='font-normal py-2 text-base' placeholder='Nhập số nhà địa chỉ của bạn'/>
                     </Form.Item>
-                    <Form.Item labelCol={4} wrapperCol={{span: 8, offset: 4}} className='text-transparent'>
+                    <Form.Item labelCol={4} wrapperCol={{ offset: 4}} className='text-transparent overflow-hidden'>
                         <Button className='bg-red-500 w-4/5 lg:w-auto button text-white font-bold p-5' type='default' htmlType='submit'>Thêm địa chỉ</Button>
                     </Form.Item>
                 </Form>
@@ -90,7 +90,7 @@ const Address = function(){
                             <Select.Option value="1">Number 12 Nguyen Van Bao, Ward 4, Go Vap District, Ho Chi Minh City.</Select.Option>
                         </Select>
                     </Form.Item>
-                    <Form.Item labelCol={4} wrapperCol={{span: 8, offset: 4}} className='text-transparent'>
+                    <Form.Item labelCol={4} wrapperCol={{offset: 4}} className='text-transparent overflow-hidden'>
                         <Button className='bg-yellow-500 w-4/5 lg:w-auto button text-white font-bold p-5' type='default' htmlType='submit'>Xóa địa chỉ</Button>
                     </Form.Item>
                 </Form>

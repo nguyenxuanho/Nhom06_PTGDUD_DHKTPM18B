@@ -43,9 +43,8 @@ const LayoutDefault = function () {
       const headerFix = document.querySelector(".header-fix")
       const headerTopUL = document.querySelectorAll(".header-top ul li");
       const headerTopText = document.querySelectorAll(".header-top ul li span");
-      const headerTopImg = document.querySelector(".header-top .avatar");
 
-      const headerRighth2 = document.querySelectorAll(".header-right h2")
+      // const headerRighth2 = document.querySelectorAll(".header-right h2")
       const headerMiddleInput = document.querySelector(".header-middle input")
 
 
@@ -59,12 +58,12 @@ const LayoutDefault = function () {
           headerFix.classList.add("bg-white");
           headerFix.classList.add("shadow-lg");
 
-          headerTopImg.classList.remove("w-24");
+          // headerTopImg.classList.remove("w-16");
 
           headerTopUL.forEach(ul => ul.classList.add("block-header-fix"))
           headerTopText.forEach(ul => ul.classList.add("text-header-fix"))
 
-          headerRighth2.forEach(ul => ul.classList.add("text-header-fix"))
+          // headerRighth2.forEach(ul => ul.classList.add("text-header-fix"))
 
 
           headerMiddleInput.classList.add("block-header-fix");
@@ -80,14 +79,14 @@ const LayoutDefault = function () {
         headerFix.classList.remove("bg-white");
         headerFix.classList.remove("shadow-lg");
 
-        headerTopImg.classList.add("w-24");
+        // headerTopImg.classList.add("w-16");
 
 
         headerMiddleInput.classList.remove("block-header-fix");
 
         headerTopUL.forEach(ul => ul.classList.remove("block-header-fix"))
         headerTopText.forEach(ul => ul.classList.remove("text-header-fix"))
-        headerRighth2.forEach(ul => ul.classList.remove("text-header-fix"))
+        // headerRighth2.forEach(ul => ul.classList.remove("text-header-fix"))
 
       }
 
@@ -217,7 +216,7 @@ const LayoutDefault = function () {
                   </span>
                 </div>
                 {isOpenCart &&
-                  <div className='bg-stone-100 shadow-2xl min-h-36 z-50 right-0 rounded-xl absolute top-full w-96 md:w-470'>
+                  <div className='bg-stone-100 shadow-2xl min-h-36 z-50 right-0 rounded-xl absolute top-full w-350 md:w-470'>
                     <div className='cart-header py-3 border-solid border-b-2 border-stone-300 
                             uppercase text-center text-xl font-medium'>
                       Giỏ hàng
@@ -301,7 +300,7 @@ const LayoutDefault = function () {
             </div>
           </div>
           <div className='header-middle mb-3 flex items-center align-middle justify-center'>
-            <h1 className='lg:text-3xl md:text-xl sm:text-lg font-bold text-blue-500 mx-2 md:mx-10 xl:mx-10'>ARISU GAMING</h1>
+            <h1 className='lg:text-3xl md:text-xl sm:text-lg font-bold text-blue-500 mx-0.5 md:mx-10 xl:mx-10'>ARISU GAMING</h1>
             <div className="search w-2/3 relative top-0.5">
               <input
                 className="shadow-inner focus:outline-blue-600 text-base xl:text-xl rounded-lg bg-slate-50 border-blue-200 w-full px-2.5 py-2 xl:px-5 xl:py-2.5"
@@ -427,7 +426,7 @@ const LayoutDefault = function () {
 
 
       <footer style={{ backgroundColor: "#0062b9" }} className="grid grid-flow-row grid-cols-6 lg:grid-cols-12 gap-2 pt-9 text-white">
-        <div className="col-span-6 lg:col-span-12 px-5 lg:px-32 grid grid-flow-row grid-cols-6 lg:grid-cols-12">
+        <div className="col-span-6 lg:col-span-12 px-5 xl:px-32 grid grid-flow-row grid-cols-6 lg:grid-cols-12">
           <div className="col-span-6 lg:col-span-8 xl:col-span-6">
             <h2 className="font-bold mb-3">Email liên hệ</h2>
             <p className="w-3/4 text-justify">Vui lòng liên hệ phía bên dưới</p>
@@ -481,7 +480,7 @@ const LayoutDefault = function () {
             <div className='font-medium hover:text-sky-300 my-2 cursor-pointer text-base'>Chính sách vận chuyển, giao nhận</div>
           </div>
         </div>
-        <div className='col-span-6 lg:col-span-12 mt-10 px-5 lg:px-32 py-9 lg:flex items-center justify-between' style={{ backgroundColor: "#005098" }}>
+        <div className='col-span-6 lg:col-span-12 mt-10 px-5 xl:px-32 py-9 lg:flex items-center justify-between' style={{ backgroundColor: "#005098" }}>
           <div className='w-full font-bold'>
             <h2>CÔNG TY TNHH DỊCH VỤ VÀ CÔNG NGHỆ HOÀNG HÀ ©</h2>
             <p className='my-4 font-medium'>2008 - 2020 - Công ty TNHH Dịch Vụ Và Công Nghệ Hoàng Hà / GPKD số: 0107406972 Do Sở Kế Hoạch Và Đầu Tư Thành Phố Hà Nội Cấp

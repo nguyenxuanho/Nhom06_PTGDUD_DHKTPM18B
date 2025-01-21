@@ -5,13 +5,36 @@ import CardProduct from '../card_product';
 
 
 const Product = function () {
+    const responsiveSettings = [
+        {
+            breakpoint: 1024, 
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 1,
+            },
+        },
+        {
+            breakpoint: 800, 
+            settings: {
+                slidesToShow: 3, 
+                slidesToScroll: 1,
+            },
+        },
+        {
+            breakpoint: 600, 
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+            },
+        },
+    ];
 
 
 
     return (
         <>
             <div className="md:pt-3 pt-52 bg-slate-50">
-                <div className='mx-5 xl:mx-32 content-header flex items-center'>
+                <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
                     <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
                     <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
                     <Link to="/collection/123" className="font-medium text-lg text-stone-500 mr-3 header-nav active">PC Render, Edit Video</Link>
@@ -19,10 +42,10 @@ const Product = function () {
                     <h3 className="font-medium text-lg text-stone-500 mr-3">HHPC Adobe</h3>
                 </div>
                 <div className='mx-5 xl:mx-32 content-body my-5 p-4 bg-white shadow-lg'>
-                    <h1 className='font-bold text-xl line-clamp-1 py-2 border-solid border-b-2 border-blue-200'>PC ĐỒ HỌA CORE i5 12600K | 16G | NVIDIA RTX 3060 12G</h1>
-                    <div className='grid grid-flow-row grid-cols-12 my-3 gap-16'>
-                        <div className='col-span-4'>
-                            <Carousel autoplay autoplaySpeed={2000} dots={false} arrows>
+                    <h1 className='font-bold text-xl text-blue-500 lg:text-3xl line-clamp-2 py-2 border-solid border-b-2 border-blue-200'>PC ĐỒ HỌA CORE i5 12600K | 16G | NVIDIA RTX 3060 12G</h1>
+                    <div className='grid grid-flow-row grid-cols-12 my-3 gap-0 lg:gap-8 xl:gap-16'>
+                        <div className='col-span-12 lg:col-span-3 xl:col-span-4'>
+                            <Carousel className='w-full' autoplay autoplaySpeed={2000} dots={false} arrows>
                                 <Image
                                     src='https://hoanghapccdn.com/media/product/3036_pc_gaming_x_ii_kf400_ha1s.jpg'
                                 />
@@ -44,17 +67,17 @@ const Product = function () {
                             </div>
 
                         </div>
-                        <div className='col-span-8'>
+                        <div className='col-span-12 lg:col-span-9 xl:col-span-8'>
                             <h3 className='text-lg font-semibold '>Thông số sản phẩm</h3>
-                            <ul className='text-stone-800'>
-                                <li>- CPU : INTEL CORE i5 12600K up 4.9GHz | 10 CORE | 16 THREAD</li>
-                                <li>- RAM : DDR4 16GB (1x16G) 3200 MHz</li>
-                                <li>- VGA : NVIDIA RTX 3060 12GB GDDR6</li>
+                            <ul className='text-stone-800 break-words'>
+                                <li className='break-words'>- CPU : INTEL CORE i5 12600K up 4.9GHz | 10 CORE | 16 THREAD</li>
+                                <li className='break-words'>- RAM : DDR4 16GB (1x16G) 3200 MHz</li>
+                                <li className='break-words'>- VGA : NVIDIA RTX 3060 12GB GDDR6</li>
                             </ul>
                             <div className='px-3 my-4 py-2 border-dotted border-2 border-red-300 rounded-xl'>
-                                <div className='flex items-end'>
-                                    <p className='text-blue-500 font-bold text-4xl'>19.060.000 đ</p>
-                                    <p className='mx-8 line-through text-stone-500 text-2xl font-bold'>21.000.000 đ</p>
+                                <div className='md:flex items-end'>
+                                    <p className='text-blue-500 inline-block md:block font-bold text-xl md:text-2xl xl:text-4xl'>19.060.000 đ</p>
+                                    <p className='mb-3 md:mb-0 mx-8 line-through inline-block md:block text-stone-500 text-lg md:text-xl xl:text-2xl font-bold'>21.000.000 đ</p>
                                     <Tag className='text-sm font-medium' color="red">Tiết kiệm 10%</Tag>
                                 </div>
                                 <div className='bg-red-500 mt-3 text-white py-1 px-2 max-w-max rounded-2xl font-bold text-sm'>Bảo hành theo từng linh kiện</div>
@@ -77,10 +100,10 @@ const Product = function () {
                                 </div>
                             </div>
                             <div className='list-btn flex max-w-max mt-10'>
-                                <Button className='shadow-xl font-bold text-xl bg-red-500 text-white uppercase py-9 px-32 button mr-10'>
+                                <Button className='shadow-xl font-bold text-base sm:text-xl bg-red-500  text-white uppercase py-7 px-3 xl:py-9 lg:px-16 button mr-10'>
                                     Mua ngay
                                 </Button>
-                                <Button className='shadow-xl font-bold text-xl bg-yellow-500 text-white uppercase py-9 px-16 button mr-10'>
+                                <Button className='shadow-xl font-bold text-base sm:text-xl bg-yellow-500 text-white uppercase py-7 px-3 xl:py-9 lg:px-16 button mr-10'>
                                     Thêm vào giỏ hàng
                                 </Button>
                             </div>
@@ -89,18 +112,18 @@ const Product = function () {
                     </div>
                 </div>
                 <div className='mx-5 xl:mx-32 content-body my-5 p-4 bg-white shadow-lg'>
-                    <h1 className='font-bold text-xl line-clamp-1 py-2 border-solid border-b-2 border-blue-200'>Thông số kỹ thuật</h1>
-                    <div className='grid grid-flow-row grid-cols-12 my-3 gap-10'>
-                        <div className='col-span-1 font-bold'>
+                    <h1 className='font-bold text-xl text-blue-500 lg:text-3xl line-clamp-1 py-2 border-solid border-b-2 border-blue-200'>Thông số kỹ thuật</h1>
+                    <div className='grid grid-flow-row grid-cols-12 my-3 overflow-x-scroll gap-20 md:gap-10'>
+                        <div className='col-span-1 text-sm lg:text-base font-bold'>
                             STT
                         </div>
-                        <div className='col-span-2 font-bold'>
+                        <div className='col-span-2 text-sm lg:text-base font-bold'>
                             MÃ HÀNG
                         </div>
-                        <div className='col-span-5 font-bold'>
+                        <div className='col-span-5 text-sm lg:text-base font-bold'>
                             TÊN HÀNG
                         </div>
-                        <div className='col-span-4 font-bold'>
+                        <div className='col-span-4 text-sm lg:text-base font-bold'>
                             THỜI HẠN BẢO HÀNH
                         </div>
 
@@ -211,24 +234,49 @@ const Product = function () {
                     </div>
                 </div>
                 <div className='mx-5 xl:mx-32 content-body my-5 p-4 bg-white shadow-lg'>
-                    <h1 className='font-bold text-xl line-clamp-1 py-2 border-solid border-b-2 border-blue-200'>Sản phẩm tương tự</h1>
-                    <div className='flex my-3 gap-16'>
-                        <div className='basis-1/5'>
-                            <CardProduct />
-                        </div>
-                        <div className='basis-1/5'>
-                            <CardProduct />
-                        </div>
-                        <div className='basis-1/5'>
-                            <CardProduct />
-                        </div>
-                        <div className='basis-1/5'>
-                            <CardProduct />
-                        </div>
-                        <div className='basis-1/5'>
-                            <CardProduct />
-                        </div>
-                    </div>
+                    <h1 className='font-bold text-blue-500 text-xl lg:text-3xl line-clamp-1 py-2 border-solid border-b-2 border-blue-200'>Sản phẩm tương tự</h1>
+                    <Carousel
+                            slidesToShow={5}
+                            slidesToScroll={1}
+                            draggable
+                            className='mt-12 cursor-grab'
+                            dots={false}
+                            autoplay
+                            arrows
+                            autoplaySpeed={2000}
+                            responsive={responsiveSettings}
+                        >
+                            <div className='px-1.5'>
+                                <CardProduct  />
+                            </div>
+                            <div className='px-1.5'>
+                                <CardProduct  />
+                            </div>
+                            <div className='px-1.5'>
+                                <CardProduct  />
+                            </div>
+                            <div className='px-1.5'>
+                                <CardProduct  />
+                            </div>
+                            <div className='px-1.5'>
+                                <CardProduct  />
+                            </div>
+                            <div className='px-1.5'>
+                                <CardProduct  />
+                            </div>
+                            <div className='px-1.5'>
+                                <CardProduct  />
+                            </div>
+                            <div className='px-1.5'>
+                                <CardProduct  />
+                            </div>
+                            <div className='px-1.5'>
+                                <CardProduct  />
+                            </div>
+                            <div className='px-1.5'>
+                                <CardProduct  />
+                            </div>
+                    </Carousel>
                 </div>
             </div>
         </>

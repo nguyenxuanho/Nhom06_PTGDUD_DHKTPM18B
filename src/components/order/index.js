@@ -117,7 +117,7 @@ const OrderSuccess = function () {
         <>
             <div className="md:pt-3 pt-52 bg-slate-50">
 
-                <div className='mx-5 xl:mx-32 content-header flex items-center'>
+                <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
                     <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
                     <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
                     <h3 className="font-medium text-lg text-stone-500 mr-3">Đặt hàng thành công</h3>
@@ -136,7 +136,7 @@ const OrderSuccess = function () {
                     <Table pagination={pagination}  scroll={{ x: 700}}  className='my-5 overflow-y-scroll' dataSource={dataSource} columns={columns} />
                     <div className='my-2 text-right font-bold text-xl'> 
                         Tổng thành tiền:
-                        <span className='mx-2 text-3xl text-red-500'>49,999,999 đ</span>
+                        <span className='mx-2 text-xl md:text-3xl text-red-500'>49,999,999 đ</span>
                     </div>
                 </div>
 
@@ -157,7 +157,7 @@ const OrderSuccess = function () {
                         </div>
                         <div className='my-2 w-full lg:w-1/2 border-b-2 border-solid border-stone-200 py-2 flex items-center text-lg'>
                             <h2 className='w-2/4 lg:w-1/4 font-bold'>Email: </h2>
-                            <p className='font-semibold w-2/4 lg:w-3/4 text-blue-500'>xuanhodcbas@gmail.com</p>
+                            <p className='font-semibold break-words w-2/4 lg:w-3/4 text-blue-500'>xuanhodcbas@gmail.com</p>
                         </div>
                         <div className='my-2 w-full lg:w-1/2 border-b-2 border-solid border-stone-200 py-2 flex items-center text-lg'>
                             <h2 className='w-2/4 lg:w-1/4 font-bold'>Ghi chú: </h2>

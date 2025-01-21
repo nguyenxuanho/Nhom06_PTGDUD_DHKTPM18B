@@ -22,12 +22,12 @@ const Password = function(){
     <>
       <div className="md:pt-3 pt-52 bg-slate-50">
         
-          <div className='mx-5 xl:mx-32 content-header flex items-center'>
+          <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
               <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
               <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
               <h3 className="font-medium text-lg text-stone-500 mr-3">Account</h3>
           </div>
-          <div className='mx-5 xl:mx-32 my-5 grid grid-flow-row grid-cols-12 gap-9'>
+          <div className='mx-5 xl:mx-32 my-5 grid grid-flow-row grid-cols-12 gap-0 lg:gap-9'>
             <div className='col-span-12 lg:col-span-3'>
                 <div className='flex items-center'>
                     <i className='fas fa-user-circle text-5xl text-blue-600'></i>
@@ -82,7 +82,7 @@ const Password = function(){
                     <Form.Item className='font-bold text-3xl' name="renew-password" label="Nhập lại mật khẩu">
                         <Input.Password  className='font-normal py-2 text-base' placeholder='Nhập lại mật khẩu mới của bạn'/>
                     </Form.Item>
-                    <Form.Item labelCol={4} wrapperCol={{span: 8, offset: 4}} className='text-transparent'>
+                    <Form.Item labelCol={4} wrapperCol={{offset: 4}} className='text-transparent overflow-hidden'>
                         <Button className='bg-red-500 w-4/5 lg:w-auto button text-white font-bold p-5' type='default' htmlType='submit'>Thay đổi</Button>
                     </Form.Item>
                 </Form>

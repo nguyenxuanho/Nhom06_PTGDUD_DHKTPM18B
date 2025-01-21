@@ -10,8 +10,8 @@ const NotFound = function(){
   
   return (
     <>
-      <div className="container pt-3 bg-slate-50">
-          <div className='mx-32 my-5 bg-white shadow-xl'>
+      <div className="md:pt-3 pt-52 bg-slate-50">
+          <div className='mx-5 xl:mx-32 my-5 bg-white shadow-xl'>
             <Result
                 className='font-medium'
                 status="404"

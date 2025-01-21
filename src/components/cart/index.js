@@ -22,12 +22,12 @@ const Cart = function(){
     <>
       <div className="md:pt-3 pt-52 bg-slate-50">
         
-          <div className='mx-5 xl:mx-32 content-header flex items-center'>
+          <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
               <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
               <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
               <h3 className="font-medium text-lg text-stone-500 mr-3">Thông tin giỏ hàng</h3>
           </div>
-          <h1 className='mx-5 xl:mx-32 py-2 border-b-blue-400 border-solid border-b-2 md:w-2/3 xl:w-1/3 font-bold text-3xl uppercase text-blue-500'>Giỏ hàng của tôi
+          <h1 className='mx-5 xl:mx-32 py-2 border-b-blue-400 border-solid border-b-2 md:w-2/3 xl:w-1/3 font-bold text-xl lg:text-3xl uppercase text-blue-500'>Giỏ hàng của tôi
             <span className='ml-2 text-sm border-none text-stone-400 lowercase font-medium'>(1 sản phẩm)</span>
           </h1>
           <div className='mx-5 xl:mx-32 my-5 content-body grid grid-flow-row grid-cols-12 gap-8 '>
@@ -43,8 +43,8 @@ const Cart = function(){
                     <CartProduct />
                 </div>
                 <div className='subtotal border-solid border-2 border-stone-100 p-4 flex items-center justify-between'>
-                    <h2 className='font-bold text-stone-500'>Tổng giá trị đơn hàng</h2>
-                    <p className='font-bold text-blue-500 text-2xl'>49.050.000 VNĐ</p>
+                    <h2 className='font-bold text-stone-500'>Tổng giá trị đơn hàng: </h2>
+                    <p className='font-bold text-blue-500 text-lg md:text-2xl'>49.050.000 đ</p>
                 </div>
             </div>
             <div className='col-span-12 lg:col-span-5 py-3 px-5 border-solid border-2 rounded-lg shadow-xl border-blue-500'>
@@ -77,7 +77,7 @@ const Cart = function(){
                     </Form.Item>
                     <Button type='primary' htmlType='submit' className='h-24 block text-center w-full'>
                         <h2 className='font-bold uppercase text-2xl'>Đặt hàng</h2>
-                        <div className='text-xs'>Tư vấn viên sẽ gọi điện thoại để xác nhận không mua cũng không sao</div>
+                        <div className='text-sm '>Tư vấn viên sẽ gọi điện thoại để xác nhận</div>
                     </Button>
                 </Form>
             </div>

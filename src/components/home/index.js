@@ -31,7 +31,7 @@ const Home = function () {
     ];
 
     const handleChangeFilter = (e) => {
-        const boxButton = e.target.closest(".gap-4");
+        const boxButton = e.target.closest(".gap-2");
         const listButton = boxButton.querySelectorAll(".button");
 
         const buttonClick = e.target.closest(".button");
@@ -243,11 +243,11 @@ const Home = function () {
 
                 </div>
                 <div className='content-center my-10'>
-                    <div className='mx-5 xl:mx-32 grid grid-flow-row grid-cols-6 lg:flex gap-4 my-16'>
+                    <div className='mx-5 xl:mx-32 grid grid-flow-row grid-cols-6 lg:flex gap-2 lg:gap-4 my-16'>
                         <div className='col-span-2 lg:basis-1/5'>
                             <Button onClick={handleChangeFilter} className="w-full active button py-7 rounded-3xl text-blue-700 hover:text-white hover:bg-blue-500">
                                 <div className='flex-wrap'>
-                                    <h2 className='uppercase font-medium md:font-bold text-sm lg:text-base'>Top PC Bán Chạy</h2>
+                                    <h2 className='uppercase font-medium md:font-bold text-xs lg:text-base'>Top PC Bán Chạy</h2>
                                     <p className='hidden md:block font-medium'>Nhất năm 2025</p>
                                 </div>
                             </Button>
@@ -255,7 +255,7 @@ const Home = function () {
                         <div className='col-span-2 lg:basis-1/5'>
                             <Button onClick={handleChangeFilter} className="w-full button py-7 rounded-3xl text-blue-700 hover:text-white hover:bg-blue-500">
                                 <div className='flex-wrap'>
-                                    <h2 className='uppercase font-medium md:font-bold text-sm lg:text-base'>Giải nhiệt pc</h2>
+                                    <h2 className='uppercase font-medium md:font-bold text-xs lg:text-base'>Giải nhiệt pc</h2>
                                     <p className='hidden md:block font-medium'>Nâng cao hiệu suất</p>
                                 </div>
                             </Button>
@@ -263,7 +263,7 @@ const Home = function () {
                         <div className='col-span-2 lg:basis-1/5'>
                             <Button onClick={handleChangeFilter} className="w-full button py-7 rounded-3xl text-blue-700 hover:text-white hover:bg-blue-500">
                                 <div className='flex-wrap'>
-                                    <h2 className='uppercase font-medium md:font-bold text-sm lg:text-base'>Top PC Cực Khủng</h2>
+                                    <h2 className='uppercase font-medium md:font-bold text-xs lg:text-base'>Top PC Cực Khủng</h2>
                                     <p className='hidden md:block font-medium'>Dành cho dân đồ họa</p>
                                 </div>
                             </Button>
@@ -271,7 +271,7 @@ const Home = function () {
                         <div className='col-span-2 lg:basis-1/5'>
                             <Button onClick={handleChangeFilter} className="w-full button py-7 rounded-3xl text-blue-700 hover:text-white hover:bg-blue-500">
                                 <div className='flex-wrap'>
-                                    <h2 className='uppercase font-medium md:font-bold text-sm lg:text-base'>màn hình đồ họa</h2>
+                                    <h2 className='uppercase font-medium md:font-bold text-xs lg:text-base'>màn hình đồ họa</h2>
                                     <p className='hidden md:block font-medium'>Nhiều ưu đãi hấp dẫn</p>
                                 </div>
                             </Button>
@@ -279,7 +279,7 @@ const Home = function () {
                         <div className='col-span-2 lg:basis-1/5'>
                             <Button onClick={handleChangeFilter} className="w-full button py-7 rounded-3xl text-blue-700 hover:text-white hover:bg-blue-500">
                                 <div className='flex-wrap'>
-                                    <h2 className='uppercase font-medium md:font-bold text-sm lg:text-base'>Góc thanh lý</h2>
+                                    <h2 className='uppercase font-medium md:font-bold text-xs lg:text-base'>Góc thanh lý</h2>
                                     <p className='hidden md:block font-medium'>Xả hàng không lợi nhuận</p>
                                 </div>
                             </Button>
@@ -330,7 +330,7 @@ const Home = function () {
                 </div>
                 <div className='box-promotion mx-5 xl:mx-32 my-10 bg-white py-10 px-7 shadow-lg'>
                     <div className='flex items-center justify-between'>
-                        <h1 className='text-3xl font-bold text-blue-500'>PC Thiết Kế Đồ Họa 3D</h1>
+                        <h1 className='text-xl md:text-3xl font-bold text-blue-500'>PC Thiết Kế Đồ Họa 3D</h1>
                         <p className='text-sm font-bold text-slate-500 cursor-pointer'>Xem tất cả</p>
                     </div>
                         <Carousel
@@ -379,7 +379,7 @@ const Home = function () {
                 </div>
                 <div className='box-promotion mx-5 xl:mx-32 my-10 bg-white py-10 px-7 shadow-lg'>
                     <div className='flex items-center justify-between'>
-                        <h1 className='text-3xl font-bold text-blue-500'>PC Render, Edit Video</h1>
+                        <h1 className='text-xl md:text-3xl font-bold text-blue-500'>PC Render, Edit Video</h1>
                         <p className='text-sm font-bold text-slate-500 cursor-pointer'>Xem tất cả</p>
                     </div>
                     <Carousel
@@ -427,7 +427,7 @@ const Home = function () {
                 </div>
                 <div className='box-promotion mx-5 xl:mx-32 my-10 bg-white py-10 px-7 shadow-lg'>
                     <div className='flex items-center justify-between'>
-                        <h1 className='text-3xl font-bold text-blue-500'>PC Gaming</h1>
+                        <h1 className='text-xl md:text-3xl font-bold text-blue-500'>PC Gaming</h1>
                         <p className='text-sm font-bold text-slate-500 cursor-pointer'>Xem tất cả</p>
                     </div>
                     <Carousel
@@ -471,14 +471,14 @@ const Home = function () {
                             <div className='px-1.5'>
                                 <CardProduct  />
                             </div>
-                        </Carousel>
+                    </Carousel>
                 </div>
                 <div className='h-60 background-image flex items-center justify-center font-extrabold text-base sm:text-xl lg:text-4xl text-white cursor-default'>
                     Khơi nguồn đam mê, chạm đến đỉnh công nghệ! ❣️
                 </div>
                 <div className='mx-5 xl:mx-32 my-10 bg-white py-10 px-7 shadow-md'>
                     <div className='flex items-center justify-center'>
-                        <h1 className='text-2xl font-bold text-blue-500'>HỆ THỐNG SHOWROOM CỦA HOÀNG HÀ PC</h1>
+                        <h1 className='text-xl md:text-3xl font-bold text-blue-500'>HỆ THỐNG SHOWROOM CỦA HOÀNG HÀ PC</h1>
                     </div>
                     <div className='mt-12 grid grid-flow-row grid-cols-12 gap-3'>
                         <div className='col-span-12 my-3 sm:col-span-6 xl:col-span-3'>
