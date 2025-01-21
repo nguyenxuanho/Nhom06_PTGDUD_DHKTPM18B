@@ -46,7 +46,7 @@ const CardProduct = (prop) => {
 
                 </div>
                 <div className='card-footer flex item-center justify-between'>
-                    <div className='status text-base cursor-default'>
+                    <div className='status text-xs md:text-base cursor-default'>
                         <div className='flex items-center text-green-600'>
                             <i className="fa-regular fa-circle-check mr-2"></i>
                             <p>Còn hàng</p>

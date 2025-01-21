@@ -203,7 +203,7 @@ const LayoutDefault = function () {
               <Link to={"/account/order"}>
                 <div className="cursor-pointer flex items-center justify-center px-3 md:mx-9 md:px-4 xl:mx-9 xl:px-4 rounded-xl py-3 bg-blue-100">
                   <i className="fa-solid fa-box relative top-0.5 text-blue-500"></i>
-                  <h2 className="text-sm md:text-base xl:text-base xl:px-3 px-1 md:px-3 text-blue-500 font-semibold">Danh sách đơn hàng</h2>
+                  <h2 className="text-xs md:text-base xl:text-base xl:px-3 px-0.5 md:px-3 text-blue-500 font-semibold">Danh sách đơn hàng</h2>
                 </div>
               </Link>
               <div className='md:mr-7 xl:mr-7 relative' >
@@ -216,7 +216,7 @@ const LayoutDefault = function () {
                   </span>
                 </div>
                 {isOpenCart &&
-                  <div className='bg-stone-100 shadow-2xl min-h-36 z-50 right-0 rounded-xl absolute top-full w-350 md:w-470'>
+                  <div className='bg-stone-100 shadow-2xl min-h-36 z-50 -right-2/3 md:right-0 rounded-xl absolute top-full w-350 md:w-470'>
                     <div className='cart-header py-3 border-solid border-b-2 border-stone-300 
                             uppercase text-center text-xl font-medium'>
                       Giỏ hàng
@@ -426,7 +426,7 @@ const LayoutDefault = function () {
 
 
       <footer style={{ backgroundColor: "#0062b9" }} className="grid grid-flow-row grid-cols-6 lg:grid-cols-12 gap-2 pt-9 text-white">
-        <div className="col-span-6 lg:col-span-12 px-5 xl:px-32 grid grid-flow-row grid-cols-6 lg:grid-cols-12">
+        <div className="col-span-6 gap-2 lg:col-span-12 px-5 xl:px-32 grid grid-flow-row grid-cols-6 lg:grid-cols-12">
           <div className="col-span-6 lg:col-span-8 xl:col-span-6">
             <h2 className="font-bold mb-3">Email liên hệ</h2>
             <p className="w-3/4 text-justify">Vui lòng liên hệ phía bên dưới</p>
@@ -437,15 +437,15 @@ const LayoutDefault = function () {
           </div>
           <div className='lg:col-span-4 xl:col-span-2 col-span-3 '>
             <h2 className='font-semibold mb-3'>Hợp Tác Phát Triển:</h2>
-            <p className='font-bold cursor-pointer text-sky-300'>xuanhodcbas@gmail.com</p>
+            <p className='font-bold break-words cursor-pointer text-sky-300'>xuanhodcbas@gmail.com</p>
           </div>
           <div className='lg:col-span-6 xl:col-span-2 col-span-3'>
             <h2 className='font-semibold mb-3'>Liên Hệ Báo Giá:</h2>
-            <p className='font-bold cursor-pointer text-sky-300'>xuanhodcbas@gmail.com</p>
+            <p className='font-bold break-words cursor-pointer text-sky-300'>xuanhodcbas@gmail.com</p>
           </div>
           <div className='lg:col-span-6 xl:col-span-2 col-span-6 mt-4 lg:mt-0'>
             <h2 className='font-semibold mb-3'>Hỗ Trợ Bảo Hành:</h2>
-            <p className='font-bold cursor-pointer text-sky-300'>xuanhodcbas@gmail.com</p>
+            <p className='font-bold break-words cursor-pointer text-sky-300'>xuanhodcbas@gmail.com</p>
           </div>
           <div className='col-span-3 '>
             <h2 className='font-bold text-base lg:text-xl mt-10'>Hỗ trợ khách hàng</h2>

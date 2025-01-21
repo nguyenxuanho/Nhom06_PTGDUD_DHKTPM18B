@@ -77,7 +77,7 @@ const Product = function () {
                             <div className='px-3 my-4 py-2 border-dotted border-2 border-red-300 rounded-xl'>
                                 <div className='md:flex items-end'>
                                     <p className='text-blue-500 inline-block md:block font-bold text-xl md:text-2xl xl:text-4xl'>19.060.000 đ</p>
-                                    <p className='mb-3 md:mb-0 mx-8 line-through inline-block md:block text-stone-500 text-lg md:text-xl xl:text-2xl font-bold'>21.000.000 đ</p>
+                                    <p className='mb-3 md:mb-0 mx-4 line-through inline-block md:block text-stone-500 text-lg md:text-xl xl:text-2xl font-bold'>21.000.000 đ</p>
                                     <Tag className='text-sm font-medium' color="red">Tiết kiệm 10%</Tag>
                                 </div>
                                 <div className='bg-red-500 mt-3 text-white py-1 px-2 max-w-max rounded-2xl font-bold text-sm'>Bảo hành theo từng linh kiện</div>
@@ -100,10 +100,10 @@ const Product = function () {
                                 </div>
                             </div>
                             <div className='list-btn flex max-w-max mt-10'>
-                                <Button className='shadow-xl font-bold text-base sm:text-xl bg-red-500  text-white uppercase py-7 px-3 xl:py-9 lg:px-16 button mr-10'>
+                                <Button className='shadow-xl font-medium sm:font-bold text-sm sm:text-xl bg-red-500  text-white uppercase py-7 px-3 xl:py-9 lg:px-16 button mr-10'>
                                     Mua ngay
                                 </Button>
-                                <Button className='shadow-xl font-bold text-base sm:text-xl bg-yellow-500 text-white uppercase py-7 px-3 xl:py-9 lg:px-16 button mr-10'>
+                                <Button className='shadow-xl font-medium sm:font-bold text-sm sm:text-xl bg-yellow-500 text-white uppercase py-7 px-3 xl:py-9 lg:px-16 button mr-10'>
                                     Thêm vào giỏ hàng
                                 </Button>
                             </div>

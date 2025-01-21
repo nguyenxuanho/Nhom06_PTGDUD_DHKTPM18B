@@ -473,8 +473,8 @@ const Home = function () {
                             </div>
                     </Carousel>
                 </div>
-                <div className='h-60 background-image flex items-center justify-center font-extrabold text-base sm:text-xl lg:text-4xl text-white cursor-default'>
-                    Khơi nguồn đam mê, chạm đến đỉnh công nghệ! ❣️
+                <div className='h-60 background-image flex flex-wrap items-center justify-center font-extrabold text-base sm:text-xl lg:text-4xl text-white cursor-default'>
+                    Khơi nguồn đam mê, chạm đến đỉnh công nghệ!❣️
                 </div>
                 <div className='mx-5 xl:mx-32 my-10 bg-white py-10 px-7 shadow-md'>
                     <div className='flex items-center justify-center'>

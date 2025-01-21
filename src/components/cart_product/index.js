@@ -31,9 +31,9 @@ const CartProduct = () => {
                                     <i className="fa-solid fa-plus"></i>
                                 </Button>
                             </div>
-                            <div className='total-price mt-2'>
-                                <span className='font-semibold text-xs md:text-lg'>Thành tiền: </span>
-                                <span className='text-red-500 text-xs md:text-xl font-semibold'>20.990.000 đ</span>
+                            <div className='total-price mt-1'>
+                                <p className='font-semibold block md:inline-block text-xs md:text-lg'>Thành tiền: </p>
+                                <p className='text-red-500 block md:inline-block font-bold text-xs md:text-xl'> 20.990.000 đ</p>
                             </div>
                         </div>
                     </div>
