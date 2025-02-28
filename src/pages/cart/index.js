@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 import {Button, Form, Input, Select} from 'antd'
 import TextArea from 'antd/es/input/TextArea'
-import CartProduct from '../cart_product'
+import CartProduct from '../../components/cart_product'
 
 
 

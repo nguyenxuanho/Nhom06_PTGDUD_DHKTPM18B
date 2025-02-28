@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { Button, Carousel, Checkbox, Drawer, Image } from 'antd'
 import { useState } from 'react'
-import CardProduct from '../card_product'
+import CardProduct from '../../components/card_product'
 
 
 const Category = function () {

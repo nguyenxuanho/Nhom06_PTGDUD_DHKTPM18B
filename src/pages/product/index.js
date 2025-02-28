@@ -1,7 +1,7 @@
 import { Button, Carousel, Image, Progress, Rate, Tag } from 'antd';
 import { Link } from 'react-router-dom'
 import "./style.css"
-import CardProduct from '../card_product';
+import CardProduct from '../../components/card_product/index';
 
 
 const Product = function () {

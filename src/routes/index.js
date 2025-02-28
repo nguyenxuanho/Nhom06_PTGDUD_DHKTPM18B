@@ -1,20 +1,21 @@
-import About from "../components/about";
-import Address from "../components/account/address";
-import Password from "../components/account/changePassword";
-import Account from "../components/account/index";
-import AccountOrder from "../components/account/order";
-import Cart from "../components/cart";
-import Category from "../components/category";
-import Contact from "../components/contact";
-import Home from "../components/home";
+import About from "../pages/about";
+import Address from "../pages/account/address";
+import Password from "../pages/account/changePassword";
+import Account from "../pages/account/index";
+import AccountOrder from "../pages/account/order";
+import Cart from "../pages/cart";
+import Category from "../pages/category";
+import Contact from "../pages/contact";
+import Home from "../pages/home/index";
 import LayoutDefault from "../components/layout";
-import OrderSuccess from "../components/order";
-import NotFound from "../components/page404";
-import Policy from "../components/policy";
-import Product from "../components/product";
-import Sitemap from "../components/sitemap";
-import Login from "../components/user/login";
-import Signup from "../components/user/signup";
+import OrderSuccess from "../pages/order";
+import NotFound from "../pages/page404";
+import Policy from "../pages/policy";
+import Product from "../pages/product";
+import Sitemap from "../pages/sitemap";
+import Login from "../pages/user/login";
+import Signup from "../pages/user/signup";
+
 
 export const routes = [
     {

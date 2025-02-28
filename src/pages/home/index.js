@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import { Button, Carousel, Image } from "antd";
-import CardProduct from "../card_product";
+import CardProduct from "../../components/card_product";
 
 
 
