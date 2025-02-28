@@ -114,3 +114,15 @@ input[type="checkbox"] {
   background: linear-gradient(270deg, #74cdff 0, #1d94ff 99.26%);
   border: none;
 }
+
+.text-header-fix{
+  font-size: 14px;
+}
+
+.block-header-fix{
+  padding: 5px 10px;
+}
+
+.text-logo-fix{
+  font-size: 30px;
+}
