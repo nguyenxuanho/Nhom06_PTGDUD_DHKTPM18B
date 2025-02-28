@@ -1,8 +1,25 @@
 import './App.css';
+import { ToastContainer, toast, Slide } from 'react-toastify';
+
 
 function App() {
   return (
       <>
+        <ToastContainer
+          position="top-right"
+          autoClose={6500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Slide}
+        />
+
+
         <header className="bg-white z-50 fixed container flex justify-between px-5 py-5 border-b-gray-200 border-solid border-b-2">
             <div className="header-left flex justify-between items-center">
               <img className="avatar size-16" src={"/dauBep.png"} alt="Example" />
@@ -29,136 +46,30 @@ function App() {
                 </div>
             </div>
         </header>
-        <div className="pt-32 container px-40 grid grid-flow-row grid-cols-12 gap-16 mb-36">
-          <div className="col-span-4">
-            <div className="rounded-lg border-2 border-gray-300 border-solid">
-              <div className="flex items-center  p-4">
-                <i className="fa-solid fa-bars text-2xl "></i>
-                <h2 className="uppercase font-bold text-xl relative -top-px px-2">Filters</h2>
+       
+        <div className="container pt-24">
+          <div className="flex justify-center items-center h-96 bg-pink-500">
+            <div className="text-white text-center">
+              <h2 className="text-5xl font-bold">What to cook this week?</h2>
+              <p className="text-2xl">Discover our delicious recipes and cook like a pro</p>
+              <div className="flex justify-center items-center">
+                <button onClick={() => toast("Default nha mấy cha", 
+                  {
+                    position: "top-right",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    theme: "light",
+                    transition: Slide,
+                  }
+                )} className="bg-white px-6 py-2 rounded-lg text-black font-bold mt-5">Default</button>
+                <button onClick={() => toast.error("Thông báo lỗi")} className="bg-white px-6 py-2 rounded-lg text-red-500 font-bold mt-5 ml-5">Error</button>
+                <button onClick={() => toast.success("Thông báo thành công")} className="bg-white px-6 py-2 rounded-lg text-green-500 font-bold mt-5 ml-5">Success</button>
+                <button onClick={() => toast.info("Thông báo thông tin")} className="bg-white px-6 py-2 rounded-lg text-blue-500 font-bold mt-5 ml-5">Info</button>
+                <button onClick={() => toast.warning("Thông báo cảnh báo")} className="bg-white px-6 py-2 rounded-lg text-yellow-500 font-bold mt-5 ml-5">Warning</button>
               </div>
-              <div className='flex items-center justify-between p-4'>
-                <h3 className="text-lg font-semibold">Type</h3>
-                <i className="fa-solid fa-chevron-up text-pink-500 font-bold text-xl cursor-pointer"></i>
-              </div>
-              <div className=" p-4 grid grid-flow-row grid-cols-2 pb-6 border-b-2 border-solid border-b-gray-200">
-                <div className="col-span-1 flex items-center my-2">
-                  <input type="checkbox" id="1" className="size-4"/>
-                  <label htmlFor="1" className="mx-0 cursor-pointer">Pan-fried</label>
-                </div>
-                <div className="col-span-1 flex items-center my-2">
-                  <input type="checkbox" id="2" className="size-4"/>
-                  <label htmlFor="2" className="mx-0 cursor-pointer">Stir-fried</label>
-                </div>
-                <div className="col-span-1 flex items-center my-2">
-                  <input type="checkbox" id="3" className="size-4"/>
-                  <label htmlFor="3" className="mx-0 cursor-pointer">Grilled</label>
-                </div>
-                <div className="col-span-1 flex items-center my-2">
-                  <input type="checkbox" id="4" className="size-4"/>
-                  <label htmlFor="4" className="mx-0 cursor-pointer">Roasted</label>
-                </div>
-                <div className="col-span-1 flex items-center my-2">
-                  <input type="checkbox" id="5" className="size-4"/>
-                  <label htmlFor="5" className="mx-0 cursor-pointer">Sauteed</label>
-                </div>
-                <div className="col-span-1 flex items-center my-2">
-                  <input type="checkbox" id="6" className="size-4"/>
-                  <label htmlFor="6" className="mx-0 cursor-pointer">Baked</label>
-                </div>
-                <div className="col-span-1 flex items-center my-2">
-                  <input type="checkbox" id="7" className="size-4"/>
-                  <label htmlFor="7" className="mx-0 cursor-pointer">Steamed</label>
-                </div>
-                <div className="col-span-1 flex items-center my-2">
-                  <input type="checkbox" id="8" className="size-4"/>
-                  <label htmlFor="8" className="mx-0 cursor-pointer">Stewed</label>
-                </div>
-           
-               
-              </div>
-              <div className=' p-4 flex items-center justify-between mt-2'>
-                <h3 className="text-lg font-semibold">Time</h3>
-                <i className="fa-solid fa-chevron-up text-pink-500 font-bold text-xl cursor-pointer"></i>
-              </div>
-              <div className=" p-4 mt-3 border-b-2 border-solid border-b-gray-200 pb-6">
-                <input className="w-full cursor-pointer" type="range" id="range1" min="0" max="100" step="1"/>
-              </div>
-
-              <div className=' p-4 flex items-center justify-between'>
-                <h3 className="text-lg font-semibold">Rating</h3>
-                <i className="fa-solid fa-chevron-up text-pink-500 font-bold text-xl cursor-pointer"></i>
-              </div>
-              <div className=" p-4 pb-6 border-b-2 border-solid border-b-gray-200">
-                <div className="flex items-center my-2">
-                  <input type="checkbox" id="9" className="size-4"/>
-                  <label htmlFor="9" className="cursor-pointer">
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                  </label>
-                </div>
-                <div className="flex items-center my-2">
-                  <input type="checkbox" id="10" className="size-4"/>
-                  <label htmlFor="10" className="cursor-pointer">
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-gray-300"></i>
-                  </label>
-                </div>
-                <div className="flex items-center my-2">
-                  <input type="checkbox" id="11" className="size-4"/>
-                  <label htmlFor="11" className="cursor-pointer">
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-gray-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-gray-300"></i>
-                  </label>
-                </div>
-                <div className="flex items-center my-2">
-                  <input type="checkbox" id="12" className="size-4"/>
-                  <label htmlFor="12" className="cursor-pointer">
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-gray-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-gray-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-gray-300"></i>
-                  </label>
-                </div>
-                <div className="flex items-center my-2">
-                  <input type="checkbox" id="13" className="size-4"/>
-                  <label htmlFor="13" className="cursor-pointer">
-                    <i className="fa-solid fa-star mx-2 text-2xl text-yellow-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-gray-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-gray-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-gray-300"></i>
-                    <i className="fa-solid fa-star mx-2 text-2xl text-gray-300"></i>
-                  </label>
-                </div>
-                
-           
-               
-              </div>
-
-              <div className="px-4 py-8 text-center">
-                <button htmlType="button" className="w-full bg-pink-500 text-white py-2 rounded-xl">Apply</button>
-              </div>
-
-            </div>
-          </div>
-          <div className="col-span-8 text-center mt-16">
-            <h1 className="text-4xl font-bold">Sorry, no results were found for "ahsdhjkb"</h1>
-            <img className="mx-auto w-3/6 mt-6" src={"/nofound.png"} alt="NoFound"/>
-            <h2 className="mb-7 text-2xl font-normal text-gray-600">We have all your independence Day sweets covered.</h2>
-            <div className="flex items-center justify-center">
-              <button htmlType="button" className="mx-2 bg-pink-100 text-pink-500 px-4 py-2 rounded-3xl">Sweet Cake</button>
-              <button htmlType="button" className="mx-2 bg-violet-100 text-violet-500 px-4 py-2 rounded-3xl">Black Cake</button>
-              <button htmlType="button" className="mx-2 bg-pink-100 text-pink-500 px-4 py-2 rounded-3xl">Pozole Cake</button>
-              <button htmlType="button" className="mx-2 bg-green-100 text-green-800 px-4 py-2 rounded-3xl">Healthy Food</button>
             </div>
           </div>
         </div>
