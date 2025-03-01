@@ -11,6 +11,10 @@ import LayoutDefault from "../components/layout";
 import OrderSuccess from "../pages/order";
 import NotFound from "../pages/page404";
 import Policy from "../pages/policy";
+import PolicyWarranty from "../pages/policy/warranty"; // Import đúng
+import PolicyReturn from "../pages/policy/return"; // Import đúng
+import PolicyShipping from "../pages/policy/shipping"; // Import đúng
+
 import Product from "../pages/product";
 import Sitemap from "../pages/sitemap";
 import Login from "../pages/user/login";
@@ -70,6 +74,9 @@ export const routes = [
                 path: '/policy',
                 element: <Policy />
             },
+            { path: '/policy/warranty', element: <PolicyWarranty /> }, // Chính sách bảo hành
+            { path: '/policy/return', element: <PolicyReturn /> }, // Chính sách đổi trả
+            { path: '/policy/shipping', element: <PolicyShipping /> }, // Chính sách giao hàng
             {
                 path: '/sitemap',
                 element: <Sitemap />
