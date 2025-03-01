@@ -117,8 +117,13 @@ const PolicyReturn = () => {
       </div>
 
       {/* Phần quảng cáo bên phải */}
-      <div className="w-1/4 bg-yellow-100 p-4 rounded-lg text-center shadow-md">
+      <div className="w-1/4 bg-blue-100 p-4 rounded-lg text-center shadow-md">
         <h2 className="text-lg font-semibold">🔥 Khuyến mãi HOT! 🔥</h2>
+        <img
+            src="https://hoanghapccdn.com/media/banner/19_12-396775e024dad81b1084c0dc4ed14390.jpg"
+            alt="Quảng cáo"
+            className="w-full rounded-md mb-2"
+          />
         <p>Giảm ngay 10% cho khách hàng đổi trả online.</p>
         <button className="mt-4 bg-red-500 text-white px-4 py-2 rounded">Đăng ký ngay</button>
       </div>

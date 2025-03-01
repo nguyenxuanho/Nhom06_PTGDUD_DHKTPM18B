@@ -192,10 +192,10 @@ const PolicyWarranty = () => {
       </div>
     {/* Quảng cáo bên phải */}
     <div className="w-full md:w-1/4 p-4">
-        <div className="bg-yellow-100 p-4 rounded-lg shadow-md text-center">
+        <div className="bg-blue-100 p-4 rounded-lg shadow-md text-center">
           <h2 className="text-lg font-semibold mb-2">🔥 Khuyến mãi HOT! 🔥</h2>
           <img
-            src="https://via.placeholder.com/250x250"
+            src="https://hoanghapccdn.com/media/banner/19_12-396775e024dad81b1084c0dc4ed14390.jpg"
             alt="Quảng cáo"
             className="w-full rounded-md mb-2"
           />

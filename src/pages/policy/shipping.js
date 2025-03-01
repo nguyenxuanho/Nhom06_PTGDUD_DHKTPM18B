@@ -79,8 +79,13 @@ const PolicyShipping = () => {
       </div>
 
       {/* Phần quảng cáo bên phải */}
-      <div className="w-1/4 bg-yellow-100 p-4 rounded-lg text-center shadow-md">
-        <h2 className="text-lg font-semibold">🚚 Miễn phí vận chuyển! 🚚</h2>
+      <div className="w-1/4 bg-blue-100 p-4 rounded-lg text-center shadow-md">
+        <h2 className="text-lg font-semibold">🚚 Miễn phí vận chuyển! 🚚</h2><img
+            src="https://hoanghapccdn.com/media/banner/19_12-396775e024dad81b1084c0dc4ed14390.jpg"
+            alt="Quảng cáo"
+            className="w-full rounded-md mb-2"
+          />
+
         <p>Áp dụng cho đơn hàng trên 500.000đ.</p>
         <button className="mt-4 bg-red-500 text-white px-4 py-2 rounded">Mua ngay</button>
       </div>
