@@ -47,7 +47,7 @@ const Home = function () {
 
     return (
         <>
-            <div className="md:pt-3 pt-52 bg-slate-50">
+            <div className="dark:bg-slate-900 md:pt-3 pt-52 bg-slate-50">
                 <div className='content-header mx-5 xl:mx-32 grid grid-cols-12 grid-flow-row gap-2 xl:gap-5'>
                     <div className='row-span-3 hidden xl:block col-span-3 rounded-lg shadow-lg bg-white'>
                         <ul className='m-0 pl-0 rounded-lg max-h-max'>

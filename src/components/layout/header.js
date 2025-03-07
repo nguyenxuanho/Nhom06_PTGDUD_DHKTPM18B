@@ -146,7 +146,7 @@ const Header = () => {
                     <div className='header-top flex justify-between items-center'>
                         <div className="header-left flex justify-between items-center">
                             <i onClick={showDrawer} className="fa-solid fa-bars xl:hidden ml-4 text-2xl hover:text-blue-500 cursor-pointer"></i>
-                            <div className="avatar overflow-hidden w-16 h-16 md:w-24 md:h-24">
+                            <div className="avatar overflow-hidden w-16 h-16 md:w-20 md:h-20">
                                 <img src={"/logo.svg"} alt="Example" />
                             </div>
                             <ul className="pl-0 xl:block hidden">
@@ -374,24 +374,26 @@ const Header = () => {
                         </ul>
                     </div>
                     <div className="overflow-x-scroll flex items-center">
-                        <div className="cursor-pointer flex whitespace-nowrap  items-center mx-1 lg:mx-2 justify-center lg:py-3 p-1.5 rounded-xl hover:text-white lg:px-5 hover:bg-blue-500">
-                            <i className=" fa-regular fa-paste lg:text-xl relative top-0.5"></i>
-                            <h2 className="lg:text-base text-sm font-semibold ml-3">Chính sách bảo hành</h2>
-                        </div>
-                        <div className="cursor-pointer flex whitespace-nowrap items-center mx-1 lg:mx-2 justify-center lg:py-3 p-1.5 rounded-xl hover:text-white lg:px-5 hover:bg-blue-500">
-                            <i className=" fa-solid fa-arrow-rotate-left lg:text-xl relative top-0.5"></i>
-                            <h2 className="lg:text-base text-sm font-semibold ml-3">Chính sách đổi trả</h2>
-                        </div>
-                        <div className="cursor-pointer flex whitespace-nowrap items-center mx-1 lg:mx-2 justify-center lg:py-3 p-1.5 rounded-xl hover:text-white lg:px-5 hover:bg-blue-500">
-                            <i className="fa-solid fa-truck-fast lg:text-xl relative top-0.5"></i>
-                            <h2 className="lg:text-base text-sm font-semibold ml-3">Chính sách giao hàng</h2>
-                        </div>
-                        <div className="cursor-pointer flex whitespace-nowrap items-center mx-1 lg:mx-2 justify-center lg:py-3 p-1.5 rounded-xl hover:text-white lg:px-5 hover:bg-blue-500">
-                            <i className="fa-solid fa-hand-holding-dollar lg:text-xl relative top-0.5"></i>
-                            <h2 className="lg:text-base text-sm font-semibold ml-3">Thanh toán và trả góp</h2>
-                        </div>
-                    </div>
+    <Link to="/policy/warranty" className="cursor-pointer flex whitespace-nowrap items-center mx-1 lg:mx-2 justify-center lg:py-3 p-1.5 rounded-xl hover:text-white lg:px-5 hover:bg-blue-500">
+        <i className="fa-regular fa-paste lg:text-xl relative top-0.5"></i>
+        <h2 className="lg:text-base text-sm font-semibold ml-3">Chính sách bảo hành</h2>
+    </Link>
 
+    <Link to="/policy/return" className="cursor-pointer flex whitespace-nowrap items-center mx-1 lg:mx-2 justify-center lg:py-3 p-1.5 rounded-xl hover:text-white lg:px-5 hover:bg-blue-500">
+        <i className="fa-solid fa-arrow-rotate-left lg:text-xl relative top-0.5"></i>
+        <h2 className="lg:text-base text-sm font-semibold ml-3">Chính sách đổi trả</h2>
+    </Link>
+
+    <Link to="/policy/shipping" className="cursor-pointer flex whitespace-nowrap items-center mx-1 lg:mx-2 justify-center lg:py-3 p-1.5 rounded-xl hover:text-white lg:px-5 hover:bg-blue-500">
+        <i className="fa-solid fa-truck-fast lg:text-xl relative top-0.5"></i>
+        <h2 className="lg:text-base text-sm font-semibold ml-3">Chính sách giao hàng</h2>
+    </Link>
+
+    <Link to="/policy/payment" className="cursor-pointer flex whitespace-nowrap items-center mx-1 lg:mx-2 justify-center lg:py-3 p-1.5 rounded-xl hover:text-white lg:px-5 hover:bg-blue-500">
+        <i className="fa-solid fa-hand-holding-dollar lg:text-xl relative top-0.5"></i>
+        <h2 className="lg:text-base text-sm font-semibold ml-3">Thanh toán và trả góp</h2>
+    </Link>
+</div>
                 </div>
             </header>
 
