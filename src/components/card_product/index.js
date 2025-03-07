@@ -17,7 +17,7 @@ const CardProduct = (prop) => {
 
     return (
         <>
-            <div className={'card rounded-lg bg-white ' + prop?.css} >
+            <div className={'card rounded-lg bg-white dark:bg-gray-900 dark:text-white ' + prop?.css} >
                     <Tooltip
                         title={<DetailTooltip />}
                         color="blue"

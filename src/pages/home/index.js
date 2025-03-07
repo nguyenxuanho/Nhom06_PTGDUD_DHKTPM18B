@@ -47,66 +47,66 @@ const Home = function () {
 
     return (
         <>
-            <div className="dark:bg-slate-900 md:pt-3 pt-52 bg-slate-50">
+            <div className="dark:bg-slate-900 md:pt-3 pt-52 py-10 bg-slate-50">
                 <div className='content-header mx-5 xl:mx-32 grid grid-cols-12 grid-flow-row gap-2 xl:gap-5'>
                     <div className='row-span-3 hidden xl:block col-span-3 rounded-lg shadow-lg bg-white'>
-                        <ul className='m-0 pl-0 rounded-lg max-h-max'>
-                            <li className='w-full rounded-t-lg cursor-pointer hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
+                        <ul className='m-0 pl-0 rounded-lg max-h-max dark:bg-blue-950'>
+                            <li className='w-full rounded-t-lg cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
                                 <i className="fa-solid fa-laptop mr-5 text-left text-xl w-1/12"></i>
                                 <span className='font-medium'>PC Thiết Kế Đồ Họa 3D</span>
                             </li>
-                            <li className='w-full cursor-pointer hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
+                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
                                 <i className="fa-solid fa-film mr-5 text-left text-xl w-1/12"></i>
                                 <span className='font-medium'>PC Render, Edit Video</span>
                             </li>
-                            <li className='w-full cursor-pointer hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
+                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
                                 <i className="fa-brands fa-uncharted mr-5 text-left text-xl w-1/12"></i>
                                 <span className='font-medium'>Phần mềm bản quyền</span>
                             </li>
-                            <li className='w-full cursor-pointer hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
+                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
                                 <i className="fa-solid fa-laptop mr-5 text-left text-xl w-1/12"></i>
                                 <span className='font-medium'>PC Đẹp</span>
                             </li>
 
-                            <li className='w-full cursor-pointer hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
+                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
                                 <i className="fa-solid fa-rocket mr-5 text-left text-xl w-1/12"></i>
                                 <span className='font-medium'>PC Gaming</span>
                             </li>
 
-                            <li className='w-full cursor-pointer hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
+                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
                                 <i className="fa-solid fa-briefcase mr-5 text-left text-xl w-1/12"></i>
                                 <span className='font-medium'>PC Văn Phòng</span>
                             </li>
-                            <li className='w-full cursor-pointer hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
+                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
                                 <i className="fa-solid fa-desktop mr-5 text-left text-xl w-1/12"></i>
                                 <span className='font-medium'>Màn hình máy tính</span>
                             </li>
-                            <li className='w-full cursor-pointer hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
+                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
                                 <i className="fa-solid fa-robot mr-5 text-left text-xl w-1/12"></i>
                                 <span className='font-medium'>Machine Learning / AI</span>
                             </li>
 
-                            <li className='w-full cursor-pointer hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
+                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
                                 <i className="fa-solid fa-laptop-code mr-5 text-left text-xl w-1/12"></i>
                                 <span className='font-medium'>Laptop Notebook</span>
                             </li>
 
-                            <li className='w-full cursor-pointer hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
+                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
                                 <i className="fa-solid fa-gear mr-5 text-left text-xl w-1/12"></i>
                                 <span className='font-medium'>Linh kiện máy tính</span>
                             </li>
 
-                            <li className='w-full cursor-pointer hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
+                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
                                 <i className="fa-solid fa-fan mr-5 text-left text-xl w-1/12"></i>
                                 <span className='font-medium'>Tản nhiệt</span>
                             </li>
 
-                            <li className='w-full cursor-pointer hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
+                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
                                 <i className="fa-regular fa-hard-drive mr-5 text-left text-xl w-1/12"></i>
                                 <span className='font-medium'>HDD-SSD-NAS</span>
                             </li>
 
-                            <li className='w-full rounded-b-lg cursor-pointer hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
+                            <li className='w-full rounded-b-lg cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
                                 <i className="fa-solid fa-gamepad mr-5 text-left text-xl w-1/12"></i>
                                 <span className='font-medium'>Gaming Gear</span>
                             </li>
@@ -328,7 +328,7 @@ const Home = function () {
                         </div>
                     </Carousel>
                 </div>
-                <div className='box-promotion mx-5 xl:mx-32 my-10 bg-white py-10 px-7 shadow-lg'>
+                <div className='box-promotion mx-5 xl:mx-32 my-10 dark:bg-blue-950 rounded-lg bg-white py-10 px-7 shadow-lg'>
                     <div className='flex items-center justify-between'>
                         <h1 className='text-xl md:text-3xl font-bold text-blue-500'>PC Thiết Kế Đồ Họa 3D</h1>
                         <p className='text-sm font-bold text-slate-500 cursor-pointer'>Xem tất cả</p>
@@ -345,39 +345,39 @@ const Home = function () {
                             responsive={responsiveSettings}
                         >
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                         </Carousel>
             
                 </div>
-                <div className='box-promotion mx-5 xl:mx-32 my-10 bg-white py-10 px-7 shadow-lg'>
+                <div className='box-promotion mx-5 xl:mx-32 my-10 dark:bg-blue-950 rounded-lg bg-white py-10 px-7 shadow-lg'>
                     <div className='flex items-center justify-between'>
                         <h1 className='text-xl md:text-3xl font-bold text-blue-500'>PC Render, Edit Video</h1>
                         <p className='text-sm font-bold text-slate-500 cursor-pointer'>Xem tất cả</p>
@@ -394,38 +394,38 @@ const Home = function () {
                             responsive={responsiveSettings}
                         >
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                         </Carousel>
                 </div>
-                <div className='box-promotion mx-5 xl:mx-32 my-10 bg-white py-10 px-7 shadow-lg'>
+                <div className='box-promotion mx-5 xl:mx-32 my-10 dark:bg-blue-950 rounded-lg bg-white py-10 px-7 shadow-lg'>
                     <div className='flex items-center justify-between'>
                         <h1 className='text-xl md:text-3xl font-bold text-blue-500'>PC Gaming</h1>
                         <p className='text-sm font-bold text-slate-500 cursor-pointer'>Xem tất cả</p>
@@ -442,46 +442,46 @@ const Home = function () {
                             responsive={responsiveSettings}
                         >
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                             <div className='px-1.5'>
-                                <CardProduct  />
+                                <CardProduct css="p-3" />
                             </div>
                     </Carousel>
                 </div>
-                <div className='h-60 background-image flex flex-wrap items-center justify-center font-extrabold text-base sm:text-xl lg:text-4xl text-white cursor-default'>
+                <div className='h-60 background-image my-10 flex flex-wrap items-center justify-center font-extrabold text-base sm:text-xl lg:text-4xl text-white cursor-default'>
                     Khơi nguồn đam mê, chạm đến đỉnh công nghệ!❣️
                 </div>
-                <div className='mx-5 xl:mx-32 my-10 bg-white py-10 px-7 shadow-md'>
+                <div className='mx-5 xl:mx-32 dark:bg-blue-950 rounded-lg bg-white py-10 px-7 shadow-md'>
                     <div className='flex items-center justify-center'>
                         <h1 className='text-xl md:text-3xl font-bold text-blue-500'>HỆ THỐNG SHOWROOM CỦA HOÀNG HÀ PC</h1>
                     </div>
                     <div className='mt-12 grid grid-flow-row grid-cols-12 gap-3'>
-                        <div className='col-span-12 my-3 sm:col-span-6 xl:col-span-3'>
+                        <div className='dark:text-white col-span-12 my-3 sm:col-span-6 xl:col-span-3'>
                             <div className='flex items-center'>
                                 <div className='text-6xl px-6 rounded-md py-3 mr-4 bg-blue-200'>1</div>
                                 <div className='font-bold text-blue-500'>
@@ -511,7 +511,7 @@ const Home = function () {
                                 <span className='w-5/6'>Thời gian làm việc: 8h00 - 18h30</span>
                             </p>
                         </div>
-                        <div className='col-span-12 my-3 sm:col-span-6 xl:col-span-3'>
+                        <div className='dark:text-white  col-span-12 my-3 sm:col-span-6 xl:col-span-3'>
                             <div className='flex items-center'>
                                 <div className='text-6xl px-6 rounded-md py-3 mr-4 bg-purple-400'>2</div>
                                 <div className='font-bold text-blue-500'>
@@ -541,7 +541,7 @@ const Home = function () {
                                 <span className='w-5/6'>Thời gian làm việc: 8h00 - 18h30</span>
                             </p>
                         </div>
-                        <div className='col-span-12 my-3 sm:col-span-6 xl:col-span-3'>
+                        <div className='dark:text-white  col-span-12 my-3 sm:col-span-6 xl:col-span-3'>
                             <div className='flex items-center'>
                                 <div className='text-6xl px-6 rounded-md py-3 mr-4 bg-green-300'>3</div>
                                 <div className='font-bold text-blue-500 w-2/3'>
@@ -571,7 +571,7 @@ const Home = function () {
                                 <span className='w-5/6'>Thời gian làm việc: 8h00 - 18h30</span>
                             </p>
                         </div>
-                        <div className='col-span-12 my-3 sm:col-span-6 xl:col-span-3'>
+                        <div className='dark:text-white  col-span-12 my-3 sm:col-span-6 xl:col-span-3'>
                             <div className='flex items-center'>
                                 <div className='text-6xl px-6 rounded-md py-3 mr-4 bg-red-200'>4</div>
                                 <div className='font-bold text-blue-500'>
