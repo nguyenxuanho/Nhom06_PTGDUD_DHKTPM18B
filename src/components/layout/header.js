@@ -146,7 +146,7 @@ const Header = () => {
                     <div className='header-top flex justify-between items-center'>
                         <div className="header-left flex justify-between items-center">
                             <i onClick={showDrawer} className="fa-solid fa-bars xl:hidden ml-4 text-2xl hover:text-blue-500 cursor-pointer"></i>
-                            <div className="avatar overflow-hidden w-16 h-16 md:w-24 md:h-24">
+                            <div className="avatar overflow-hidden w-16 h-16 md:w-20 md:h-20">
                                 <img src={"/logo.svg"} alt="Example" />
                             </div>
                             <ul className="pl-0 xl:block hidden">
