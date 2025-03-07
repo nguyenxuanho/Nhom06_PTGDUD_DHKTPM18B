@@ -6,11 +6,11 @@ const DetailTooltip = () => {
         <>
            <div className="p-0 lg:block hidden" style={{maxWidth: "390px"}}>
                 <h2 className="px-5 font-bold">HHPC CORE i7 12700K | 32GB | NVIDIA RTX 3050 6G</h2>
-                <div className="bg-white text-black px-5 border-stone-200 border-solid border-2">
+                <div className="bg-white dark:bg-blue-900 dark:text-white text-black px-5 dark:border-black border-stone-200 border-solid border-2">
                     <div className="my-2 py-3  border-stone-200 border-solid border-b-2">
                         <div className="flex items-center justify-between">
                             <h2 className="text-base">Giá bán: </h2>
-                            <p className="relative top-0 font-bold text-blue-500">12,000,000 đ</p>
+                            <p className="relative top-0 font-bold dark:text-blue-300 text-blue-500">12,000,000 đ</p>
                         </div>
                         <div className="flex items-center justify-between">
                             <h2 className="text-base mt-3">Bảo hành:</h2>
