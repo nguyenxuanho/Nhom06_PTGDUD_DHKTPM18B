@@ -15,6 +15,15 @@ router.post("/login", controller.loginPost);
 
 router.get("/logout", controller.logout);
 
+router.get("/infor", controller.getUserByToken);
+
+router.patch("/:id", controller.updateUser);
+
+router.patch("/password/:id", controller.changePassword);
+
+
+
+
 
 // router.get("/password/forgot", controller.forgotPassword);
 

@@ -1,10 +1,58 @@
 import { Button, Form, Input } from "antd";
 import { Link } from "react-router-dom";
-
+import {toast} from "react-toastify"
+import { get, post } from "../../components/utils/request";
+import { useEffect } from "react";
 
 
 
 const Signup = function () {
+
+    useEffect(() => {
+
+        const fetchLogOut = async () => {
+            await get("users/logout");
+        }
+
+        fetchLogOut();
+
+    }, [])
+
+    const handleSignUp = async (data) => {
+        if(data.fullname === undefined || data.fullname.trim() === ""){
+            toast.error("Không được để trống")
+            return;
+        }
+
+        if(data.email === undefined || data.email.trim() === ""){
+            toast.error("Không được để trống")
+            return;
+        }
+
+        if(data.password === undefined || data.password.trim() === ""){
+            toast.error("Không được để trống")
+            return;
+        }
+
+        if(data.repassword === undefined || data.repassword.trim() === ""){
+            toast.error("Không được để trống")
+            return;
+        }
+
+        if(data.password !== data.repassword){
+            toast.error("Mật khẩu không khớp")
+            return;
+        }
+
+        const statusResgiter = await post("users/register", data);
+        if(statusResgiter.code === 200){
+            setTimeout(() => {
+                window.location.href = "/";
+            }, 2000)
+            toast.success("Đăng ký tài khoản thành công !!")
+        } else toast.error(statusResgiter.message)
+        
+    }
 
 
     return (
@@ -24,7 +72,7 @@ const Signup = function () {
                             </Link>
                         </div>
                     </div>
-                    <Form className="mt-5">
+                    <Form className="mt-5" onFinish={handleSignUp} >
                         <Form.Item name="fullname">
                             <Input className="text-lg py-2.5 bg-blue-100" placeholder="Nhập họ và tên của bạn" />
                         </Form.Item>

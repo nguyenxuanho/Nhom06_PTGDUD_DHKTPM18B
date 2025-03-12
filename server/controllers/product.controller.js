@@ -1,4 +1,4 @@
-const Product = require("../models/product.js");
+const Product = require("../models/product.model.js")
 const productsHelper = require("../helper/products.js");
 
 const ProductCategory = require("../models/product-category.model.js");
@@ -17,6 +17,32 @@ module.exports.index = async (req, res) => {
     products: newProducts
   });
 }
+
+
+// [GET] products/search/:keyword
+module.exports.search = async (req, res) => {
+
+    let find = {
+      title: ""
+    }
+
+    
+
+    if(req.params.keyword){
+        const regex = new RegExp(req.params.keyword.toString(), "i");
+        find.title = regex;
+    }
+    // End Search
+
+
+    const listProduct = await Product.find(find).limit(10);
+
+    res.json({
+      code: 200,
+      listProduct: listProduct
+    })
+}
+
 
 // [GET] /products/:slugProduct
 module.exports.detail = async (req, res) => {

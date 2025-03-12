@@ -2,6 +2,7 @@ const md5 = require("md5");
 const User = require("../models/user.model");
 
 const Cart = require("../models/cart.model");
+const { message } = require("antd");
 
 // const ForgotPassword = require("../models/forgot-password.model");
 
@@ -10,8 +11,10 @@ const Cart = require("../models/cart.model");
 // const sendMailHelper = require("../helper/sendMail");
 
 
-// [POST] /user/register
+// [POST] /users/register
 module.exports.registerPost = async (req, res) => {
+  
+  
   const existEmail = await User.findOne({
     email: req.body.email
   });
@@ -24,6 +27,7 @@ module.exports.registerPost = async (req, res) => {
   }
 
   req.body.password = md5(req.body.password);
+  
 
   const user = new User(req.body);
   await user.save();
@@ -32,66 +36,90 @@ module.exports.registerPost = async (req, res) => {
 
   return res.json({
     message: "Đăng ký thành công tài khoản",
-    code: 200
+    code: 200,
+    data: user
   })
 };
 
 
 
-// [POST] /user/login
+// [POST] /users/login
 module.exports.loginPost = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
   const user = await User.findOne({
-    email: email,
-    deleted: false
+    email: email
   });
 
   if (!user) {
-    req.flash("error", "Email không tồn tại!");
-    res.redirect("back");
-    return;
+    return res.json({
+      message: "Email chưa đăng ký trong hệ thống",
+      code: 400
+    })
   }
 
   if (md5(password) !== user.password) {
-    req.flash("error", "Sai mật khẩu!");
-    res.redirect("back");
-    return;
-  }
-
-  if (user.status === "inactive") {
-    req.flash("error", "Tài khoản đang bị khóa!");
-    res.redirect("back");
-    return;
-  }
-
-
-  const cart = await Cart.findOne({
-    user_id: user.id
-  });
-
-  if (cart) {
-    res.cookie("cartId", cart.id);
-  } else {
-    await Cart.updateOne({
-      _id: req.cookies.cartId
-    }, {
-      user_id: user.id
+    return res.json({
+      message: "Mật khẩu không chính xác",
+      code: 400
     });
   }
 
-  res.cookie("tokenUser", user.tokenUser);
 
-  res.redirect("/");
+  res.cookie("token", user.token);
+
+  return res.json({
+    message: "Đăng nhập thành công",
+    code: 200,
+  })
 };
 
-// [GET] /user/logout
+// [GET] /users/logout
 module.exports.logout = async (req, res) => {
-  res.clearCookie("tokenUser");
-  res.clearCookie("cartId");
-  res.redirect("/");
+  res.clearCookie("token");
+  res.json({code: 200, message: "Logout User"})
 };
+
+// [GET] /users/infor
+module.exports.getUserByToken = async (req, res) => {
+  const user = await User.findOne({token: req.cookies.token}).select("-password -token")
+  return res.json({
+    code: 200,
+    data: user
+  })
+  
+}
+
+
+// [PATCH] /users/:id
+module.exports.updateUser = async (req, res) => {
+  await User.updateOne({_id: req.params.id}, req.body)
+  return res.json({
+    code: 200,
+    message: "Cập nhật user thành công"
+  })
+  
+}
+
+// [PATCH] /users/password/:id
+module.exports.changePassword = async (req, res) => {
+  const user = await User.findOne({_id: req.params.id})
+  if(md5(req.body.old_password) !== user.password){
+    return res.json({
+      code: 400,
+      message: "Mật khẩu cũ không chính xác"
+    })
+  }
+
+  await User.updateOne({_id: req.params.id}, {password: md5(req.body.new_password)})
+
+  return res.json({
+    code: 200,
+    message: "Cập nhật mật khẩu thành công"
+  })
+  
+}
 
 // // [GET] /user/password/forgot
 // module.exports.forgotPassword = async (req, res) => {

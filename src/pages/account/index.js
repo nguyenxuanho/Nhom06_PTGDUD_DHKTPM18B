@@ -1,9 +1,13 @@
 import {Link} from 'react-router-dom'
-import {Button, Form, Input, Select} from 'antd'
+import {Button, Form, Input} from 'antd'
+import { useUser } from '../../components/layout/index';
+import { patch } from '../../components/utils/request';
+import { toast } from 'react-toastify';
 
 
 
 const Account = function(){
+    const {inforUser, setRefresh, refresh} = useUser();
     const layout = {
         labelCol: {
           span: 4,
@@ -12,6 +16,21 @@ const Account = function(){
           span: 20,
         },
       };
+
+    const handleUpdateUser = async (data) => {
+        Object.keys(data).forEach(key => {
+            if (data[key] === undefined) {
+              delete data[key];
+            }
+        });
+        
+
+        const statusUpdate = await patch(`users/${inforUser._id}`, data)
+        if(statusUpdate.code === 200){
+            toast.success("Cập nhật thông tin thành công !")
+            setRefresh(!refresh)
+        }
+    }
    
   
   return (
@@ -29,7 +48,7 @@ const Account = function(){
                     <i className='fas fa-user-circle text-5xl text-blue-600'></i>
                     <div className='mx-4'>
                         <h6 className='text-base font-semibold'>Tài khoản của,</h6>
-                        <h1 className='font-bold text-lg'>Nguyễn Xuân Hồ</h1>
+                        <h1 className='font-bold text-lg'>{inforUser?.fullname}</h1>
                     </div>
                 </div>
                 <ul className='pl-0 my-5'>
@@ -68,25 +87,22 @@ const Account = function(){
             </div>
             <div className='col-span-12 lg:col-span-9 p-6 bg-white rounded-2xl shadow-xl'>
                 <h2 className='text-xl font-bold pb-3 border-solid border-b-2 border-blue-200'>Cập nhật thông tin cá nhân</h2>
-                <Form  {...layout} labelAlign='left' className='my-5'>
-                    <Form.Item className='font-bold text-3xl' name="fullname" label="Họ và tên">
-                        <Input className='font-normal py-2 text-base' placeholder='Nhập họ và tên' defaultValue="Nguyễn Xuân Hồ"/>
-                    </Form.Item>
-                    <Form.Item className='font-bold text-3xl' name="email" label="Địa chỉ email">
-                        <Input className='font-normal py-2 text-base' placeholder='Nhập địa chỉ email' defaultValue="xuanhodcbas@gmail.com"/>
-                    </Form.Item>
-                    <Form.Item className='font-bold text-3xl' name="address" label="Chọn địa chỉ">
-                        <Select className='font-normal text-base' placeholder='Chọn địa chỉ' defaultValue={"1"}>
-                            <Select.Option value="1">Number 12 Nguyen Van Bao, Ward 4, Go Vap District, Ho Chi Minh City.</Select.Option>
-                        </Select>
-                    </Form.Item>
-                    <Form.Item className='font-bold text-3xl' name="phone" label="Số điện thoại">
-                        <Input className='font-normal py-2 text-base' placeholder='Nhập số điện thoại' defaultValue="0987654321"/>
-                    </Form.Item>
-                    <Form.Item labelCol={4} wrapperCol={{offset: 4}} className='text-transparent overflow-hidden'>
-                        <Button className='bg-red-500 w-4/5 lg:w-auto button text-white font-bold p-5' type='default' htmlType='submit'>Thay đổi</Button>
-                    </Form.Item>
-                </Form>
+                {inforUser._id && 
+                    <Form onFinish={handleUpdateUser}  {...layout} labelAlign='left' className='my-5'>
+                        <Form.Item className='font-bold text-3xl' name="fullname" label="Họ và tên">
+                            <Input className='font-normal py-2 text-base' placeholder='Nhập họ và tên' defaultValue={inforUser?.fullname}/>
+                        </Form.Item>
+                        <Form.Item className='font-bold text-3xl' name="email" label="Địa chỉ email">
+                            <Input className='font-normal py-2 text-base' placeholder='Nhập địa chỉ email' defaultValue={inforUser?.email}/>
+                        </Form.Item>
+                        <Form.Item className='font-bold text-3xl' name="phone" label="Số điện thoại">
+                            <Input className='font-normal py-2 text-base' placeholder='Nhập số điện thoại' defaultValue={inforUser?.phone}/>
+                        </Form.Item>
+                        <Form.Item labelCol={4} wrapperCol={{offset: 4}} className='text-transparent overflow-hidden'>
+                            <Button className='bg-red-500 w-4/5 lg:w-auto button text-white font-bold p-5' type='default' htmlType='submit'>Thay đổi</Button>
+                        </Form.Item>
+                    </Form>
+                }
             </div>
 
           </div>

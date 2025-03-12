@@ -1,10 +1,46 @@
 import { Button, Form, Input } from "antd";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { get, post } from "../../components/utils/request";
+import { toast } from "react-toastify";
 
 
 
 
 const Login = function () {
+
+    useEffect(() => {
+
+        const fetchLogOut = async () => {
+            await get("users/logout");
+        }
+
+        fetchLogOut();
+
+    }, []);
+
+    const handleLogin = async (data) => {
+      
+        if(data.email === undefined || data.email.trim() === ""){
+            toast.error("Không được để trống")
+            return;
+        }
+
+        if(data.password === undefined || data.password.trim() === ""){
+            toast.error("Không được để trống")
+            return;
+        }
+
+      
+        const statusResgiter = await post("users/login", data);
+        if(statusResgiter.code === 200){
+            toast.success("Đăng nhập tài khoản thành công !!")
+            setTimeout(() => {
+                window.location.href = "/";
+            }, 2000)
+        } else toast.error(statusResgiter.message)
+        
+    }
 
 
     return (
@@ -24,7 +60,7 @@ const Login = function () {
                             </Link>
                         </div>
                     </div>
-                    <Form className="mt-5">
+                    <Form className="mt-5" onFinish={handleLogin}>
                         <Form.Item name="email">
                             <Input className="text-lg py-2.5 bg-blue-100" placeholder="Nhập địa chỉ email của bạn" />
                         </Form.Item>
@@ -45,7 +81,7 @@ const Login = function () {
                         </Form.Item>
                     </Form>
                     <div className="md:flex items-center justify-between py-5">
-                        <div className="text-stone-500 my-2 md:my-0 cursor-default">Bạn chưa có tài khoản? 
+                        <div className="text-stone-500 my-2 md:my-0 cursor-default">Bạn chưa có tài khoản?
                             <Link to={"/user/signup"} className="text-blue-500 font-bold"> Đăng ký?</Link>
                         </div>
                         <div className="text-stone-500 cursor-default">Bạn quên mật khẩu?

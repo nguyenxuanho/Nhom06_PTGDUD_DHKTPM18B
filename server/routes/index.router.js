@@ -1,5 +1,5 @@
-// const RouterProduct = require('./product.router')
-// const RouterHome = require('./home.router')
+const RouterProduct = require('./product.router')
+const RouterHome = require('./home.router')
 
 // const categoryMiddleware = require("../middlewares/client/category.middleware");
 // const searchRoutes = require("./search.route");
@@ -30,15 +30,15 @@ module.exports = (app) => {
 
     // app.use("/search", searchRoutes);
 
-    // app.use('/', RouterHome);
-    // app.use('/products', RouterProduct);
+    app.use('/', RouterHome);
+    app.use("/users", userRoutes);
+    app.use('/products', RouterProduct);
 
     // app.use("/cart", cartRoutes);
 
     
     // app.use("/checkout", checkoutRoutes);
 
-    app.use("/users", userRoutes);
 
 
     // app.use("/users", authMiddleware.requireAuth, usersRoutes);

@@ -2,9 +2,11 @@ const mongoose = require("mongoose");
 const { generateRandomString } = require("../helper/generate");
 const userSchema = new mongoose.Schema(
     {
-        fullName: String,
+        fullname: String,
         address: Array,
         phone: String,
+        email: String,
+        password: String,
         token: {
             type: String,
             default: generateRandomString(20)
