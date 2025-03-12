@@ -4,18 +4,18 @@ const productsHelper = require("../helper/products.js");
 const ProductCategory = require("../models/product-category.model.js");
 const productsCategoryHelper = require("../helper/products-category.js");
 
-module.exports.index = async (req, res) => {
-  const products = await Product.find({
-    status: "active",
-    deleted: false
-  }).sort({ position: "desc" });
-  
-  const newProducts = productsHelper.priceNewProducts(products);
 
-  res.render("client/pages/product/index", {
-    pageTitle: "Danh sách sản phẩm",
-    products: newProducts
+// [GET] products/category/:slug
+module.exports.index = async (req, res) => {
+  const productCategory = await ProductCategory.findOne({slug: req.params.slug})
+  const products = await Product.find({
+    product_category_id: productCategory._id
   });
+  
+  res.json({
+    code : 200,
+    products: products
+  })
 }
 
 
@@ -46,35 +46,15 @@ module.exports.search = async (req, res) => {
 
 // [GET] /products/:slugProduct
 module.exports.detail = async (req, res) => {
-  try {
-    const find = {
-      deleted: false,
-      slug: req.params.slugProduct,
-      status: "active"
-    };
-
-    const product = await Product.findOne(find);
-
-    if(product.product_category_id) {
-      const category = await ProductCategory.findOne({
-        _id: product.product_category_id,
-        status: "active",
-        deleted: false
-      });
-
-      product.category = category;
-    }
-
-    product.priceNew = productsHelper.priceNewProduct(product);
-
-
-    res.render("client/pages/product/detail", {
-      pageTitle: product.title,
-      product: product
-    });
-  } catch (error) {
-    res.redirect(`/products`);
-  }
+  const product = await Product.findOne({slug: req.params.slug});
+  const productCategory = await ProductCategory.findOne({_id: product.product_category_id});
+  const listProductByCategory = await Product.find({product_category_id: productCategory._id});
+  return res.json({
+    code: 200,
+    product: product,
+    productCategory: productCategory,
+    listProductByCategory: listProductByCategory
+  })
 };
 
 

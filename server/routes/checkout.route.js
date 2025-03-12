@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const controller = require("../../controller/client/checkout.controller");
+const controller = require("../controllers/checkout.controller");
 
-router.get("/", controller.index);
+router.post("/checkout", controller.order);
 
-router.post("/order", controller.order);
+router.get("/:order_id", controller.detail);
 
-router.get("/success/:orderId", controller.success);
 
 module.exports = router;

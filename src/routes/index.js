@@ -31,11 +31,11 @@ export const routes = [
                 element: <Home />
             },
             {
-                path: '/collection/:id_category',
+                path: '/collection/:category_slug',
                 element: <Category />
             },
             {
-                path: '/product/:id_product',
+                path: '/product/:product_slug',
                 element: <Product />
             },
             {
@@ -59,7 +59,7 @@ export const routes = [
                 element: <AccountOrder />
             },
             {
-                path: '/order/success',
+                path: '/order/success/:order_id',
                 element: <OrderSuccess />
             },
             {

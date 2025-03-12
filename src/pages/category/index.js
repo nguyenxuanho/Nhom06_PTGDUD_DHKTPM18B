@@ -1,13 +1,29 @@
 import './style.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import { Button, Carousel, Checkbox, Drawer, Image } from 'antd'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import CardProduct from '../../components/card_product'
+import {get} from '../../components/utils/request'
 
 
 const Category = function () {
   const [isDisplayRow, setDisplayRow] = useState(false);
+  const [products, setProducts] = useState([]);
+  const {category_slug}  = useParams(); 
+
+
+  useEffect(() => {
+    const fetchGetProductByCategory = async () => {
+      const dataObject = await get(`products/category/${category_slug}`);
+      if(dataObject.code === 200){
+        setProducts(dataObject.products);
+      }
+    }
+    fetchGetProductByCategory();
+  }, [category_slug]);
+
+  
 
   const [open, setOpen] = useState(false);
 
@@ -174,65 +190,63 @@ const Category = function () {
               </div>
               {isDisplayRow ?
                 <div className='content-list-product-row mt-6 '>
-                  <div className='my-2 p-3.5 border-solid border-2 border-stone-100'>
-                    <div className='card rounded-lg bg-white flex' >
-                      <div className='card-img w-1/3 md:w-1/5 hover:-translate-y-2 transition-all'>
-                        <Image
-                          preview={false}
-                          src="https://hoanghapccdn.com/media/product/250_4429_hhpc_white_13900k_sky_two_ha1s.jpg"
-                        />
-                      </div>
-                      <div className='card-content ml-1 w-2/3 md:w-4/5 relative'>
-                        <h2 className='font-medium absolute top-0 left-0 right-0 cursor-pointer hover:text-blue-500 text-sm md:text-base line-clamp-1 md:line-clamp-2'>
-                          HHPC CORE i7 12700K | 32GB | NVIDIA RTX 3050 6G
-                        </h2>
-                        <div className='absolute bottom-1/3 left-0 right-0'>
-                          <h2 className='font-bold cursor-default text-lg md:text-xl my-1 text-blue-500'>
-                            19,000,000 đ
-                          </h2>
-                          <div className='font-medium cursor-default text-xs md:text-lg my-1 '>
-                            <span className='line-through text-slate-400 mr-2'>22,000,000 đ</span>
-                            <span className='text-red-500'>(Tiết kiệm 12%)</span>
-                          </div>
-                        </div>
-                        <div className='card-footer absolute bottom-0 left-0 right-0 flex item-center justify-between'>
-                          <div className='status flex text-xs md:text-base cursor-default'>
-                            <div className='flex items-center text-green-600'>
-                              <i className="fa-regular fa-circle-check mr-2"></i>
-                              <p className='hidden sm:block'>Còn hàng</p>
+                  {products.length > 0 && 
+                    products.map(product => (
+                      <div key={product._id} className='my-2 p-3.5 border-solid border-2 border-stone-100'>
+                          <div className='card rounded-lg bg-white flex' >
+                            <div className='card-img w-1/3 md:w-1/5 hover:-translate-y-2 transition-all'>
+                              <Image
+                                preview={false}
+                                src="https://hoanghapccdn.com/media/product/250_4429_hhpc_white_13900k_sky_two_ha1s.jpg"
+                              />
                             </div>
-                            <div className='flex mx-4 text-stone-500 items-center'>
-                              <i className="fa-solid fa-gift mr-2"></i>
-                              <p className='hidden sm:block'>Quà tặng</p>
-                            </div>
-                          </div>
-                          <div className='text-base cart-icon py-2 flex  items-center px-6 cursor-pointer hover:text-white'>
-                            <i className="fa-solid fa-cart-shopping"></i>
-                            <p className='hidden md:block ml-3 relative font-semibold -top-0.5'>Thêm vào giỏ</p>
-                          </div>
-                        </div>
+                            <div className='card-content ml-1 w-2/3 md:w-4/5 relative'>
+                              <Link to={`/product/${product.slug}`}>
+                                <h2 className='font-medium absolute top-0 left-0 right-0 cursor-pointer hover:text-blue-500 text-sm md:text-base line-clamp-1 md:line-clamp-2'>
+                                  {product?.title}
+                                </h2>
+                              </Link>
+                              <div className='absolute bottom-1/3 left-0 right-0'>
+                                <h2 className='font-bold cursor-default text-lg md:text-xl my-1 text-blue-500'>
+                                  {(product?.price * (1 - product?.discount)).toLocaleString()} đ
+                                </h2>
+                                <div className='font-medium cursor-default text-xs md:text-lg my-1 '>
+                                  <span className='line-through text-slate-400 mr-2'>{product?.price.toLocaleString()} đ</span>
+                                  <span className='text-red-500'>(Tiết kiệm {(product?.discount * 100).toFixed(0)}%)</span>
+                                </div>
+                              </div>
+                              <div className='card-footer absolute bottom-0 left-0 right-0 flex item-center justify-between'>
+                                <div className='status flex text-xs md:text-base cursor-default'>
+                                  <div className='flex items-center text-green-600'>
+                                    <i className="fa-regular fa-circle-check mr-2"></i>
+                                    <p className='hidden sm:block'>Còn hàng</p>
+                                  </div>
+                                  <div className='flex mx-4 text-stone-500 items-center'>
+                                    <i className="fa-solid fa-gift mr-2"></i>
+                                    <p className='hidden sm:block'>Quà tặng</p>
+                                  </div>
+                                </div>
+                                <div className='text-base cart-icon py-2 flex  items-center px-6 cursor-pointer hover:text-white'>
+                                  <i className="fa-solid fa-cart-shopping"></i>
+                                  <p className='hidden md:block ml-3 relative font-semibold -top-0.5'>Thêm vào giỏ</p>
+                                </div>
+                              </div>
 
+                            </div>
+                          </div>
                       </div>
-                    </div>
-                  </div>
+                    ))
+                  }
                 </div>
                 :
                 <div className='content-list-product-col grid grid-flow-row grid-cols-12 gap-0.5 md:gap-2 mt-6 '>
-                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
-                    <CardProduct />
-                  </div>
-                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
-                    <CardProduct />
-                  </div>
-                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
-                    <CardProduct />
-                  </div>
-                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
-                    <CardProduct />
-                  </div>
-                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
-                    <CardProduct />
-                  </div>
+                  {products.length > 0 && 
+                    products.map(product => (
+                      <div key={product._id} className=' col-span-6 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
+                        <CardProduct data={product} />
+                      </div>
+                    ))
+                  }
                 </div>
               }
 

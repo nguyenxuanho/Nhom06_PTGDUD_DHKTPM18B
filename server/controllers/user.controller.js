@@ -1,9 +1,6 @@
 const md5 = require("md5");
 const User = require("../models/user.model");
 
-const Cart = require("../models/cart.model");
-const { message } = require("antd");
-
 // const ForgotPassword = require("../models/forgot-password.model");
 
 // const generateHelper = require("../helper/generate");

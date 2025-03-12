@@ -1,8 +1,10 @@
 import { Image, Tooltip } from "antd";
 import DetailTooltip from "../tooltip_detail";
 import { Link } from "react-router-dom";
+import { useCart } from "../CartContext/CartContext";
 
 const CardProduct = (prop) => {
+    const {addToCart} = useCart();
 
 
 
@@ -21,9 +23,9 @@ const CardProduct = (prop) => {
 
     return (
         <>
-            <div className={'card rounded-lg flex flex-col h-350 md:h-420 bg-white dark:bg-gray-900 dark:text-white ' + prop?.css} >
+            <div className={'card rounded-lg flex flex-col max-h-max bg-white dark:bg-gray-900 dark:text-white ' + prop?.css} >
                 <Tooltip
-                    title={<DetailTooltip />}
+                    title={<DetailTooltip data={prop?.data} />}
                     color="blue"
                     placement="rightTop"
                     className="pointer-events-none lg:pointer-events-auto"
@@ -62,7 +64,7 @@ const CardProduct = (prop) => {
                             <p>Quà tặng</p>
                         </div>
                     </div>
-                    <div className='text-base cart-icon flex items-center px-3 xl:px-6 cursor-pointer hover:text-white'>
+                    <div onClick={() => addToCart(prop?.data)} className='text-base cart-icon flex items-center px-3 xl:px-6 cursor-pointer hover:text-white'>
                         <i className="fa-solid fa-cart-shopping"></i>
                     </div>
                 </div>

@@ -6,6 +6,7 @@ import { CiLight, CiDark } from "react-icons/ci";
 import { useUser } from "./index";
 import { get } from "../utils/request";
 import { icon } from "../../pages/home/icon";
+import { useCart } from "../CartContext/CartContext";
 
 
 const Header = () => {
@@ -15,6 +16,7 @@ const Header = () => {
     const [searchProduct, setSearchProduct] = useState([]);
     const [productByCategory, setProductByCategory] = useState([]);
     const ListIcon = icon();
+    const {carts, quanlityOfCarts, increase, decrease, getTotalUnitPrice, removeCart}  = useCart();
 
 
     const items = [
@@ -69,56 +71,56 @@ const Header = () => {
 
         fetchGetData();
         // Xu ly scroll header
-        window.addEventListener("scroll", () => {
-            const headerFix = document.querySelector(".header-fix")
-            const headerTopUL = document.querySelectorAll(".header-top ul li");
-            const headerTopText = document.querySelectorAll(".header-top ul li span");
+        // window.addEventListener("scroll", () => {
+        //     const headerFix = document.querySelector(".header-fix")
+        //     const headerTopUL = document.querySelectorAll(".header-top ul li");
+        //     const headerTopText = document.querySelectorAll(".header-top ul li span");
 
-            // const headerRighth2 = document.querySelectorAll(".header-right h2")
-            const headerMiddleInput = document.querySelector(".header-middle input")
-
-
-
-            if (window.scrollY >= (document.body.scrollHeight / 2)) {
-                if (!headerFix.classList.contains("fixed")) {
-                    headerFix.classList.add("fixed");
-                    headerFix.classList.add("left-0");
-                    headerFix.classList.add("right-0");
-                    headerFix.classList.add("top-0");
-                    headerFix.classList.add("shadow-lg");
-
-                    // headerTopImg.classList.remove("w-16");
-
-                    headerTopUL.forEach(ul => ul.classList.add("block-header-fix"))
-                    headerTopText.forEach(ul => ul.classList.add("text-header-fix"))
-
-                    // headerRighth2.forEach(ul => ul.classList.add("text-header-fix"))
+        //     // const headerRighth2 = document.querySelectorAll(".header-right h2")
+        //     const headerMiddleInput = document.querySelector(".header-middle input")
 
 
-                    headerMiddleInput.classList.add("block-header-fix");
-                }
-                // "z-50 fixed px-5 pt-2 left-0 right-0 bg-white top-0"
-            } else {
-                headerFix.classList.remove("fixed");
-                headerFix.classList.remove("px-5");
-                headerFix.classList.remove("pt-2");
-                headerFix.classList.remove("left-0");
-                headerFix.classList.remove("right-0");
-                headerFix.classList.remove("top-0");
-                headerFix.classList.remove("shadow-lg");
 
-                // headerTopImg.classList.add("w-16");
+        //     if (window.scrollY >= (document.body.scrollHeight / 2)) {
+        //         if (!headerFix.classList.contains("fixed")) {
+        //             headerFix.classList.add("fixed");
+        //             headerFix.classList.add("left-0");
+        //             headerFix.classList.add("right-0");
+        //             headerFix.classList.add("top-0");
+        //             headerFix.classList.add("shadow-lg");
+
+        //             // headerTopImg.classList.remove("w-16");
+
+        //             headerTopUL.forEach(ul => ul.classList.add("block-header-fix"))
+        //             headerTopText.forEach(ul => ul.classList.add("text-header-fix"))
+
+        //             // headerRighth2.forEach(ul => ul.classList.add("text-header-fix"))
 
 
-                headerMiddleInput.classList.remove("block-header-fix");
+        //             headerMiddleInput.classList.add("block-header-fix");
+        //         }
+        //         // "z-50 fixed px-5 pt-2 left-0 right-0 bg-white top-0"
+        //     } else {
+        //         headerFix.classList.remove("fixed");
+        //         headerFix.classList.remove("px-5");
+        //         headerFix.classList.remove("pt-2");
+        //         headerFix.classList.remove("left-0");
+        //         headerFix.classList.remove("right-0");
+        //         headerFix.classList.remove("top-0");
+        //         headerFix.classList.remove("shadow-lg");
 
-                headerTopUL.forEach(ul => ul.classList.remove("block-header-fix"))
-                headerTopText.forEach(ul => ul.classList.remove("text-header-fix"))
-                // headerRighth2.forEach(ul => ul.classList.remove("text-header-fix"))
+        //         // headerTopImg.classList.add("w-16");
 
-            }
 
-        });
+        //         headerMiddleInput.classList.remove("block-header-fix");
+
+        //         headerTopUL.forEach(ul => ul.classList.remove("block-header-fix"))
+        //         headerTopText.forEach(ul => ul.classList.remove("text-header-fix"))
+        //         // headerRighth2.forEach(ul => ul.classList.remove("text-header-fix"))
+
+        //     }
+
+        // });
         // Het xu ly scroll header
 
     }, []);
@@ -183,7 +185,7 @@ const Header = () => {
                 </ul>
             </Drawer>
             <header className="bg-white dark:bg-slate-900 left-0 right-0 top-0 z-50 fixed md:relative dark:border-b-black border-b-gray-200 border-solid border-b-2">
-                <div className='header-fix bg-white  dark:bg-slate-900 z-50 py-2'>
+                <div className='fixed left-0 right-0 top-0 header-fix bg-white z-50  dark:bg-slate-900 py-2'>
                     <div className='header-top pb-5 flex justify-between items-center'>
                         <div className="header-left flex justify-between items-center">
                             <i onClick={showDrawer} className="dark:text-white fa-solid fa-bars xl:hidden ml-4 text-2xl hover:text-blue-500 cursor-pointer"></i>
@@ -238,8 +240,8 @@ const Header = () => {
                                     <i className="fa-solid fa-cart-shopping px-3 py-3 bg-blue-100 rounded-full mx-2"></i>
                                     <h2 className="dark:text-white text-lg hidden xl:block md:block font-normal ml-1">Giỏ hàng</h2>
                                     <span
-                                        className='flex items-center justify-center absolute -top-3 left-1/2 md:-top-2 md:left-1/4 text-white bg-blue-500 rounded-full p-3 w-5 h-5'>
-                                        9+
+                                        className='flex items-center justify-center absolute -top-3 left-1/2 md:-top-2 md:left-1/4 text-white bg-blue-500 rounded-full p-3.5 w-7 h-7'>
+                                        {quanlityOfCarts}+
                                     </span>
                                 </div>
                                 {isOpenCart &&
@@ -248,42 +250,47 @@ const Header = () => {
                             uppercase text-center text-xl font-medium dark:text-white'>
                                             Giỏ hàng
                                         </div>
-                                        {/* Chưa có sản phẩm trong giỏ hàng !! */}
-                                        {/* <div className='cart-body flex flex-col items-center py-5'> 
-                              <i className="fa-solid fa-cart-shopping text-6xl"></i>
-                              <p>Hiện chưa có sản phẩm</p>
-                            </div> */}
-
-                                        {/* Có sản phẩm trong giỏ hàng */}
+                                        {carts.length <= 0 ?
+                                        //  Chưa có sản phẩm trong giỏ hàng !! 
+                                        <div className='dark:text-white cart-body flex flex-col items-center py-5'> 
+                                            <i className="fa-solid fa-cart-shopping text-6xl"></i>
+                                            <p>Hiện chưa có sản phẩm</p>
+                                        </div> :
+                                        //  Có sản phẩm trong giỏ hàng 
                                         <div className="cart-product-list cart-body max-h-80 overflow-y-scroll ">
-                                            <div className='flex items-center border-solid dark:border-0 border-2 dark:border-y-black  border-y-stone-200 justify-between py-2 px-3'>
-                                                <div className='basis-1/6 h-20'>
-                                                    <Image src="https://hoanghapccdn.com/media/product/250_4429_hhpc_white_13900k_sky_two_ha1s.jpg" />
-                                                </div>
-                                                <div className='basis-5/6 cart-product-content dark:text-blue-100'>
-                                                    <div className='flex justify-between'>
-                                                        <h2 className='font-semibold text-sm line-clamp-2 px-4'>HHPC CORE i7 12700K | 32GB | NVIDIA RTX 3050 6G  </h2>
-                                                        <i className="fa-solid fa-xmark cursor-pointer hover:text-red-600 relative top-1"></i>
+                                            {carts.map(cart => (
+                                                <div key={cart._id} className='flex items-center border-solid dark:border-0 border-2 dark:border-y-black  border-y-stone-200 justify-between py-2 px-3'>
+                                                    <div className='basis-1/6 h-20'>
+                                                        <Image src="https://hoanghapccdn.com/media/product/250_4429_hhpc_white_13900k_sky_two_ha1s.jpg" />
                                                     </div>
-                                                    <div className='flex justify-between pl-4 mt-3 items-center'>
-                                                        <div className='flex items-center dark:bg-black'>
-                                                            <Button className='rounded-none px-3 dark:bg-black dark:text-white dark:border-slate-700'>
-                                                                <i className="fa-solid fa-minus"></i>
-                                                            </Button>
-                                                            <input htmltype='text' className='bg-white dark:bg-black w-8 text-center h-8 border-solid' disabled value={1} />
-                                                            <Button className='rounded-none px-3 dark:bg-black dark:text-white dark:border-slate-700'>
-                                                                <i className="fa-solid fa-plus"></i>
-                                                            </Button>
+                                                    <div className='basis-5/6 cart-product-content dark:text-blue-100'>
+                                                        <div className='flex justify-between'>
+                                                            <Link to={`/product/${cart?.slug}`}>
+                                                                <h2 className='hover:text-blue-500 font-semibold text-sm line-clamp-2 px-4'>{cart.title}</h2>
+                                                            </Link>
+                                                            <i onClick={() => removeCart(cart._id)} className="fa-solid fa-xmark cursor-pointer hover:text-red-600 relative top-1"></i>
                                                         </div>
-                                                        <p className='font-bold'>9,000,000 đ</p>
+                                                        <div className='flex justify-between pl-4 mt-3 items-center'>
+                                                            <div className='flex items-center dark:bg-black'>
+                                                                <Button onClick={() => decrease(cart._id)} className='rounded-none px-3 dark:bg-black dark:text-white dark:border-slate-700'>
+                                                                    <i className="fa-solid fa-minus"></i>
+                                                                </Button>
+                                                                <input htmltype='text' className='bg-white dark:bg-black w-8 text-center h-8 border-solid' disabled value={cart.quanlity} />
+                                                                <Button onClick={() => increase(cart._id)} className='rounded-none px-3 dark:bg-black dark:text-white dark:border-slate-700'>
+                                                                    <i className="fa-solid fa-plus"></i>
+                                                                </Button>
+                                                            </div>
+                                                            <p className='font-bold'>{cart.unitPrice.toLocaleString()} đ</p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            ))}
                                         </div>
-
+                                    
+                                    }
                                         <div className='cart-footer py-3 border-solid border-t-2 dark:border-black border-stone-300 flex items-center justify-between px-3 font-normal text-base'>
                                             <p className='uppercase font-normal dark:text-blue-100'>Tổng tiền:</p>
-                                            <p className='text-blue-500 font-semibold'>0 đ</p>
+                                            <p className='text-blue-500 font-bold text-lg'>{getTotalUnitPrice().toLocaleString()} đ</p>
                                         </div>
                                         <Link
                                             to={"/cart"}
@@ -371,8 +378,8 @@ const Header = () => {
                             <i className="cursor-pointer z-20 bg-blue-500 flex items-center justify-center w-10 md:w-14 rounded-tr-lg rounded-br-lg h-full fa-solid fa-magnifying-glass absolute top-0 right-0"></i>
                         </div>
                     </div>
-                </div>
-                <div className='md:pb-3 pb-1 flex cursor-pointer header-bottom items-center lg:justify-center'>
+                </div> 
+                <div className='pt-40 md:pt-44 md:pb-3 pb-1 flex cursor-pointer header-bottom items-center lg:justify-center'>
                     <div className="flex whitespace-nowrap category_list relative items-center mx-1 lg:mx-2 justify-center lg:py-3 p-1.5 rounded-xl text-white lg:px-5 bg-blue-500">
                         <i className="fa-solid fa-bars lg:text-xl relative top-0.5"></i>
                         <h2 className="lg:text-base text-sm font-bold ml-5">Danh mục sản phẩm</h2>

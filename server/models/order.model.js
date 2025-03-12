@@ -6,14 +6,16 @@ const orderSchema = new mongoose.Schema(
       user_id: mongoose.Schema.Types.ObjectId,
       fullName: String,
       phone: String,
-      address: String
+      address: String,
+      note: String,
+      email: String,
     },
     products: [
       {
         product_id: mongoose.Schema.Types.ObjectId,
         name: String,
         unitPrice: Number,
-        quantity: Number
+        quanlity: Number
       }
     ],
     totalPrice: Number

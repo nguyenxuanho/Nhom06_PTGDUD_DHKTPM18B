@@ -11,7 +11,7 @@ const userRoutes = require("./user.route");
 // const userMiddleware = require("../middlewares/client/user.middleware");
 
 
-// const checkoutRoutes = require("./checkout.route");
+const checkoutRoutes = require("./checkout.route");
 
 // const settingMiddleware = require("../middlewares/client/setting.middleware");
 
@@ -37,7 +37,7 @@ module.exports = (app) => {
     // app.use("/cart", cartRoutes);
 
     
-    // app.use("/checkout", checkoutRoutes);
+    app.use("/order", checkoutRoutes);
 
 
 
