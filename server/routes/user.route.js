@@ -21,6 +21,9 @@ router.patch("/:id", controller.updateUser);
 
 router.patch("/password/:id", controller.changePassword);
 
+router.get("/order/:id", controller.getListOrderByUser);
+
+
 
 
 

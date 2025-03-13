@@ -7,14 +7,38 @@ const productsCategoryHelper = require("../helper/products-category.js");
 
 // [GET] products/category/:slug
 module.exports.index = async (req, res) => {
-  const productCategory = await ProductCategory.findOne({slug: req.params.slug})
+  const productCategory = await ProductCategory.findOne({ slug: req.params.slug })
+
+  let sort = {};
+
+  if (req.query.filter) {
+    const key = req.query.filter.split("_")[0];
+    const value = req.query.filter.split("_")[1];
+    sort[key] = value
+  }
+
+
+  const count = await Product.find({product_category_id: productCategory._id}).count();
+  const limitPage = 8;
+  const totalPage = Math.ceil(count / limitPage);
+  const currentPage = +req.query.currentPage ? +req.query.currentPage : 1;
+  const skipPage = (currentPage - 1) * limitPage;
+
+  const pagination = {
+    currentPage: currentPage,
+    limitPage: limitPage,
+    totalPage: totalPage,
+    skipPage: skipPage
+  }
+
   const products = await Product.find({
     product_category_id: productCategory._id
-  });
-  
+  }).skip(skipPage).limit(limitPage).sort(sort)
+
   res.json({
-    code : 200,
-    products: products
+    code: 200,
+    products: products,
+    pagination: pagination
   })
 }
 
@@ -22,33 +46,33 @@ module.exports.index = async (req, res) => {
 // [GET] products/search/:keyword
 module.exports.search = async (req, res) => {
 
-    let find = {
-      title: ""
-    }
-
-    
-
-    if(req.params.keyword){
-        const regex = new RegExp(req.params.keyword.toString(), "i");
-        find.title = regex;
-    }
-    // End Search
+  let find = {
+    title: ""
+  }
 
 
-    const listProduct = await Product.find(find).limit(10);
 
-    res.json({
-      code: 200,
-      listProduct: listProduct
-    })
+  if (req.params.keyword) {
+    const regex = new RegExp(req.params.keyword.toString(), "i");
+    find.title = regex;
+  }
+  // End Search
+
+
+  const listProduct = await Product.find(find).limit(10);
+
+  res.json({
+    code: 200,
+    listProduct: listProduct
+  })
 }
 
 
 // [GET] /products/:slugProduct
 module.exports.detail = async (req, res) => {
-  const product = await Product.findOne({slug: req.params.slug});
-  const productCategory = await ProductCategory.findOne({_id: product.product_category_id});
-  const listProductByCategory = await Product.find({product_category_id: productCategory._id});
+  const product = await Product.findOne({ slug: req.params.slug });
+  const productCategory = await ProductCategory.findOne({ _id: product.product_category_id });
+  const listProductByCategory = await Product.find({ product_category_id: productCategory._id });
   return res.json({
     code: 200,
     product: product,

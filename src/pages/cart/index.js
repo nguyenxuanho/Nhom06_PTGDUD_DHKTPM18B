@@ -30,14 +30,19 @@ const Cart = function () {
         } else if (e.address_default === "default" && e.address === "") {
             toast.error("Địa chỉ giao hàng không được để trống")
             return;
-        } else if (e.fullname.trim() === "") {
+        } else if (e.fullname === undefined || e.fullname.trim() === "") {
             toast.error("Họ tên không được để trống")
             return;
-        } else if (e.email.trim() === "") {
-            toast.error("Họ tên không được để trống")
+        } else if (e.email === undefined || e.email.trim() === "") {
+            toast.error("Email không được để trống")
             return;
-        } else if (e.phone.trim() === "") {
-            toast.error("Họ tên không được để trống")
+        } else if (e.phone === undefined || e.phone.trim() === "") {
+            toast.error("Điện thoại không được để trống")
+            return;
+        }
+
+        if(carts.length <= 0){
+            toast.error("Bạn chưa mua sản phẩm nào !!")
             return;
         }
 

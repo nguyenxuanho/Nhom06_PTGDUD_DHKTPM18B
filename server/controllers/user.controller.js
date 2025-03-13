@@ -1,5 +1,6 @@
 const md5 = require("md5");
 const User = require("../models/user.model");
+const Order = require("../models/order.model");
 
 // const ForgotPassword = require("../models/forgot-password.model");
 
@@ -117,6 +118,19 @@ module.exports.changePassword = async (req, res) => {
   })
   
 }
+
+// [GET] /users/order/:id
+module.exports.getListOrderByUser = async (req, res) => {
+  const user = await User.findOne({_id: req.params.id})
+  
+  const listOrder = await Order.find({"userInfo.user_id": user._id})
+  
+  return res.json({
+    code: 200,
+    data: listOrder
+  })
+}
+
 
 // // [GET] /user/password/forgot
 // module.exports.forgotPassword = async (req, res) => {

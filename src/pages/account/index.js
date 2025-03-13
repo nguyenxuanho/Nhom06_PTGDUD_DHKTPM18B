@@ -76,7 +76,7 @@ const Account = function(){
                             <span className='font-medium'>Thay đổi mật khẩu</span>
                         </li>
                     </Link>
-                    <Link className='font-medium block my-3 py-3 hover:bg-blue-400 hover:text-white px-5 bg-stone-200 rounded-lg text-stone-600' to={"#"}>
+                    <Link className='font-medium block my-3 py-3 hover:bg-blue-400 hover:text-white px-5 bg-stone-200 rounded-lg text-stone-600' to={"/user/login"}>
                         <li className='inline-block'>
                             <i className="fas fa-sign-out-alt w-9"></i>
                             <span className='font-medium'>Đăng xuất</span>

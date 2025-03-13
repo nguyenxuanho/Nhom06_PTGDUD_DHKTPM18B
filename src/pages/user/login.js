@@ -1,6 +1,6 @@
 import { Button, Form, Input } from "antd";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { get, post } from "../../components/utils/request";
 import { toast } from "react-toastify";
 
@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 
 
 const Login = function () {
+    const navigation = useNavigate();
 
     useEffect(() => {
 
@@ -36,7 +37,7 @@ const Login = function () {
         if(statusResgiter.code === 200){
             toast.success("Đăng nhập tài khoản thành công !!")
             setTimeout(() => {
-                window.location.href = "/";
+                navigation("/")
             }, 2000)
         } else toast.error(statusResgiter.message)
         

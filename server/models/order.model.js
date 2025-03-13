@@ -15,7 +15,11 @@ const orderSchema = new mongoose.Schema(
         product_id: mongoose.Schema.Types.ObjectId,
         name: String,
         unitPrice: Number,
-        quanlity: Number
+        quanlity: Number,
+        status: {
+          type: String,
+          default: "pending"
+        }
       }
     ],
     totalPrice: Number

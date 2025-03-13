@@ -1,9 +1,10 @@
 import { Button, Carousel, Image, Progress, Rate, Tag } from 'antd';
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import "./style.css"
 import CardProduct from '../../components/card_product/index';
 import { useEffect, useState } from 'react';
 import { get } from '../../components/utils/request';
+import { useCart } from '../../components/CartContext/CartContext';
 
 
 const Product = function () {
@@ -11,6 +12,10 @@ const Product = function () {
     const [product, setProduct] = useState({});
     const [productCategory, setProductCategory] = useState({});
     const [listProduct, setListProduct] = useState([]);
+    const { addToCart } = useCart();
+
+    const navigation = useNavigate();
+
     const responsiveSettings = [
         {
             breakpoint: 1024,
@@ -48,8 +53,10 @@ const Product = function () {
 
     }, [product_slug])
 
-    console.log(product);
-    
+    const handleBuyNow = (inforProduct) => {
+        addToCart(inforProduct);
+        navigation("/cart");
+    }
 
 
 
@@ -125,10 +132,10 @@ const Product = function () {
                                 </div>
                             </div>
                             <div className='list-btn flex max-w-max mt-10'>
-                                <Button className='shadow-xl font-medium sm:font-bold text-sm sm:text-xl bg-red-500  text-white uppercase py-7 px-3 xl:py-9 lg:px-16 button mr-10'>
+                                <Button onClick={() => handleBuyNow(product)} className='shadow-xl font-medium sm:font-bold text-sm sm:text-xl bg-red-500  text-white uppercase py-7 px-3 xl:py-9 lg:px-16 button mr-10'>
                                     Mua ngay
                                 </Button>
-                                <Button className='shadow-xl font-medium sm:font-bold text-sm sm:text-xl bg-yellow-500 text-white uppercase py-7 px-3 xl:py-9 lg:px-16 button mr-10'>
+                                <Button onClick={() => addToCart(product)} className='shadow-xl font-medium sm:font-bold text-sm sm:text-xl bg-yellow-500 text-white uppercase py-7 px-3 xl:py-9 lg:px-16 button mr-10'>
                                     Thêm vào giỏ hàng
                                 </Button>
                             </div>

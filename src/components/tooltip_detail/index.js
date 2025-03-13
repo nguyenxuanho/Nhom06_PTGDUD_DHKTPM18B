@@ -22,7 +22,7 @@ const DetailTooltip = (prop) => {
                             prop?.data 
                             && 
                             Object.entries(prop?.data?.description).map(([key, value]) => (
-                                <p className="py-1">- {key}: {value}</p>
+                                <p key={key} className="py-1">- {key}: {value}</p>
                             ))
                         }
                         <p className="py-1 text-justify">- Cấu hình máy chuyên phục vụ chạy giả lập Android Nox Player ,

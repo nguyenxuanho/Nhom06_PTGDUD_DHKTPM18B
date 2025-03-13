@@ -1,5 +1,5 @@
 import { Button, Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {toast} from "react-toastify"
 import { get, post } from "../../components/utils/request";
 import { useEffect } from "react";
@@ -7,6 +7,8 @@ import { useEffect } from "react";
 
 
 const Signup = function () {
+
+    const navigation = useNavigate();
 
     useEffect(() => {
 
@@ -47,7 +49,7 @@ const Signup = function () {
         const statusResgiter = await post("users/register", data);
         if(statusResgiter.code === 200){
             setTimeout(() => {
-                window.location.href = "/";
+                navigation("/")
             }, 2000)
             toast.success("Đăng ký tài khoản thành công !!")
         } else toast.error(statusResgiter.message)

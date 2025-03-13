@@ -1,16 +1,20 @@
 import './style.css'
 import { Link, useParams } from 'react-router-dom'
 
-import { Button, Carousel, Checkbox, Drawer, Image } from 'antd'
+import { Button, Carousel, Checkbox, Drawer, Image, Spin } from 'antd'
 import { useEffect, useState } from 'react'
 import CardProduct from '../../components/card_product'
 import {get} from '../../components/utils/request'
+import { useCart } from '../../components/CartContext/CartContext'
 
 
 const Category = function () {
   const [isDisplayRow, setDisplayRow] = useState(false);
   const [products, setProducts] = useState([]);
+  const [pagination, setPagination] = useState({});
   const {category_slug}  = useParams(); 
+  const [queryParams, setQueryParams] = useState(new URLSearchParams(""));
+  const {addToCart} = useCart();
 
 
   useEffect(() => {
@@ -18,11 +22,74 @@ const Category = function () {
       const dataObject = await get(`products/category/${category_slug}`);
       if(dataObject.code === 200){
         setProducts(dataObject.products);
+        setPagination(dataObject.pagination);
       }
     }
     fetchGetProductByCategory();
   }, [category_slug]);
 
+
+
+  const totalPage = Array.from({length: pagination.totalPage - 1}, (_, index) => {
+    return index + 1;
+  });
+
+  
+
+
+  
+
+
+  const handleFilter = async (e, filter) => {
+    const buttonFilter = e.target.closest("button");
+    const listButton = buttonFilter.closest(".list-btn").querySelectorAll(".button");
+    listButton.forEach(btn => {
+      if(btn.classList.contains("active"))
+          btn.classList.remove("active");
+    })
+
+    buttonFilter.classList.add("active");
+
+    // Lấy các tham số hiện tại từ queryParams
+    const currentParams = new URLSearchParams(queryParams.toString());
+
+    // Cập nhật filter, nhưng giữ các tham số khác
+    currentParams.set("filter", filter);
+
+    // Cập nhật lại queryParams
+    setQueryParams(currentParams);
+      
+    queryParams.set("filter", filter)
+
+    const dataObject = await get(`products/category/${category_slug}?${currentParams.toString()}`)
+
+    if(dataObject.code === 200)
+      setProducts(dataObject.products)
+  }
+
+  const handlePagination = async (e, currentPage) => {
+    const buttonPage = e.target.closest("button");
+    const listButton = buttonPage.closest(".pagination").querySelectorAll(".button");
+    listButton.forEach(btn => {
+      if(btn.classList.contains("active"))
+          btn.classList.remove("active");
+    })
+
+    buttonPage.classList.add("active");
+      
+   
+    const currentParams = new URLSearchParams(queryParams.toString());
+    currentParams.set("currentPage", currentPage);
+    setQueryParams(currentParams);
+
+
+    const dataObject = await get(`products/category/${category_slug}?${currentParams.toString()}`)
+
+    if(dataObject.code === 200){
+      setProducts(dataObject.products)
+      window.scrollTo({ top: 500});
+    }
+  }
   
 
   const [open, setOpen] = useState(false);
@@ -131,7 +198,7 @@ const Category = function () {
           <h3 className="font-medium text-lg text-stone-500 mr-3">PC Render, Edit Video</h3>
         </div>
         <h1 className='mx-5 xl:mx-32 py-2 border-b-blue-400 border-solid border-b-2 md:w-2/3 xl:w-1/3 font-bold text-xl lg:text-3xl uppercase text-blue-500'>PC Render, Edit Video
-          <span className='ml-2 text-sm border-none text-stone-400 lowercase font-medium'>(Tổng 103 sản phẩm)</span>
+          <span className='ml-2 text-sm border-none text-stone-400 lowercase font-medium'>(Tổng {products.length >= 0 && products.length} sản phẩm)</span>
         </h1>
         <div className='mx-5 xl:mx-32 my-5 content-body grid grid-flow-row grid-cols-12 lg:gap-12 '>
           <div className='hidden lg:block lg:col-span-3 p-5 rounded-2xl bg-white shadow-lg max-h-max'>
@@ -173,10 +240,10 @@ const Category = function () {
             <div className='mt-5 mb-28  shadow-lg px-3 py-5 bg-white rounded-md'>
               <div className='filter-header lg:flex items-center justify-between'>
                 <div className='list-btn'>
-                  <Button className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 active font-bold text-base'>Hàng mới</Button>
-                  <Button className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>Giá tăng dần</Button>
-                  <Button className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>Giá giảm dần</Button>
-                  <Button className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>A đến Z</Button>
+                  <Button onClick={(e) => handleFilter(e, "")} className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 active font-bold text-base'>Hàng mới</Button>
+                  <Button onClick={(e) => handleFilter(e, "price_1")} className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>Giá tăng dần</Button>
+                  <Button onClick={(e) => handleFilter(e, "price_-1")} className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>Giá giảm dần</Button>
+                  <Button onClick={(e) => handleFilter(e, "title_1")} className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>A đến Z</Button>
                 </div>
                 <div className='type-bar flex items-center justify-between text-right my-5 md:my-0 text-2xl'>
                   <div onClick={showDrawer} className='py-2 cursor-pointer px-4 rounded-2xl lg:hidden text-base bg-blue-100 text-blue-500'>Bộ lọc
@@ -190,7 +257,7 @@ const Category = function () {
               </div>
               {isDisplayRow ?
                 <div className='content-list-product-row mt-6 '>
-                  {products.length > 0 && 
+                  {products.length > 0 ?
                     products.map(product => (
                       <div key={product._id} className='my-2 p-3.5 border-solid border-2 border-stone-100'>
                           <div className='card rounded-lg bg-white flex' >
@@ -226,36 +293,44 @@ const Category = function () {
                                     <p className='hidden sm:block'>Quà tặng</p>
                                   </div>
                                 </div>
-                                <div className='text-base cart-icon py-2 flex  items-center px-6 cursor-pointer hover:text-white'>
+                                <div onClick={() => addToCart(product)} className='text-base cart-icon py-2 flex  items-center px-6 cursor-pointer hover:text-white'>
                                   <i className="fa-solid fa-cart-shopping"></i>
-                                  <p className='hidden md:block ml-3 relative font-semibold -top-0.5'>Thêm vào giỏ</p>
+                                  <p  className='hidden md:block ml-3 relative font-semibold -top-0.5'>Thêm vào giỏ</p>
                                 </div>
                               </div>
 
                             </div>
                           </div>
                       </div>
-                    ))
+                    )) : 
+                    <div className='text-center py-32 col-span-12'> 
+                      <Spin className='text-center' size="large" tip="Loading..."></Spin>
+                    </div>
                   }
                 </div>
                 :
                 <div className='content-list-product-col grid grid-flow-row grid-cols-12 gap-0.5 md:gap-2 mt-6 '>
-                  {products.length > 0 && 
+                  {products.length > 0 ? 
                     products.map(product => (
                       <div key={product._id} className=' col-span-6 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
                         <CardProduct data={product} />
                       </div>
-                    ))
+                    )) :
+                    <div className='text-center py-32 col-span-12'> 
+                      <Spin className='text-center' size="large" tip="Loading..."></Spin>
+                    </div>
                   }
                 </div>
               }
 
-              <div className='pagination mt-4 flex gap-2 items-center justify-end'>
-                <Button className='py-5 button active font-bold border-blue-400'>1</Button>
-                <Button className='py-5 button font-bold border-blue-400'>2</Button>
-                <Button className='py-5 button font-bold border-blue-400'>3</Button>
-                <Button className='py-5 button font-bold border-blue-400'>4</Button>
-              </div>
+              {pagination?.totalPage && 
+                <div className='pagination mt-4 flex gap-2 items-center justify-end'>
+                  <Button onClick={(e) => handlePagination(e, 1)} className='py-5 active button font-bold border-blue-400'>1</Button>
+                  {totalPage.map((index) => (
+                    <Button key={index} onClick={(e) => handlePagination(e, index + 1)} className='py-5 button font-bold border-blue-400'>{index + 1}</Button>
+                  ))}
+                </div>
+              }
             </div>
           </div>
         </div>
