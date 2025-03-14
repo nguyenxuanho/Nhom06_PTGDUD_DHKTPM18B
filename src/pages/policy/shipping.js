@@ -55,15 +55,17 @@ const PolicyShipping = () => {
   };
 
   return (
-    <div className="flex gap-6 p-6">
+    <div className="flex gap-6 p-6 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+
       {/* Sidebar danh mục */}
-      <div className="w-1/4 bg-gray-100 p-4 rounded-lg">
+      <div className="w-1/4 bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+
         <h2 className="text-lg font-semibold mb-2">Danh mục</h2>
         <ul className="space-y-2">
           {Object.keys(policies).map((policy) => (
             <li
               key={policy}
-              className={`p-2 rounded cursor-pointer ${selectedPolicy === policy ? "bg-blue-500 text-white" : "hover:bg-gray-200"}`}
+              className={`p-2 rounded cursor-pointer ${selectedPolicy === policy ? "bg-gray-100 dark:bg-gray-800 " : "hover:bg-gray-200 dark:hover:bg-gray-700"}`}
               onClick={() => setSelectedPolicy(policy)}
             >
               {policy}
@@ -73,7 +75,8 @@ const PolicyShipping = () => {
       </div>
 
       {/* Nội dung chính sách */}
-      <div className="w-2/4 bg-white p-6 rounded-lg shadow-md">
+      <div className="w-2/4 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+
         {policies[selectedPolicy]}
         <p className="mt-4 text-sm text-gray-500">Cập nhật lần cuối: 21/05/2024.</p>
       </div>

@@ -17,9 +17,11 @@ const PolicyReturn = () => {
         <h1 className="text-2xl font-bold mb-4">Chính sách đổi trả</h1>
         <p>Chúng tôi cam kết mang đến sự hài lòng cho khách hàng với chính sách đổi trả linh hoạt và thuận tiện.</p>
         <h2 className="text-xl font-semibold mt-4">Điều kiện đổi trả</h2>
-        <table className="w-full border-collapse border border-gray-300 mt-2">
+        <table className="w-full border-collapse border border-gray-300 dark:border-gray-600 mt-2">
+
           <thead>
-            <tr className="bg-gray-200">
+          <tr className="bg-gray-200 dark:bg-gray-700">
+
               <th className="border border-gray-300 p-2">Điều kiện</th>
               <th className="border border-gray-300 p-2">Chi tiết</th>
             </tr>
@@ -46,7 +48,7 @@ const PolicyReturn = () => {
         <h2 className="text-xl font-semibold">Bảo hành có cam kết (12 tháng)</h2>
         <table className="w-full border-collapse border border-gray-300 mt-2">
           <thead>
-            <tr className="bg-gray-200">
+            <tr className="bg-gray-200 dark:bg-gray-700">
               <th className="border border-gray-300 p-2">Loại bảo hành</th>
               <th className="border border-gray-300 p-2">Thời gian xử lý</th>
             </tr>
@@ -94,15 +96,17 @@ const PolicyReturn = () => {
   };
 
   return (
-    <div className="flex gap-6 p-6">
+    <div className="flex gap-6 p-6 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+
       {/* Sidebar danh mục */}
-      <div className="w-1/4 bg-gray-100 p-4 rounded-lg">
+      <div className="w-1/4 bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+
         <h2 className="text-lg font-semibold mb-2">Danh mục</h2>
         <ul className="space-y-2">
           {categories.map((category) => (
             <li
               key={category}
-              className={`p-2 rounded cursor-pointer ${selectedCategory === category ? "bg-blue-500 text-white" : "hover:bg-gray-200"}`}
+              className={`p-2 rounded cursor-pointer ${selectedCategory === category ? "bg-gray-100 dark:bg-gray-800" : "hover:bg-gray-200 dark:hover:bg-gray-700"}`}
               onClick={() => setSelectedCategory(category)}
             >
               {category}
@@ -112,12 +116,14 @@ const PolicyReturn = () => {
       </div>
 
       {/* Nội dung chính sách động */}
-      <div className="w-2/4 bg-white p-6 rounded-lg shadow-md">
+      <div className="w-2/4 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+
         {content[selectedCategory]}
       </div>
 
       {/* Phần quảng cáo bên phải */}
-      <div className="w-1/4 bg-blue-100 p-4 rounded-lg text-center shadow-md">
+      <div className="w-1/4 bg-blue-100 dark:bg-gray-700 p-4 rounded-lg text-center shadow-md">
+
         <h2 className="text-lg font-semibold">🔥 Khuyến mãi HOT! 🔥</h2>
         <img
             src="https://hoanghapccdn.com/media/banner/19_12-396775e024dad81b1084c0dc4ed14390.jpg"
