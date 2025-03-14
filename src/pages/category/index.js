@@ -35,11 +35,6 @@ const Category = function () {
   });
 
   
-
-
-  
-
-
   const handleFilter = async (e, filter) => {
     const buttonFilter = e.target.closest("button");
     const listButton = buttonFilter.closest(".list-btn").querySelectorAll(".button");
@@ -59,7 +54,6 @@ const Category = function () {
     // Cập nhật lại queryParams
     setQueryParams(currentParams);
       
-    queryParams.set("filter", filter)
 
     const dataObject = await get(`products/category/${category_slug}?${currentParams.toString()}`)
 
@@ -90,6 +84,27 @@ const Category = function () {
       window.scrollTo({ top: 500});
     }
   }
+
+  const handleFilterProduct = async () => {
+    const listButtonCheckBox = document.querySelectorAll("input[type='checkbox']:checked");
+    let filterProduct = [];
+    listButtonCheckBox.forEach(buttonCheckBox => {
+      filterProduct.push(buttonCheckBox.value)
+      
+    })
+
+    const currentParams = new URLSearchParams(queryParams.toString());
+    currentParams.set("filterProduct", filterProduct);
+    setQueryParams(currentParams);
+
+    const dataObject = await get(`products/category/${category_slug}?${currentParams.toString()}`)
+
+    if(dataObject.code === 200){
+      setProducts(dataObject.products)
+      setPagination(dataObject.pagination);
+    }
+    
+  }
   
 
   const [open, setOpen] = useState(false);
@@ -105,54 +120,54 @@ const Category = function () {
   const prices = [
     {
       label: 'Dưới 10 triệu',
-      value: '10',
+      value: 'price_0-10',
     },
     {
       label: '10 triệu - 15 triệu',
-      value: '10-15',
+      value: 'price_10-15',
     },
     {
       label: '15 triệu - 20 triệu',
-      value: '15-20',
+      value: 'price_15-20',
     },
     {
       label: '20 triệu - 25 triệu',
-      value: '20-25',
+      value: 'price_20-25',
     },
     {
       label: '25 triệu - 30 triệu',
-      value: '25-30',
+      value: 'price_25-30',
     },
     {
       label: 'Trên 35 triệu',
-      value: '35',
+      value: 'price_35-99999',
     }
   ];
 
   const cpu = [
     {
       label: 'Intel Core i5',
-      value: 'Intel Core i5',
+      value: 'CPU_Core i5',
     },
     {
       label: 'Intel Core i7',
-      value: 'Intel Core i7',
+      value: 'CPU_Core i7',
     },
     {
       label: 'Intel Core i9',
-      value: 'Intel Core i9',
+      value: 'CPU_Core i9',
     },
     {
       label: 'AMD Ryzen 5',
-      value: 'AMD Ryzen 5',
+      value: 'CPU_Ryzen 5',
     },
     {
       label: 'AMD Ryzen 7',
-      value: 'AMD Ryzen 7',
+      value: 'CPU_Ryzen 7',
     },
     {
       label: 'AMD Ryzen 9',
-      value: 'AMD Ryzen 9',
+      value: 'CPU_Ryzen 9',
     },
 
   ];
@@ -160,15 +175,15 @@ const Category = function () {
   const ram = [
     {
       label: '16GB',
-      value: '16GB',
+      value: 'RAM_16GB',
     },
     {
       label: '32GB',
-      value: '32GB',
+      value: 'RAM_32GB',
     },
     {
       label: '64GB',
-      value: '64GB',
+      value: 'RAM_64GB',
     },
   ];
 
@@ -189,7 +204,7 @@ const Category = function () {
             <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Ram</h3>
             <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={ram} />
           </div>
-          <Button className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
+          <Button onClick={handleFilterProduct} className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
       </Drawer>
       <div className="md:pt-3 pt-52 bg-slate-50">
         <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
@@ -202,7 +217,7 @@ const Category = function () {
         </h1>
         <div className='mx-5 xl:mx-32 my-5 content-body grid grid-flow-row grid-cols-12 lg:gap-12 '>
           <div className='hidden lg:block lg:col-span-3 p-5 rounded-2xl bg-white shadow-lg max-h-max'>
-            <Button className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
+            <Button onClick={(e) => handleFilterProduct(e)} className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
             <div className='my-5'>
               <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Khoảng giá</h3>
               <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={prices} />
@@ -304,7 +319,7 @@ const Category = function () {
                       </div>
                     )) : 
                     <div className='text-center py-32 col-span-12'> 
-                      <Spin className='text-center' size="large" tip="Loading..."></Spin>
+                      <Spin className='text-center' size="large"></Spin>
                     </div>
                   }
                 </div>
@@ -317,7 +332,7 @@ const Category = function () {
                       </div>
                     )) :
                     <div className='text-center py-32 col-span-12'> 
-                      <Spin className='text-center' size="large" tip="Loading..."></Spin>
+                      <Spin className='text-center' size="large"></Spin>
                     </div>
                   }
                 </div>

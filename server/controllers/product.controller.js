@@ -1,15 +1,75 @@
 const Product = require("../models/product.model.js")
-const productsHelper = require("../helper/products.js");
 
 const ProductCategory = require("../models/product-category.model.js");
-const productsCategoryHelper = require("../helper/products-category.js");
 
 
 // [GET] products/category/:slug
 module.exports.index = async (req, res) => {
   const productCategory = await ProductCategory.findOne({ slug: req.params.slug })
 
+  let filter = {}
+
+  let filterQuery = {
+    product_category_id: productCategory._id,
+  };
+
+  let min;
+  let max;
+  let isPrice = 0;
+
+  if (req.query.filterProduct) {
+    let filterProducts = req.query.filterProduct.split(",");
+    if (filterProducts.length > 0)
+      filterProducts.forEach(filterProduct => {
+        const keyFilter = filterProduct.split("_")[0]
+        const valueFilter = filterProduct.split("_")[1]
+        if (keyFilter === "price") {
+          const lowerValue = +valueFilter.split("-")[0]
+          const upperValue = +valueFilter.split("-")[1]
+          isPrice = 1;
+
+          if (min === undefined) {
+            min = lowerValue;
+          }
+
+          if (max === undefined) {
+            max = upperValue;
+          }
+
+          if (min !== undefined && max !== undefined) {
+            min = Math.min(lowerValue, min)
+            max = Math.max(upperValue, max)
+          }
+
+
+        } else {
+          if (!filter[keyFilter]) {
+            filter[keyFilter] = [];
+          }
+          filter[keyFilter].push(valueFilter);
+        }
+      })
+    if (isPrice === 1) {
+      filter["price"] = min + "-" + max
+    }
+  }
+  
   let sort = {};
+
+  if (filter.price) {
+    let [minPrice, maxPrice] = filter.price.split("-").map(Number);
+    filterQuery.price = { $gte: minPrice * 1000000, $lte: maxPrice * 1000000};
+  }
+
+  if (filter.CPU) {
+    filterQuery['description.CPU'] = { $regex: filter.CPU.join('|'), $options: 'i' };
+
+  }
+
+  if (filter.RAM) {
+    filterQuery['description.RAM'] = { $regex: filter.RAM.join('|'), $options: 'i' };
+  }
+
 
   if (req.query.filter) {
     const key = req.query.filter.split("_")[0];
@@ -18,7 +78,8 @@ module.exports.index = async (req, res) => {
   }
 
 
-  const count = await Product.find({product_category_id: productCategory._id}).count();
+  const count = await Product.find(filterQuery).count();
+  
   const limitPage = 8;
   const totalPage = Math.ceil(count / limitPage);
   const currentPage = +req.query.currentPage ? +req.query.currentPage : 1;
@@ -31,15 +92,15 @@ module.exports.index = async (req, res) => {
     skipPage: skipPage
   }
 
-  const products = await Product.find({
-    product_category_id: productCategory._id
-  }).skip(skipPage).limit(limitPage).sort(sort)
+  const products = await Product.find(filterQuery).skip(skipPage).limit(limitPage).sort(sort)
 
   res.json({
     code: 200,
     products: products,
     pagination: pagination
   })
+
+
 }
 
 
@@ -49,8 +110,6 @@ module.exports.search = async (req, res) => {
   let find = {
     title: ""
   }
-
-
 
   if (req.params.keyword) {
     const regex = new RegExp(req.params.keyword.toString(), "i");
@@ -79,30 +138,4 @@ module.exports.detail = async (req, res) => {
     productCategory: productCategory,
     listProductByCategory: listProductByCategory
   })
-};
-
-
-// [GET] /products/:slugCategory
-module.exports.category = async (req, res) => {
-  const category = await ProductCategory.findOne({
-    slug: req.params.slugCategory,
-    status: "active",
-    deleted: false
-  });
-
-  const listSubCategory = await productsCategoryHelper.getSubCategory(category.id);
-
-  const listSubCategoryId = listSubCategory.map(item => item.id);
-
-  const products = await Product.find({
-    product_category_id: { $in: [category.id, ...listSubCategoryId] },
-    deleted: false
-  }).sort({ position: "desc" });
-
-  const newProducts = productsHelper.priceNewProducts(products);
-
-  res.render("client/pages/product/index", {
-    pageTitle: category.title,
-    products: newProducts,
-  });
 };

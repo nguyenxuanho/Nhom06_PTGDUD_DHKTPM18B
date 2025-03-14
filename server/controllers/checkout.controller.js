@@ -1,12 +1,6 @@
 // const Product = require("../models/product");
 const Order = require("../models/order.model");
 
-
-
-
-
-
-
 // [POST] /order/checkout
 module.exports.order = async (req, res) => {
   const order = new Order(req.body);
