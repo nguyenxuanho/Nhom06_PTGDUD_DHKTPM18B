@@ -193,7 +193,7 @@ const Category = function () {
       <Drawer title="Bộ lọc sản phẩm" placement='bottom' onClose={onClose} open={open} height={550}>
 
           <div className='mb-5'>
-            <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Khoảng giá</h3>
+            <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200 dark:border-b-gray-700'>Khoảng giá</h3>
             <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={prices} />
           </div>
           <div className='my-5'>
@@ -206,7 +206,8 @@ const Category = function () {
           </div>
           <Button onClick={handleFilterProduct} className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
       </Drawer>
-      <div className="md:pt-3 pt-52 bg-slate-50">
+      <div className="md:pt-3 pt-52 bg-slate-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+
         <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
           <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
           <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
@@ -216,7 +217,8 @@ const Category = function () {
           <span className='ml-2 text-sm border-none text-stone-400 lowercase font-medium'>(Tổng {products.length >= 0 && products.length} sản phẩm)</span>
         </h1>
         <div className='mx-5 xl:mx-32 my-5 content-body grid grid-flow-row grid-cols-12 lg:gap-12 '>
-          <div className='hidden lg:block lg:col-span-3 p-5 rounded-2xl bg-white shadow-lg max-h-max'>
+        <div className='hidden lg:block lg:col-span-3 p-5 rounded-2xl bg-white dark:bg-gray-800 shadow-lg max-h-max'>
+
             <Button onClick={(e) => handleFilterProduct(e)} className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
             <div className='my-5'>
               <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Khoảng giá</h3>
@@ -252,7 +254,7 @@ const Category = function () {
                 alt="AnhGiangSinh"
               />
             </Carousel>
-            <div className='mt-5 mb-28  shadow-lg px-3 py-5 bg-white rounded-md'>
+            <div className='mt-5 mb-28  shadow-lg px-3 py-5 bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-md'>
               <div className='filter-header lg:flex items-center justify-between'>
                 <div className='list-btn'>
                   <Button onClick={(e) => handleFilter(e, "")} className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 active font-bold text-base'>Hàng mới</Button>
