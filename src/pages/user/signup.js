@@ -26,16 +26,16 @@ const Signup = function () {
                     </div>
                     <Form className="mt-5">
                         <Form.Item name="fullname">
-                            <Input className="text-lg py-2.5 bg-blue-100" placeholder="Nhập họ và tên của bạn" />
+                            <Input className="text-lg py-2.5 bg-gray-400" placeholder="Nhập họ và tên của bạn" />
                         </Form.Item>
                         <Form.Item name="email">
-                            <Input className="text-lg py-2.5 bg-blue-100" placeholder="Nhập email của bạn" />
+                            <Input className="text-lg py-2.5  bg-gray-400" placeholder="Nhập email của bạn" />
                         </Form.Item>
                         <Form.Item name="password">
-                            <Input.Password className="text-lg py-2.5 bg-blue-100" placeholder="Nhập mật khẩu của bạn" />
+                            <Input.Password className="text-lg py-2.5 bg-gray-400" placeholder="Nhập mật khẩu của bạn" />
                         </Form.Item>
                         <Form.Item name="repassword">
-                            <Input.Password className="text-lg py-2.5 bg-blue-100" placeholder="Nhập lại mật khẩu của bạn" />
+                            <Input.Password className="text-lg py-2.5 bg-gray-400" placeholder="Nhập lại mật khẩu của bạn" />
                         </Form.Item>
                         <Form.Item>
                             <label className="text-white">This site is protected by reCAPTCHA, the Google Privacy Policy, and Terms of Service apply.</label>

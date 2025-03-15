@@ -1,4 +1,3 @@
-import './style.css'
 import { Link } from 'react-router-dom'
 
 import { Button, Carousel, Checkbox, Drawer, Image } from 'antd'
@@ -108,14 +107,14 @@ const Category = function () {
           </div>
           <Button className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
       </Drawer>
-      <div className="md:pt-3 pt-52 bg-slate-50">
+      <div className="md:pt-3 pt-52 bg-slate-900">
         <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
-          <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
-          <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
-          <h3 className="font-medium text-lg text-stone-500 mr-3">PC Render, Edit Video</h3>
+          <Link to="/" className="font-medium text-white  mr-3 header-nav active">Trang chủ</Link>
+          <i className="fa-solid fa-chevron-right  mr-3"></i>
+          <h3 className="font-medium text-white  mr-3">PC Render, Edit Video</h3>
         </div>
         <h1 className='mx-5 xl:mx-32 py-2 border-b-blue-400 border-solid border-b-2 md:w-2/3 xl:w-1/3 font-bold text-xl lg:text-3xl uppercase text-blue-500'>PC Render, Edit Video
-          <span className='ml-2 text-sm border-none text-stone-400 lowercase font-medium'>(Tổng 103 sản phẩm)</span>
+          <span className='ml-2 text-sm border-none text-stone-50 lowercase font-medium'>(Tổng 103 sản phẩm)</span>
         </h1>
         <div className='mx-5 xl:mx-32 my-5 content-body grid grid-flow-row grid-cols-12 lg:gap-12 '>
           <div className='hidden lg:block lg:col-span-3 p-5 rounded-2xl bg-white shadow-lg max-h-max'>

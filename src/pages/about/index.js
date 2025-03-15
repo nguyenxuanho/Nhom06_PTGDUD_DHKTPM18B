@@ -23,7 +23,7 @@ const About = function(){
                     <Image src='https://static.wikitide.net/bluearchivewiki/c/c8/Mika.png?version=8b315263cc84ee12eee99c5982f2cec1' />
                 </div>
                 <div className='w-2/3 px-5'>
-                    <h2 className='text-center font-semibold text-xl md:text-3xl text-blue-600'>Nguyễn Xuân Hồ</h2>
+                    <h2 className='text-center font-semibold text   -xl md:text-3xl text-blue-600'>Nguyễn Xuân Hồ</h2>
                     <div className='flex my-3 font-medium text-lg items-center'>
                         <p className='w-5/12'>Lớp:</p>
                         <p>DHKTPM18A</p>
