@@ -38,16 +38,18 @@ const PolicyWarranty = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 p-6">
+    <div className="flex flex-col md:flex-row gap-6 p-6 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+
       {/* Sidebar Menu */}
-      <div className="w-full md:w-1/4 bg-gray-100 p-4 rounded-lg shadow-md">
+      <div className="w-full md:w-1/4 bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md">
+
         <h2 className="text-lg font-semibold mb-4">Danh mục</h2>
         <ul>
           {sections.map((section) => (
             <li
               key={section.id}
               className={`cursor-pointer flex items-center p-2 mb-2 rounded-md ${
-                selectedSection === section.id ? "bg-blue-500 text-white" : "hover:bg-gray-200"
+                selectedSection === section.id ? "bg-white dark:bg-gray-800" : "hover:bg-gray-200 dark:hover:bg-gray-700"
               }`}
               onClick={() => setSelectedSection(section.id)}
             >
@@ -58,7 +60,8 @@ const PolicyWarranty = () => {
       </div>
 
       {/* Main Content */}
-      <div className="w-full md:w-2/4 bg-white p-6 rounded-lg shadow-md">
+      <div className="w-full md:w-2/4 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+
         {selectedSection === "intro" && (
           <>
             <h1 className="text-2xl font-bold mb-4">Chính sách bảo hành</h1>
@@ -158,13 +161,15 @@ const PolicyWarranty = () => {
             </div>
 
             <div className="flex gap-2 mb-4">
-              <input
+            <input
                 type="text"
                 placeholder="Nhập thông tin"
-                className="border p-2 rounded-md w-full"
+                className="border dark:border-gray-600 dark:bg-gray-800 p-2 rounded-md w-full"
                 value={serialNumber}
                 onChange={(e) => setSerialNumber(e.target.value)}
               />
+
+
               <button
                 onClick={handleWarrantyLookup}
                 className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
@@ -174,7 +179,8 @@ const PolicyWarranty = () => {
             </div>
 
             {warrantyResult && (
-              <div className="bg-gray-100 p-4 rounded-md">
+            <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-md">
+
                 {typeof warrantyResult === "string" ? (
                   <p className="text-red-500">{warrantyResult}</p>
                 ) : (
@@ -192,7 +198,8 @@ const PolicyWarranty = () => {
       </div>
     {/* Quảng cáo bên phải */}
     <div className="w-full md:w-1/4 p-4">
-        <div className="bg-blue-100 p-4 rounded-lg shadow-md text-center">
+    <div className="bg-blue-100 dark:bg-gray-700 p-4 rounded-lg shadow-md text-center">
+
           <h2 className="text-lg font-semibold mb-2">🔥 Khuyến mãi HOT! 🔥</h2>
           <img
             src="https://hoanghapccdn.com/media/banner/19_12-396775e024dad81b1084c0dc4ed14390.jpg"

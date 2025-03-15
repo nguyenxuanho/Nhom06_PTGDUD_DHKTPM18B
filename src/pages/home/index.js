@@ -1,10 +1,25 @@
 import { toast } from "react-toastify";
 import { Button, Carousel, Image } from "antd";
 import CardProduct from "../../components/card_product";
+import { useEffect, useState } from "react";
 
+import {get} from "../../components/utils/request"
+import { icon } from "./icon";
+import {Link} from "react-router-dom"
 
 
 const Home = function () {
+    const [productByCategory, setProductByCategory] = useState([]);
+    const ListIcon = icon();
+    useEffect(() => {
+        const fetchGetData =  async () => {
+            const dataObject = await get("");
+            if(dataObject.code === 200)
+                setProductByCategory(dataObject.productByCategory)
+        }
+
+        fetchGetData();
+    }, []);
 
     const responsiveSettings = [
         {
@@ -51,65 +66,15 @@ const Home = function () {
                 <div className='content-header mx-5 xl:mx-32 grid grid-cols-12 grid-flow-row gap-2 xl:gap-5'>
                     <div className='row-span-3 hidden xl:block col-span-3 rounded-lg shadow-lg bg-white'>
                         <ul className='m-0 pl-0 rounded-lg max-h-max dark:bg-blue-950'>
-                            <li className='w-full rounded-t-lg cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
-                                <i className="fa-solid fa-laptop mr-5 text-left text-xl w-1/12"></i>
-                                <span className='font-medium'>PC Thiết Kế Đồ Họa 3D</span>
-                            </li>
-                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
-                                <i className="fa-solid fa-film mr-5 text-left text-xl w-1/12"></i>
-                                <span className='font-medium'>PC Render, Edit Video</span>
-                            </li>
-                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
-                                <i className="fa-brands fa-uncharted mr-5 text-left text-xl w-1/12"></i>
-                                <span className='font-medium'>Phần mềm bản quyền</span>
-                            </li>
-                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
-                                <i className="fa-solid fa-laptop mr-5 text-left text-xl w-1/12"></i>
-                                <span className='font-medium'>PC Đẹp</span>
-                            </li>
-
-                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
-                                <i className="fa-solid fa-rocket mr-5 text-left text-xl w-1/12"></i>
-                                <span className='font-medium'>PC Gaming</span>
-                            </li>
-
-                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
-                                <i className="fa-solid fa-briefcase mr-5 text-left text-xl w-1/12"></i>
-                                <span className='font-medium'>PC Văn Phòng</span>
-                            </li>
-                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
-                                <i className="fa-solid fa-desktop mr-5 text-left text-xl w-1/12"></i>
-                                <span className='font-medium'>Màn hình máy tính</span>
-                            </li>
-                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
-                                <i className="fa-solid fa-robot mr-5 text-left text-xl w-1/12"></i>
-                                <span className='font-medium'>Machine Learning / AI</span>
-                            </li>
-
-                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
-                                <i className="fa-solid fa-laptop-code mr-5 text-left text-xl w-1/12"></i>
-                                <span className='font-medium'>Laptop Notebook</span>
-                            </li>
-
-                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
-                                <i className="fa-solid fa-gear mr-5 text-left text-xl w-1/12"></i>
-                                <span className='font-medium'>Linh kiện máy tính</span>
-                            </li>
-
-                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
-                                <i className="fa-solid fa-fan mr-5 text-left text-xl w-1/12"></i>
-                                <span className='font-medium'>Tản nhiệt</span>
-                            </li>
-
-                            <li className='w-full cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
-                                <i className="fa-regular fa-hard-drive mr-5 text-left text-xl w-1/12"></i>
-                                <span className='font-medium'>HDD-SSD-NAS</span>
-                            </li>
-
-                            <li className='w-full rounded-b-lg cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
-                                <i className="fa-solid fa-gamepad mr-5 text-left text-xl w-1/12"></i>
-                                <span className='font-medium'>Gaming Gear</span>
-                            </li>
+                            {productByCategory.length > 0 && productByCategory.map((item, index) => (
+                                <Link key={item._id}  to={`/collection/${item.slug}`}>
+                                    <li className='w-full rounded-t-lg cursor-pointer dark:text-white hover:bg-blue-100 hover:text-blue-500 px-6 py-3 flex items-center'>
+                                        {ListIcon[index]}
+                                        <span className='font-medium'>{item.title}</span>
+                                    </li>
+                                </Link>
+                            ))}
+                         
 
                         </ul>
                     </div>
@@ -296,183 +261,51 @@ const Home = function () {
                         autoplaySpeed={2000}
                         responsive={responsiveSettings}
                     >
-                        <div className='px-1.5'>
-                            <CardProduct css="p-3" />
-                        </div>
-                        <div className='px-1.5'>
-                            <CardProduct css="p-3" />
-                        </div>
-                        <div className='px-1.5'>
-                            <CardProduct css="p-3" />
-                        </div>
-                        <div className='px-1.5'>
-                            <CardProduct css="p-3" />
-                        </div>
-                        <div className='px-1.5'>
-                            <CardProduct css="p-3" />
-                        </div>
-                        <div className='px-1.5'>
-                            <CardProduct css="p-3" />
-                        </div>
-                        <div className='px-1.5'>
-                            <CardProduct css="p-3" />
-                        </div>
-                        <div className='px-1.5'>
-                            <CardProduct css="p-3" />
-                        </div>
-                        <div className='px-1.5'>
-                            <CardProduct css="p-3" />
-                        </div>
-                        <div className='px-1.5'>
-                            <CardProduct css="p-3" />
-                        </div>
+                        {productByCategory.length > 0 && 
+                            productByCategory[1].products.map(product => (
+                                <div key={product?._id} className='px-1.5'>
+                                    <CardProduct css="p-3" data={product} />
+                                </div>
+                            ))
+                        }
+                       
                     </Carousel>
                 </div>
-                <div className='box-promotion mx-5 xl:mx-32 my-10 dark:bg-blue-950 rounded-lg bg-white py-10 px-7 shadow-lg'>
-                    <div className='flex items-center justify-between'>
-                        <h1 className='text-xl md:text-3xl font-bold text-blue-500'>PC Thiết Kế Đồ Họa 3D</h1>
-                        <p className='text-sm font-bold text-slate-500 cursor-pointer'>Xem tất cả</p>
-                    </div>
-                        <Carousel
-                            slidesToShow={5}
-                            slidesToScroll={1}
-                            draggable
-                            className='mt-12 cursor-grab'
-                            dots={false}
-                            autoplay
-                            arrows
-                            autoplaySpeed={2000}
-                            responsive={responsiveSettings}
-                        >
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
+                {productByCategory.length > 0 && 
+                    productByCategory.map(category => (
+                        <div key={category?._id} className='box-promotion mx-5 xl:mx-32 my-10 dark:bg-blue-950 rounded-lg bg-white py-10 px-7 shadow-lg'>
+                            <div className='flex items-center justify-between'>
+                                <h1 className='text-xl md:text-3xl font-bold text-blue-500'>{category?.title}</h1>
+                                <Link to={`/collection/${category?.slug}`}>
+                                    <p className='text-sm font-bold text-slate-500 cursor-pointer'>Xem tất cả</p>
+                                </Link>
                             </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                        </Carousel>
-            
-                </div>
-                <div className='box-promotion mx-5 xl:mx-32 my-10 dark:bg-blue-950 rounded-lg bg-white py-10 px-7 shadow-lg'>
-                    <div className='flex items-center justify-between'>
-                        <h1 className='text-xl md:text-3xl font-bold text-blue-500'>PC Render, Edit Video</h1>
-                        <p className='text-sm font-bold text-slate-500 cursor-pointer'>Xem tất cả</p>
-                    </div>
-                    <Carousel
-                            slidesToShow={5}
-                            slidesToScroll={1}
-                            draggable
-                            className='mt-12 cursor-grab'
-                            dots={false}
-                            autoplay
-                            arrows
-                            autoplaySpeed={2000}
-                            responsive={responsiveSettings}
-                        >
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                        </Carousel>
-                </div>
-                <div className='box-promotion mx-5 xl:mx-32 my-10 dark:bg-blue-950 rounded-lg bg-white py-10 px-7 shadow-lg'>
-                    <div className='flex items-center justify-between'>
-                        <h1 className='text-xl md:text-3xl font-bold text-blue-500'>PC Gaming</h1>
-                        <p className='text-sm font-bold text-slate-500 cursor-pointer'>Xem tất cả</p>
-                    </div>
-                    <Carousel
-                            slidesToShow={5}
-                            slidesToScroll={1}
-                            draggable
-                            className='mt-12 cursor-grab'
-                            dots={false}
-                            autoplay
-                            arrows
-                            autoplaySpeed={2000}
-                            responsive={responsiveSettings}
-                        >
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                            <div className='px-1.5'>
-                                <CardProduct css="p-3" />
-                            </div>
-                    </Carousel>
-                </div>
+                                <Carousel
+                                    slidesToShow={5}
+                                    slidesToScroll={1}
+                                    draggable
+                                    className='mt-12 cursor-grab'
+                                    dots={false}
+                                    autoplay
+                                    arrows
+                                    autoplaySpeed={2000}
+                                    responsive={responsiveSettings}
+                                >
+                                    {category.products.length > 0 && 
+                                        category.products.map(product => (
+                                            <div key={product?._id} className='px-1.5'>
+                                                <CardProduct data={product} css="p-3" />
+                                            </div>
+                                        ))
+                                    }
+                                   
+                                  
+                                </Carousel>
+                    
+                        </div>
+                    ))
+                }
+               
                 <div className='h-60 background-image my-10 flex flex-wrap items-center justify-center font-extrabold text-base sm:text-xl lg:text-4xl text-white cursor-default'>
                     Khơi nguồn đam mê, chạm đến đỉnh công nghệ!❣️
                 </div>

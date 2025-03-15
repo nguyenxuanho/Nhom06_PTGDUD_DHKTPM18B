@@ -5,6 +5,13 @@
 /.pnp
 .pnp.js
 
+
+# Ignore .env file in the server folder
+server/.env
+
+# Ignore node_modules folder in the server folder
+server/node_modules/
+
 # testing
 /coverage
 

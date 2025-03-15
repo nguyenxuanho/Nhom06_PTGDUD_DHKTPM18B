@@ -1,9 +1,13 @@
 import {Link} from 'react-router-dom'
 import {Button, Form, Input} from 'antd'
+import { useUser } from '../../components/layout/index';
+import { toast } from 'react-toastify';
+import { patch } from '../../components/utils/request';
 
 
 
 const Password = function(){
+    const {inforUser} = useUser();
     const layout = {
         labelCol: {
           span: 4,
@@ -13,8 +17,31 @@ const Password = function(){
         },
       };
 
-    const handleChangePassword = (e) => {
-        console.log(e)
+    const handleChangePassword = async (data) => {
+        if(data.renew_password === undefined || data.new_password === undefined || data.old_password === undefined){
+            toast.error("Không được để trống !!")
+            return;
+        }
+
+        if (data.renew_password.trim() === "" || data.new_password.trim() === "" || data.old_password.trim() === ""){
+            toast.error("Không được để trống !!")
+            return;
+        }
+
+
+        if (data.renew_password !== data.new_password){
+            toast.error("Mật khẩu mới không khớp !!")
+            return;
+        }
+
+        const statusUpdatePassword = await patch(`users/password/${inforUser._id}`, data)
+        if(statusUpdatePassword.code === 200)
+            toast.success("Cập nhật mật khẩu thành công")
+        else toast.error(statusUpdatePassword.message)
+
+
+
+
     }
    
   
@@ -33,7 +60,7 @@ const Password = function(){
                     <i className='fas fa-user-circle text-5xl text-blue-600'></i>
                     <div className='mx-4'>
                         <h6 className='text-base font-semibold'>Tài khoản của,</h6>
-                        <h1 className='font-bold text-lg'>Nguyễn Xuân Hồ</h1>
+                        <h1 className='font-bold text-lg'>{inforUser?.fullname}</h1>
                     </div>
                 </div>
                 <ul className='pl-0 my-5'>
@@ -61,7 +88,7 @@ const Password = function(){
                             <span className='font-medium'>Thay đổi mật khẩu</span>
                         </li>
                     </Link>
-                    <Link className='font-medium block my-3 py-3 hover:bg-blue-400 hover:text-white px-5 bg-stone-200 rounded-lg text-stone-600' to={"#"}>
+                    <Link className='font-medium block my-3 py-3 hover:bg-blue-400 hover:text-white px-5 bg-stone-200 rounded-lg text-stone-600' to={"/user/login"}>
                         <li className='inline-block'>
                             <i className="fas fa-sign-out-alt w-9"></i>
                             <span className='font-medium'>Đăng xuất</span>
@@ -72,20 +99,22 @@ const Password = function(){
             </div>
             <div className='col-span-12 lg:col-span-9 p-6 bg-white rounded-2xl shadow-xl'>
                 <h2 className='text-xl font-bold pb-3 border-solid border-b-2 border-blue-200'>Thay đổi mật khẩu</h2>
-                <Form onFinish={handleChangePassword} {...layout} labelAlign='left' className='my-5'>
-                    <Form.Item className='font-bold text-3xl' name="old-password" label="Mật khẩu hiện tại">
-                        <Input.Password  className='font-normal py-2 text-base' placeholder='Nhập mật khẩu hiện tại'/>
-                    </Form.Item>
-                    <Form.Item className='font-bold text-3xl' name="new-password" label="Mật khẩu mới nhất">
-                        <Input.Password  className='font-normal py-2 text-base' placeholder='Nhập mật khẩu mới của bạn'/>
-                    </Form.Item>
-                    <Form.Item className='font-bold text-3xl' name="renew-password" label="Nhập lại mật khẩu">
-                        <Input.Password  className='font-normal py-2 text-base' placeholder='Nhập lại mật khẩu mới của bạn'/>
-                    </Form.Item>
-                    <Form.Item labelCol={4} wrapperCol={{offset: 4}} className='text-transparent overflow-hidden'>
-                        <Button className='bg-red-500 w-4/5 lg:w-auto button text-white font-bold p-5' type='default' htmlType='submit'>Thay đổi</Button>
-                    </Form.Item>
-                </Form>
+                {inforUser._id && 
+                    <Form onFinish={handleChangePassword} {...layout} labelAlign='left' className='my-5'>
+                        <Form.Item className='font-bold text-3xl' name="old_password" label="Mật khẩu hiện tại">
+                            <Input.Password  className='font-normal py-2 text-base' placeholder='Nhập mật khẩu hiện tại'/>
+                        </Form.Item>
+                        <Form.Item className='font-bold text-3xl' name="new_password" label="Mật khẩu mới nhất">
+                            <Input.Password  className='font-normal py-2 text-base' placeholder='Nhập mật khẩu mới của bạn'/>
+                        </Form.Item>
+                        <Form.Item className='font-bold text-3xl' name="renew_password" label="Nhập lại mật khẩu">
+                            <Input.Password  className='font-normal py-2 text-base' placeholder='Nhập lại mật khẩu mới của bạn'/>
+                        </Form.Item>
+                        <Form.Item labelCol={4} wrapperCol={{offset: 4}} className='text-transparent overflow-hidden'>
+                            <Button className='bg-red-500 w-4/5 lg:w-auto button text-white font-bold p-5' type='default' htmlType='submit'>Thay đổi</Button>
+                        </Form.Item>
+                    </Form>
+                }
             </div>
 
           </div>

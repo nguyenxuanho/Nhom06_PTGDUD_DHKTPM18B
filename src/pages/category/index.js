@@ -1,12 +1,115 @@
+<<<<<<< HEAD
 import { Link } from 'react-router-dom'
+=======
+import './style.css'
+import { Link, useParams } from 'react-router-dom'
+>>>>>>> 7f186d8ad73e8cdaff645fea50b7137bb263f5a1
 
-import { Button, Carousel, Checkbox, Drawer, Image } from 'antd'
-import { useState } from 'react'
+import { Button, Carousel, Checkbox, Drawer, Image, Spin } from 'antd'
+import { useEffect, useState } from 'react'
 import CardProduct from '../../components/card_product'
+import {get} from '../../components/utils/request'
+import { useCart } from '../../components/CartContext/CartContext'
 
 
 const Category = function () {
   const [isDisplayRow, setDisplayRow] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [pagination, setPagination] = useState({});
+  const {category_slug}  = useParams(); 
+  const [queryParams, setQueryParams] = useState(new URLSearchParams(""));
+  const {addToCart} = useCart();
+
+
+  useEffect(() => {
+    const fetchGetProductByCategory = async () => {
+      const dataObject = await get(`products/category/${category_slug}`);
+      if(dataObject.code === 200){
+        setProducts(dataObject.products);
+        setPagination(dataObject.pagination);
+      }
+    }
+    fetchGetProductByCategory();
+  }, [category_slug]);
+
+
+
+  const totalPage = Array.from({length: pagination.totalPage - 1}, (_, index) => {
+    return index + 1;
+  });
+
+  
+  const handleFilter = async (e, filter) => {
+    const buttonFilter = e.target.closest("button");
+    const listButton = buttonFilter.closest(".list-btn").querySelectorAll(".button");
+    listButton.forEach(btn => {
+      if(btn.classList.contains("active"))
+          btn.classList.remove("active");
+    })
+
+    buttonFilter.classList.add("active");
+
+    // Lấy các tham số hiện tại từ queryParams
+    const currentParams = new URLSearchParams(queryParams.toString());
+
+    // Cập nhật filter, nhưng giữ các tham số khác
+    currentParams.set("filter", filter);
+
+    // Cập nhật lại queryParams
+    setQueryParams(currentParams);
+      
+
+    const dataObject = await get(`products/category/${category_slug}?${currentParams.toString()}`)
+
+    if(dataObject.code === 200)
+      setProducts(dataObject.products)
+  }
+
+  const handlePagination = async (e, currentPage) => {
+    const buttonPage = e.target.closest("button");
+    const listButton = buttonPage.closest(".pagination").querySelectorAll(".button");
+    listButton.forEach(btn => {
+      if(btn.classList.contains("active"))
+          btn.classList.remove("active");
+    })
+
+    buttonPage.classList.add("active");
+      
+   
+    const currentParams = new URLSearchParams(queryParams.toString());
+    currentParams.set("currentPage", currentPage);
+    setQueryParams(currentParams);
+
+
+    const dataObject = await get(`products/category/${category_slug}?${currentParams.toString()}`)
+
+    if(dataObject.code === 200){
+      setProducts(dataObject.products)
+      window.scrollTo({ top: 500});
+    }
+  }
+
+  const handleFilterProduct = async () => {
+    const listButtonCheckBox = document.querySelectorAll("input[type='checkbox']:checked");
+    let filterProduct = [];
+    listButtonCheckBox.forEach(buttonCheckBox => {
+      filterProduct.push(buttonCheckBox.value)
+      
+    })
+
+    const currentParams = new URLSearchParams(queryParams.toString());
+    currentParams.set("filterProduct", filterProduct);
+    setQueryParams(currentParams);
+
+    const dataObject = await get(`products/category/${category_slug}?${currentParams.toString()}`)
+
+    if(dataObject.code === 200){
+      setProducts(dataObject.products)
+      setPagination(dataObject.pagination);
+    }
+    
+  }
+  
 
   const [open, setOpen] = useState(false);
 
@@ -21,54 +124,54 @@ const Category = function () {
   const prices = [
     {
       label: 'Dưới 10 triệu',
-      value: '10',
+      value: 'price_0-10',
     },
     {
       label: '10 triệu - 15 triệu',
-      value: '10-15',
+      value: 'price_10-15',
     },
     {
       label: '15 triệu - 20 triệu',
-      value: '15-20',
+      value: 'price_15-20',
     },
     {
       label: '20 triệu - 25 triệu',
-      value: '20-25',
+      value: 'price_20-25',
     },
     {
       label: '25 triệu - 30 triệu',
-      value: '25-30',
+      value: 'price_25-30',
     },
     {
       label: 'Trên 35 triệu',
-      value: '35',
+      value: 'price_35-99999',
     }
   ];
 
   const cpu = [
     {
       label: 'Intel Core i5',
-      value: 'Intel Core i5',
+      value: 'CPU_Core i5',
     },
     {
       label: 'Intel Core i7',
-      value: 'Intel Core i7',
+      value: 'CPU_Core i7',
     },
     {
       label: 'Intel Core i9',
-      value: 'Intel Core i9',
+      value: 'CPU_Core i9',
     },
     {
       label: 'AMD Ryzen 5',
-      value: 'AMD Ryzen 5',
+      value: 'CPU_Ryzen 5',
     },
     {
       label: 'AMD Ryzen 7',
-      value: 'AMD Ryzen 7',
+      value: 'CPU_Ryzen 7',
     },
     {
       label: 'AMD Ryzen 9',
-      value: 'AMD Ryzen 9',
+      value: 'CPU_Ryzen 9',
     },
 
   ];
@@ -76,15 +179,15 @@ const Category = function () {
   const ram = [
     {
       label: '16GB',
-      value: '16GB',
+      value: 'RAM_16GB',
     },
     {
       label: '32GB',
-      value: '32GB',
+      value: 'RAM_32GB',
     },
     {
       label: '64GB',
-      value: '64GB',
+      value: 'RAM_64GB',
     },
   ];
 
@@ -94,7 +197,7 @@ const Category = function () {
       <Drawer title="Bộ lọc sản phẩm" placement='bottom' onClose={onClose} open={open} height={550}>
 
           <div className='mb-5'>
-            <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Khoảng giá</h3>
+            <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200 dark:border-b-gray-700'>Khoảng giá</h3>
             <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={prices} />
           </div>
           <div className='my-5'>
@@ -105,20 +208,30 @@ const Category = function () {
             <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Ram</h3>
             <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={ram} />
           </div>
-          <Button className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
+          <Button onClick={handleFilterProduct} className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
       </Drawer>
+<<<<<<< HEAD
       <div className="md:pt-3 pt-52 bg-slate-900">
+=======
+      <div className="md:pt-3 pt-52 bg-slate-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+
+>>>>>>> 7f186d8ad73e8cdaff645fea50b7137bb263f5a1
         <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
           <Link to="/" className="font-medium text-white  mr-3 header-nav active">Trang chủ</Link>
           <i className="fa-solid fa-chevron-right  mr-3"></i>
           <h3 className="font-medium text-white  mr-3">PC Render, Edit Video</h3>
         </div>
         <h1 className='mx-5 xl:mx-32 py-2 border-b-blue-400 border-solid border-b-2 md:w-2/3 xl:w-1/3 font-bold text-xl lg:text-3xl uppercase text-blue-500'>PC Render, Edit Video
+<<<<<<< HEAD
           <span className='ml-2 text-sm border-none text-stone-50 lowercase font-medium'>(Tổng 103 sản phẩm)</span>
+=======
+          <span className='ml-2 text-sm border-none text-stone-400 lowercase font-medium'>(Tổng {products.length >= 0 && products.length} sản phẩm)</span>
+>>>>>>> 7f186d8ad73e8cdaff645fea50b7137bb263f5a1
         </h1>
         <div className='mx-5 xl:mx-32 my-5 content-body grid grid-flow-row grid-cols-12 lg:gap-12 '>
-          <div className='hidden lg:block lg:col-span-3 p-5 rounded-2xl bg-white shadow-lg max-h-max'>
-            <Button className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
+        <div className='hidden lg:block lg:col-span-3 p-5 rounded-2xl bg-white dark:bg-gray-800 shadow-lg max-h-max'>
+
+            <Button onClick={(e) => handleFilterProduct(e)} className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
             <div className='my-5'>
               <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Khoảng giá</h3>
               <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={prices} />
@@ -153,13 +266,13 @@ const Category = function () {
                 alt="AnhGiangSinh"
               />
             </Carousel>
-            <div className='mt-5 mb-28  shadow-lg px-3 py-5 bg-white rounded-md'>
+            <div className='mt-5 mb-28  shadow-lg px-3 py-5 bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-md'>
               <div className='filter-header lg:flex items-center justify-between'>
                 <div className='list-btn'>
-                  <Button className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 active font-bold text-base'>Hàng mới</Button>
-                  <Button className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>Giá tăng dần</Button>
-                  <Button className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>Giá giảm dần</Button>
-                  <Button className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>A đến Z</Button>
+                  <Button onClick={(e) => handleFilter(e, "")} className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 active font-bold text-base'>Hàng mới</Button>
+                  <Button onClick={(e) => handleFilter(e, "price_1")} className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>Giá tăng dần</Button>
+                  <Button onClick={(e) => handleFilter(e, "price_-1")} className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>Giá giảm dần</Button>
+                  <Button onClick={(e) => handleFilter(e, "title_1")} className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 font-bold text-base'>A đến Z</Button>
                 </div>
                 <div className='type-bar flex items-center justify-between text-right my-5 md:my-0 text-2xl'>
                   <div onClick={showDrawer} className='py-2 cursor-pointer px-4 rounded-2xl lg:hidden text-base bg-blue-100 text-blue-500'>Bộ lọc
@@ -173,74 +286,80 @@ const Category = function () {
               </div>
               {isDisplayRow ?
                 <div className='content-list-product-row mt-6 '>
-                  <div className='my-2 p-3.5 border-solid border-2 border-stone-100'>
-                    <div className='card rounded-lg bg-white flex' >
-                      <div className='card-img w-1/3 md:w-1/5 hover:-translate-y-2 transition-all'>
-                        <Image
-                          preview={false}
-                          src="https://hoanghapccdn.com/media/product/250_4429_hhpc_white_13900k_sky_two_ha1s.jpg"
-                        />
-                      </div>
-                      <div className='card-content ml-1 w-2/3 md:w-4/5 relative'>
-                        <h2 className='font-medium absolute top-0 left-0 right-0 cursor-pointer hover:text-blue-500 text-sm md:text-base line-clamp-1 md:line-clamp-2'>
-                          HHPC CORE i7 12700K | 32GB | NVIDIA RTX 3050 6G
-                        </h2>
-                        <div className='absolute bottom-1/3 left-0 right-0'>
-                          <h2 className='font-bold cursor-default text-lg md:text-xl my-1 text-blue-500'>
-                            19,000,000 đ
-                          </h2>
-                          <div className='font-medium cursor-default text-xs md:text-lg my-1 '>
-                            <span className='line-through text-slate-400 mr-2'>22,000,000 đ</span>
-                            <span className='text-red-500'>(Tiết kiệm 12%)</span>
-                          </div>
-                        </div>
-                        <div className='card-footer absolute bottom-0 left-0 right-0 flex item-center justify-between'>
-                          <div className='status flex text-xs md:text-base cursor-default'>
-                            <div className='flex items-center text-green-600'>
-                              <i className="fa-regular fa-circle-check mr-2"></i>
-                              <p className='hidden sm:block'>Còn hàng</p>
+                  {products.length > 0 ?
+                    products.map(product => (
+                      <div key={product._id} className='my-2 p-3.5 border-solid border-2 border-stone-100'>
+                          <div className='card rounded-lg bg-white flex' >
+                            <div className='card-img w-1/3 md:w-1/5 hover:-translate-y-2 transition-all'>
+                              <Image
+                                preview={false}
+                                src="https://hoanghapccdn.com/media/product/250_4429_hhpc_white_13900k_sky_two_ha1s.jpg"
+                              />
                             </div>
-                            <div className='flex mx-4 text-stone-500 items-center'>
-                              <i className="fa-solid fa-gift mr-2"></i>
-                              <p className='hidden sm:block'>Quà tặng</p>
-                            </div>
-                          </div>
-                          <div className='text-base cart-icon py-2 flex  items-center px-6 cursor-pointer hover:text-white'>
-                            <i className="fa-solid fa-cart-shopping"></i>
-                            <p className='hidden md:block ml-3 relative font-semibold -top-0.5'>Thêm vào giỏ</p>
-                          </div>
-                        </div>
+                            <div className='card-content ml-1 w-2/3 md:w-4/5 relative'>
+                              <Link to={`/product/${product.slug}`}>
+                                <h2 className='font-medium absolute top-0 left-0 right-0 cursor-pointer hover:text-blue-500 text-sm md:text-base line-clamp-1 md:line-clamp-2'>
+                                  {product?.title}
+                                </h2>
+                              </Link>
+                              <div className='absolute bottom-1/3 left-0 right-0'>
+                                <h2 className='font-bold cursor-default text-lg md:text-xl my-1 text-blue-500'>
+                                  {(product?.price * (1 - product?.discount)).toLocaleString()} đ
+                                </h2>
+                                <div className='font-medium cursor-default text-xs md:text-lg my-1 '>
+                                  <span className='line-through text-slate-400 mr-2'>{product?.price.toLocaleString()} đ</span>
+                                  <span className='text-red-500'>(Tiết kiệm {(product?.discount * 100).toFixed(0)}%)</span>
+                                </div>
+                              </div>
+                              <div className='card-footer absolute bottom-0 left-0 right-0 flex item-center justify-between'>
+                                <div className='status flex text-xs md:text-base cursor-default'>
+                                  <div className='flex items-center text-green-600'>
+                                    <i className="fa-regular fa-circle-check mr-2"></i>
+                                    <p className='hidden sm:block'>Còn hàng</p>
+                                  </div>
+                                  <div className='flex mx-4 text-stone-500 items-center'>
+                                    <i className="fa-solid fa-gift mr-2"></i>
+                                    <p className='hidden sm:block'>Quà tặng</p>
+                                  </div>
+                                </div>
+                                <div onClick={() => addToCart(product)} className='text-base cart-icon py-2 flex  items-center px-6 cursor-pointer hover:text-white'>
+                                  <i className="fa-solid fa-cart-shopping"></i>
+                                  <p  className='hidden md:block ml-3 relative font-semibold -top-0.5'>Thêm vào giỏ</p>
+                                </div>
+                              </div>
 
+                            </div>
+                          </div>
                       </div>
+                    )) : 
+                    <div className='text-center py-32 col-span-12'> 
+                      <Spin className='text-center' size="large"></Spin>
                     </div>
-                  </div>
+                  }
                 </div>
                 :
                 <div className='content-list-product-col grid grid-flow-row grid-cols-12 gap-0.5 md:gap-2 mt-6 '>
-                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
-                    <CardProduct />
-                  </div>
-                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
-                    <CardProduct />
-                  </div>
-                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
-                    <CardProduct />
-                  </div>
-                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
-                    <CardProduct />
-                  </div>
-                  <div className='col-span-6 sm:col-span-4 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
-                    <CardProduct />
-                  </div>
+                  {products.length > 0 ? 
+                    products.map(product => (
+                      <div key={product._id} className=' col-span-6 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
+                        <CardProduct data={product} />
+                      </div>
+                    )) :
+                    <div className='text-center py-32 col-span-12'> 
+                      <Spin className='text-center' size="large"></Spin>
+                    </div>
+                  }
                 </div>
               }
 
-              <div className='pagination mt-4 flex gap-2 items-center justify-end'>
-                <Button className='py-5 button active font-bold border-blue-400'>1</Button>
-                <Button className='py-5 button font-bold border-blue-400'>2</Button>
-                <Button className='py-5 button font-bold border-blue-400'>3</Button>
-                <Button className='py-5 button font-bold border-blue-400'>4</Button>
-              </div>
+              {pagination?.totalPage && 
+                <div className='pagination mt-4 flex gap-2 items-center justify-end'>
+                  <Button onClick={(e) => handlePagination(e, 1)} className='py-5 active button font-bold border-blue-400'>1</Button>
+                  {totalPage.map((index) => (
+                    <Button key={index} onClick={(e) => handlePagination(e, index + 1)} className='py-5 button font-bold border-blue-400'>{index + 1}</Button>
+                  ))}
+                </div>
+              }
             </div>
           </div>
         </div>
