@@ -10,7 +10,7 @@ const About = function(){
   
   return (
     <>
-      <div className="md:pt-3 pt-52 bg-slate-50">
+      <div className="md:pt-3 pt-52 dark:bg-slate-900 dark:text-white">
           <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
               <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
               <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>

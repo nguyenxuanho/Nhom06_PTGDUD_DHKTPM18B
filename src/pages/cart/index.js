@@ -88,7 +88,7 @@ const Cart = function () {
 
     return (
         <>
-            <div className="md:pt-3 pt-52 bg-slate-50">
+            <div className="md:pt-3 pt-52 dark:bg-slate-900">
 
                 <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
                     <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
@@ -106,14 +106,14 @@ const Cart = function () {
                                     <CartProduct key={cart._id} data={cart} handle={{ increase, decrease, removeCart }} />
                                 ))
                                 :
-                                <div className='text-center py-10 cursor-default font-bold text-2xl text-blue-500'>
+                                <div className='text-center py-10 cursor-default font-bold text-2xl text-blue-500 dark:bg-slate-900 border-solid border-2 border-blue-500'>
                                     <span> Không có sản phẩm nào trong giỏ hàng</span>
                                     <i className="py-10 block fa-solid fa-cart-shopping text-8xl"></i>
                                 </div>
                             }
 
                         </div>
-                        <div className='subtotal border-solid border-2 border-stone-100 p-4 flex items-center justify-between'>
+                        <div className='subtotal border-solid border-2 border-blue-500 p-4 flex items-center justify-between dark:bg-slate-900 dark:text-white'>
                             <h2 className='font-bold text-stone-500'>Tổng giá trị đơn hàng: </h2>
                             <p className='font-bold text-blue-500 text-lg md:text-2xl'>{getTotalUnitPrice().toLocaleString()} đ</p>
                         </div>
