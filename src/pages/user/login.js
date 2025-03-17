@@ -46,30 +46,30 @@ const Login = function () {
 
     return (
         <>
-            <div className="md:pt-3 h-lvh w-full flex items-center justify-center bg-slate-50">
-                <div className="max-h-max px-5 bg-white border-2 border-solid border-blue-300 rounded-2xl shadow-xl mx-2.5 w-420 md:w-600">
+            <div className="md:pt-3 h-lvh w-full flex items-center justify-center bg-slate-900">
+                <div className="max-h-max px-5 bg-blue-800 border-2 border-solid border-blue-300 rounded-2xl shadow-xl mx-2.5 w-420 md:w-600">
                     <div className="relative">
-                        <Link className="hover:text-blue-500" to={"/"}>
+                        <Link className="hover:text-gray-500 text-white" to={"/"}>
                             <i className="fa-solid font-bold text-3xl fa-arrow-left absolute left-0 top-1/3"></i>
                         </Link>
                         <div className="flex items-center justify-center py-5 border-b-2 border-solid border-blue-300">
-                            <Link to={"/user/login"} className="text-2xl hover:text-black text-black font-bold uppercase p-3 border-solid border-r-2 border-stone-200">
+                            <Link to={"/user/login"} className="text-2xl  text-white font-bold uppercase p-3 border-solid border-r-2 border-stone-200">
                                 Đăng nhập
                             </Link>
-                            <Link to={"/user/signup"} className="text-2xl hover:text-black text-stone-500 font-bold uppercase p-3 border-solid border-l-2 border-stone-100">
+                            <Link to={"/user/signup"} className="text-2xl hover:text-gray-500 text-white font-bold uppercase p-3 border-solid border-l-2 border-stone-100">
                                 Đăng ký
                             </Link>
                         </div>
                     </div>
                     <Form className="mt-5" onFinish={handleLogin}>
                         <Form.Item name="email">
-                            <Input className="text-lg py-2.5 bg-blue-100" placeholder="Nhập địa chỉ email của bạn" />
+                            <Input className="text-lg py-2.5 bg-gray-400" placeholder="Nhập địa chỉ email của bạn" />
                         </Form.Item>
                         <Form.Item name="password">
-                            <Input.Password className="text-lg py-2.5 bg-blue-100" placeholder="Nhập mật khẩu của bạn" />
+                            <Input.Password className="text-lg py-2.5 bg-gray-400" placeholder="Nhập mật khẩu của bạn" />
                         </Form.Item>
                         <Form.Item>
-                            <label className="text-stone-500">This site is protected by reCAPTCHA, the Google Privacy Policy, and Terms of Service apply.</label>
+                            <label className="text-white">This site is protected by reCAPTCHA, the Google Privacy Policy, and Terms of Service apply.</label>
                         </Form.Item>
                         <Form.Item>
                             <Button
@@ -82,11 +82,11 @@ const Login = function () {
                         </Form.Item>
                     </Form>
                     <div className="md:flex items-center justify-between py-5">
-                        <div className="text-stone-500 my-2 md:my-0 cursor-default">Bạn chưa có tài khoản?
-                            <Link to={"/user/signup"} className="text-blue-500 font-bold"> Đăng ký?</Link>
+                        <div className="text-white my-2 md:my-0 cursor-default">Bạn chưa có tài khoản?
+                            <Link to={"/user/signup"} className="text-gray-50 hover:text-gray-500 font-bold"> Đăng ký?</Link>
                         </div>
-                        <div className="text-stone-500 cursor-default">Bạn quên mật khẩu?
-                            <Link className="text-blue-500 font-bold"> Quên mật khẩu?</Link>
+                        <div className="text-white cursor-default">Bạn quên mật khẩu?
+                            <Link className="text-gray-50 hover:text-gray-500  font-bold"> Quên mật khẩu?</Link>
                         </div>
                     </div>
                 </div>

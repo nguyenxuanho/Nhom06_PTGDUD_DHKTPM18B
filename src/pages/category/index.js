@@ -194,15 +194,15 @@ const Category = function () {
 
           <div className='mb-5'>
             <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200 dark:border-b-gray-700'>Khoảng giá</h3>
-            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={prices} />
+            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium text-black dark:text-white' options={prices} />
           </div>
           <div className='my-5'>
             <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>CPU</h3>
-            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={cpu} />
+            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium text-black dark:text-white' options={cpu} />
           </div>
           <div className='my-5'>
             <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Ram</h3>
-            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={ram} />
+            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium text-black dark:text-white' options={ram} />
           </div>
           <Button onClick={handleFilterProduct} className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
       </Drawer>
@@ -222,15 +222,15 @@ const Category = function () {
             <Button onClick={(e) => handleFilterProduct(e)} className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
             <div className='my-5'>
               <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Khoảng giá</h3>
-              <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={prices} />
+              <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium text-black dark:text-white' options={prices} />
             </div>
             <div className='my-5'>
               <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>CPU</h3>
-              <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={cpu} />
+              <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium text-black dark:text-white' options={cpu} />
             </div>
             <div className='my-5'>
               <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Ram</h3>
-              <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={ram} />
+              <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium text-black dark:text-white' options={ram} />
             </div>
           </div>
           <div className='col-span-12 lg:col-span-9'>
@@ -254,7 +254,7 @@ const Category = function () {
                 alt="AnhGiangSinh"
               />
             </Carousel>
-            <div className='mt-5 mb-28  shadow-lg px-3 py-5 bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-md'>
+            <div className='mt-5 mb-28  shadow-lg px-3 py-5 bg-white dark:bg-gray-800 rounded-md'>
               <div className='filter-header lg:flex items-center justify-between'>
                 <div className='list-btn'>
                   <Button onClick={(e) => handleFilter(e, "")} className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 active font-bold text-base'>Hàng mới</Button>
