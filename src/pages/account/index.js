@@ -35,12 +35,12 @@ const Account = function(){
   
   return (
     <>
-      <div className="md:pt-3 pt-52 bg-slate-50">
+      <div className="md:pt-3 pt-52 bg-slate-50 dark:bg-slate-900 dark:text-white">
         
           <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
-              <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
+              <Link to="/" className="font-medium text-lg text-stone-500  dark:text-white mr-3 header-nav active">Trang chủ</Link>
               <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
-              <h3 className="font-medium text-lg text-stone-500 mr-3">Account</h3>
+              <h3 className="font-medium text-lg text-stone-500 dark:text-white mr-3">Account</h3>
           </div>
           <div className='mx-5 xl:mx-32 my-5 grid grid-flow-row grid-cols-12 gap-0 lg:gap-9'>
             <div className='col-span-12 lg:col-span-3'>
@@ -85,21 +85,21 @@ const Account = function(){
 
                 </ul>
             </div>
-            <div className='col-span-12 lg:col-span-9 p-6 bg-white rounded-2xl shadow-xl'>
-                <h2 className='text-xl font-bold pb-3 border-solid border-b-2 border-blue-200'>Cập nhật thông tin cá nhân</h2>
+            <div className='col-span-12 lg:col-span-9 p-6 bg-white rounded-2xl shadow-xl dark:bg-gray-800 dark:text-white'>
+                <h2 className='text-xl font-bold pb-3 border-solid border-b-2 border-blue-200 dark:border-slate-900 dark:text-white'>Cập nhật thông tin cá nhân</h2>
                 {inforUser._id && 
                     <Form onFinish={handleUpdateUser}  {...layout} labelAlign='left' className='my-5'>
-                        <Form.Item className='font-bold text-3xl' name="fullname" label="Họ và tên">
-                            <Input className='font-normal py-2 text-base' placeholder='Nhập họ và tên' defaultValue={inforUser?.fullname}/>
+                        <Form.Item className='font-bold text-3xl' name="fullname" label={<span className="dark:text-white">Họ và tên</span>}>
+                            <Input className='font-normal py-2 text-base dark:bg-gray-400' placeholder='Nhập họ và tên' defaultValue={inforUser?.fullname}/>
                         </Form.Item>
-                        <Form.Item className='font-bold text-3xl' name="email" label="Địa chỉ email">
-                            <Input className='font-normal py-2 text-base' placeholder='Nhập địa chỉ email' defaultValue={inforUser?.email}/>
+                        <Form.Item className='font-bold text-3xl' name="email" label={<span className="dark:text-white">Địa chỉ email</span>}>
+                            <Input className='font-normal py-2 text-base dark:bg-gray-400' placeholder='Nhập địa chỉ email' defaultValue={inforUser?.email}/>
                         </Form.Item>
-                        <Form.Item className='font-bold text-3xl' name="phone" label="Số điện thoại">
-                            <Input className='font-normal py-2 text-base' placeholder='Nhập số điện thoại' defaultValue={inforUser?.phone}/>
+                        <Form.Item className='font-bold text-3xl' name="phone" label={<span className="dark:text-white">Số điện thoại</span>}>
+                            <Input className='font-normal py-2 text-base dark:bg-gray-400' placeholder='Nhập số điện thoại' defaultValue={inforUser?.phone}/>
                         </Form.Item>
                         <Form.Item labelCol={4} wrapperCol={{offset: 4}} className='text-transparent overflow-hidden'>
-                            <Button className='bg-red-500 w-4/5 lg:w-auto button text-white font-bold p-5' type='default' htmlType='submit'>Thay đổi</Button>
+                            <Button className='bg-red-500 dark:bg-red-600 w-4/5 lg:w-auto button dark:text-white font-bold p-5' type='default' htmlType='submit'>Thay đổi</Button>
                         </Form.Item>
                     </Form>
                 }
