@@ -59,10 +59,10 @@ const Signup = function () {
 
     return (
         <>
-            <div className="md:pt-3 h-lvh w-full flex items-center justify-center bg-blue-950">
-                <div className="max-h-max px-5 bg-blue border-2 border-solid border-blue-300 rounded-2xl shadow-xl mx-2.5 w-420 md:w-600">
+            <div className="md:pt-3 h-lvh w-full flex items-center justify-center bg-slate-900  ">
+                <div className="max-h-max px-5 bg-blue-800 border-2 border-solid border-blue-300 rounded-2xl shadow-xl mx-2.5 w-420 md:w-600">
                     <div className="relative">
-                        <Link className="hover:text-blue-500" to={"/"}>
+                        <Link className="hover:text-gray-500 text-white" to={"/"}>
                             <i className="fa-solid font-bold text-3xl fa-arrow-left absolute left-0 top-1/3"></i>
                         </Link>
                         <div className="flex items-center justify-center py-5 border-b-2 border-solid border-blue-300">

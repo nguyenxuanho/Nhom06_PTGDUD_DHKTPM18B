@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import { Link } from 'react-router-dom'
-=======
 import './style.css'
 import { Link, useParams } from 'react-router-dom'
->>>>>>> 7f186d8ad73e8cdaff645fea50b7137bb263f5a1
 
 import { Button, Carousel, Checkbox, Drawer, Image, Spin } from 'antd'
 import { useEffect, useState } from 'react'
@@ -198,35 +194,27 @@ const Category = function () {
 
           <div className='mb-5'>
             <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200 dark:border-b-gray-700'>Khoảng giá</h3>
-            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={prices} />
+            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium text-black dark:text-white' options={prices} />
           </div>
           <div className='my-5'>
             <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>CPU</h3>
-            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={cpu} />
+            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium text-black dark:text-white' options={cpu} />
           </div>
           <div className='my-5'>
             <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Ram</h3>
-            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={ram} />
+            <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium text-black dark:text-white' options={ram} />
           </div>
           <Button onClick={handleFilterProduct} className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
       </Drawer>
-<<<<<<< HEAD
-      <div className="md:pt-3 pt-52 bg-slate-900">
-=======
       <div className="md:pt-3 pt-52 bg-slate-50 dark:bg-gray-900 text-gray-900 dark:text-white">
 
->>>>>>> 7f186d8ad73e8cdaff645fea50b7137bb263f5a1
         <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
-          <Link to="/" className="font-medium text-white  mr-3 header-nav active">Trang chủ</Link>
-          <i className="fa-solid fa-chevron-right  mr-3"></i>
-          <h3 className="font-medium text-white  mr-3">PC Render, Edit Video</h3>
+          <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
+          <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
+          <h3 className="font-medium text-lg text-stone-500 mr-3">PC Render, Edit Video</h3>
         </div>
         <h1 className='mx-5 xl:mx-32 py-2 border-b-blue-400 border-solid border-b-2 md:w-2/3 xl:w-1/3 font-bold text-xl lg:text-3xl uppercase text-blue-500'>PC Render, Edit Video
-<<<<<<< HEAD
-          <span className='ml-2 text-sm border-none text-stone-50 lowercase font-medium'>(Tổng 103 sản phẩm)</span>
-=======
           <span className='ml-2 text-sm border-none text-stone-400 lowercase font-medium'>(Tổng {products.length >= 0 && products.length} sản phẩm)</span>
->>>>>>> 7f186d8ad73e8cdaff645fea50b7137bb263f5a1
         </h1>
         <div className='mx-5 xl:mx-32 my-5 content-body grid grid-flow-row grid-cols-12 lg:gap-12 '>
         <div className='hidden lg:block lg:col-span-3 p-5 rounded-2xl bg-white dark:bg-gray-800 shadow-lg max-h-max'>
@@ -234,15 +222,15 @@ const Category = function () {
             <Button onClick={(e) => handleFilterProduct(e)} className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
             <div className='my-5'>
               <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Khoảng giá</h3>
-              <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={prices} />
+              <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium text-black dark:text-white' options={prices} />
             </div>
             <div className='my-5'>
               <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>CPU</h3>
-              <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={cpu} />
+              <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium text-black dark:text-white' options={cpu} />
             </div>
             <div className='my-5'>
               <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Ram</h3>
-              <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium' options={ram} />
+              <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium text-black dark:text-white' options={ram} />
             </div>
           </div>
           <div className='col-span-12 lg:col-span-9'>
@@ -266,7 +254,7 @@ const Category = function () {
                 alt="AnhGiangSinh"
               />
             </Carousel>
-            <div className='mt-5 mb-28  shadow-lg px-3 py-5 bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-md'>
+            <div className='mt-5 mb-28  shadow-lg px-3 py-5 bg-white dark:bg-gray-800 rounded-md'>
               <div className='filter-header lg:flex items-center justify-between'>
                 <div className='list-btn'>
                   <Button onClick={(e) => handleFilter(e, "")} className='button my-1 px-1.5 py-1 md:py-4 md:px-5 border-blue-300 text-blue-500 rounded-2xl mr-2 active font-bold text-base'>Hàng mới</Button>

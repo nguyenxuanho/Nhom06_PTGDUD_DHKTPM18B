@@ -1,0 +1,14 @@
+.header-nav.active{
+    color: rgb(29, 160, 248);
+}
+
+i.active{
+    color: rgb(29, 160, 248);
+}
+.dark .ant-checkbox-wrapper {
+    color: white !important;
+  }
+  
+  .ant-checkbox-wrapper {
+    color: black !important;
+  }
