@@ -97,7 +97,8 @@ module.exports.index = async (req, res) => {
   res.json({
     code: 200,
     products: products,
-    pagination: pagination
+    pagination: pagination,
+    categoryTitle: productCategory.title
   })
 
 

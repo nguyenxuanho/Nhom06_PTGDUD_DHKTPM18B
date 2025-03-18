@@ -42,7 +42,7 @@ const Account = function(){
               <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
               <h3 className="font-medium text-lg text-stone-500 dark:text-white mr-3">Account</h3>
           </div>
-          <div className='mx-5 xl:mx-32 my-5 grid grid-flow-row grid-cols-12 gap-0 lg:gap-9'>
+          <div className='mx-5 xl:mx-32 mt-5 pb-5 grid grid-flow-row grid-cols-12 gap-0 lg:gap-9'>
             <div className='col-span-12 lg:col-span-3'>
                 <div className='flex items-center'>
                     <i className='fas fa-user-circle text-5xl text-blue-600'></i>

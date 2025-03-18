@@ -47,7 +47,7 @@ const AccountOrder = function () {
                     <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
                     <h3 className="font-medium text-lg text-stone-500 dark:text-white mr-3">Account</h3>
                 </div>
-                <div className='mx-5 xl:mx-32 my-5 grid grid-flow-row grid-cols-12 gap-0 lg:gap-9'>
+                <div className='mx-5 xl:mx-32 mt-5 pb-5 grid grid-flow-row grid-cols-12 gap-0 lg:gap-9'>
                     <div className='col-span-12 lg:col-span-3'>
                         <div className='flex items-center'>
                             <i className='fas fa-user-circle text-5xl text-blue-600'></i>
@@ -98,17 +98,17 @@ const AccountOrder = function () {
                                     <div key={product.product_id} className='col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-3'>
                                         {product.status === "success" && 
                                             <Badge.Ribbon className='py-1.5 font-semibold' placement='start' text="Đơn hàng đã giao" color='green'>
-                                                <div className='border-blue-300 dark:border-gray-700 dark:bg-green-400  p-2 border-2 border-solid card rounded-lg bg-white' >
+                                                 <div className='border-blue-300 p-2 border-2 border-solid card rounded-lg bg-white dark:border-slate-900 dark:bg-slate-700 dark:text-white' >
                                                     <div className='card-img hover:-translate-y-2 transition-all'>
                                                         <Image
                                                             src="https://hoanghapccdn.com/media/product/250_4429_hhpc_white_13900k_sky_two_ha1s.jpg"
                                                         />
                                                     </div>
                                                     <div className='card-content mb-3 text-center'>
-                                                        <h2 className='font-medium cursor-pointer hover:text-blue-500 dark:hover:text-slate-900 text-base line-clamp-2'>
+                                                        <h2 className='font-medium cursor-pointer dark:text-white hover:text-blue-500 text-base line-clamp-2'>
                                                             {product.name}
                                                         </h2>
-                                                        <h2 className='font-bold cursor-default text-xl my-1 text-blue-400 dark:text-gray-950'>
+                                                        <h2 className='font-bold cursor-default text-xl my-1 text-blue-400  dark:text-blue-400'>
                                                             {product.unitPrice.toLocaleString()} đ
                                                         </h2>
                                                     
@@ -117,11 +117,11 @@ const AccountOrder = function () {
                                                     <div className='card-footer'>
                                                         <div className='flex items-center justify-between font-semibold'>
                                                             <h3>Số lượng: </h3>
-                                                            <h3 className='text-green-600 dark:text-gray-800'>x{product.quanlity}</h3>
+                                                            <h3 className='text-green-600'>x{product.quanlity}</h3>
                                                         </div>
                                                         <div className='flex items-center justify-between font-semibold'>
                                                             <h3>Thành tiền: </h3>
-                                                            <h3 className='text-lg text-red-500 dark:text-red-600'>{(product.quanlity * product.unitPrice).toLocaleString()} đ</h3>
+                                                            <h3 className='text-lg text-red-500'>{(product.quanlity * product.unitPrice).toLocaleString()} đ</h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -129,17 +129,17 @@ const AccountOrder = function () {
                                         }
                                         {product.status === "pending" && 
                                             <Badge.Ribbon className='py-1.5 font-semibold' placement='start' text="Đơn hàng đang giao" color='gold'>
-                                                <div className='border-blue-300 p-2 border-2 border-solid card rounded-lg bg-white dark:border-slate-900 dark:bg-yellow-50 dark:text-slate-900' >
+                                                <div className='border-blue-300 p-2 border-2 border-solid card rounded-lg bg-white dark:border-slate-900 dark:bg-slate-700 dark:text-white' >
                                                     <div className='card-img hover:-translate-y-2 transition-all'>
                                                         <Image
                                                             src="https://hoanghapccdn.com/media/product/250_4429_hhpc_white_13900k_sky_two_ha1s.jpg"
                                                         />
                                                     </div>
                                                     <div className='card-content mb-3 text-center'>
-                                                        <h2 className='font-medium cursor-pointer hover:text-blue-500 text-base line-clamp-2 dark:text-gray-900'>
+                                                        <h2 className='font-medium cursor-pointer dark:text-white hover:text-blue-500 text-base line-clamp-2'>
                                                             {product.name}
                                                         </h2>
-                                                        <h2 className='font-bold cursor-default text-xl my-1 text-blue-400  dark:text-gray-950'>
+                                                        <h2 className='font-bold cursor-default text-xl my-1 text-blue-400  dark:text-blue-400'>
                                                             {product.unitPrice.toLocaleString()} đ
                                                         </h2>
                                                     
@@ -160,17 +160,17 @@ const AccountOrder = function () {
                                         }
                                           {product.status === "cancel" && 
                                             <Badge.Ribbon className='py-1.5 font-semibold' placement='start' text="Đơn hàng đã hủy" color='red'>
-                                                <div className='border-blue-300 p-2 border-2 border-solid card rounded-lg bg-white dark:text-slate-900' >
+                                                <div className='border-blue-300 p-2 border-2 border-solid card rounded-lg bg-white dark:border-slate-900 dark:bg-slate-700 dark:text-white' >
                                                     <div className='card-img hover:-translate-y-2 transition-all'>
                                                         <Image
                                                             src="https://hoanghapccdn.com/media/product/250_4429_hhpc_white_13900k_sky_two_ha1s.jpg"
                                                         />
                                                     </div>
                                                     <div className='card-content mb-3 text-center'>
-                                                        <h2 className='font-medium cursor-pointer hover:text-blue-500 text-base line-clamp-2'>
+                                                        <h2 className='font-medium cursor-pointer dark:text-white hover:text-blue-500 text-base line-clamp-2'>
                                                             {product.name}
                                                         </h2>
-                                                        <h2 className='font-bold cursor-default text-xl my-1 text-blue-400  dark:text-gray-950'>
+                                                        <h2 className='font-bold cursor-default text-xl my-1 text-blue-400  dark:text-blue-400'>
                                                             {product.unitPrice.toLocaleString()} đ
                                                         </h2>
                                                     

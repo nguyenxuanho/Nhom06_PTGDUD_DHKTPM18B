@@ -93,12 +93,12 @@ const Cart = function () {
                 <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
                     <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
                     <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
-                    <h3 className="font-medium text-lg text-stone-500 mr-3">Thông tin giỏ hàng</h3>
+                    <h3 className="font-medium text-lg dark:text-white text-stone-500 mr-3">Thông tin giỏ hàng</h3>
                 </div>
                 <h1 className='mx-5 xl:mx-32 py-2 border-b-blue-400 border-solid border-b-2 md:w-2/3 xl:w-1/3 font-bold text-xl lg:text-3xl uppercase text-blue-500'>Giỏ hàng của tôi
                     <span className='ml-2 text-sm border-none text-stone-400 lowercase font-medium'>({quanlityOfCarts} sản phẩm)</span>
                 </h1>
-                <div className='mx-5 xl:mx-32 my-5 content-body grid grid-flow-row grid-cols-12 gap-8 '>
+                <div className='mx-5 xl:mx-32 mt-5 pb-10 content-body grid grid-flow-row grid-cols-12 gap-8 '>
                     <div className='col-span-12 lg:col-span-7 max-h-max bg-white shadow-lg rounded-lg'>
                         <div className='cart-list-product overflow-y-scroll' style={{ maxHeight: "550px" }}>
                             {carts.length > 0 ?
@@ -114,7 +114,7 @@ const Cart = function () {
 
                         </div>
                         <div className='subtotal border-solid border-2 border-blue-500 p-4 flex items-center justify-between dark:bg-slate-900 dark:text-white'>
-                            <h2 className='font-bold text-stone-500'>Tổng giá trị đơn hàng: </h2>
+                            <h2 className='dark:text-white font-bold text-stone-500'>Tổng giá trị đơn hàng: </h2>
                             <p className='font-bold text-blue-500 text-lg md:text-2xl'>{getTotalUnitPrice().toLocaleString()} đ</p>
                         </div>
                     </div>
@@ -134,13 +134,13 @@ const Cart = function () {
                                 }}
                             >
                                 <Form.Item name='fullname'>
-                                    <Input defaultValue={inforUser?.fullname} name='fullname' className='text-base py-2 font-medium' placeholder='Nhập họ và tên' />
+                                    <Input defaultValue={inforUser?.fullname} name='fullname' className='text-base dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500 py-2 font-medium' placeholder='Nhập họ và tên' />
                                 </Form.Item>
                                 <Form.Item name='phone'>
-                                    <Input defaultValue={inforUser?.phone} name='phone' className='text-base py-2 font-medium' placeholder='Nhập số điện thoại' />
+                                    <Input defaultValue={inforUser?.phone} name='phone' className='text-base dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500 py-2 font-medium' placeholder='Nhập số điện thoại' />
                                 </Form.Item>
                                 <Form.Item name='email'>
-                                    <Input defaultValue={inforUser?.email} name='email' className='text-base py-2 font-medium' placeholder='Nhập email' />
+                                    <Input defaultValue={inforUser?.email} name='email' className='text-base dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500 py-2 font-medium' placeholder='Nhập email' />
                                 </Form.Item>
                                 <Form.Item name="address_default">
                                     <Select className='mb-5 w-full h-10 font-bold text-lg' defaultValue={'default'} placeholder="Chọn địa chỉ có sẵn" >
@@ -153,10 +153,10 @@ const Cart = function () {
                                     </Select>
                                 </Form.Item>
                                 <Form.Item name='address'>
-                                    <Input name='address' className='text-base py-2 font-medium' placeholder='Nhập địa chỉ' />
+                                    <Input name='address' className='text-base py-2 font-medium dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500' placeholder='Nhập địa chỉ' />
                                 </Form.Item>
                                 <Form.Item name='note'>
-                                    <TextArea name='note' rows={7} className='text-base font-medium' placeholder='Ghi chú' />
+                                    <TextArea name='note' rows={7} className='text-base font-medium dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500' placeholder='Ghi chú' />
                                 </Form.Item>
                                 <Button type='primary' htmlType='submit' className='h-24 block text-center w-full'>
                                     <h2 className='font-bold uppercase text-2xl'>Đặt hàng</h2>
