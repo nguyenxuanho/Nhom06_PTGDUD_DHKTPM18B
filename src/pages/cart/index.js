@@ -47,7 +47,7 @@ const Cart = function () {
         }
 
         const userInfo = {
-            user_id: inforUser._id,
+            user_id: inforUser._id || "userVangLai",
             fullName: e.fullname,
             phone: e.phone,
             address: (e.address === "" || e.address === undefined) ? e.address_default : e.address,
@@ -70,7 +70,6 @@ const Cart = function () {
             userInfo, products, totalPrice: totalPrice
         }
 
-        
 
 
         toast.success("Đặt hàng thành công !!")
@@ -78,8 +77,8 @@ const Cart = function () {
         const statusOrder = await post("order/checkout", data);
         if(statusOrder.code === 200){
             localStorage.setItem("cart", JSON.stringify([]));
-            setCarts([]);
             navigation(`/order/success/${statusOrder.order_id}`)
+            setCarts([]);
         }
 
     }
@@ -125,45 +124,43 @@ const Cart = function () {
                             <Link to={"#"} className='text-blue-500 font-bold'> đăng nhập </Link>
                             để nhập thông tin bên dưới
                         </p>
-                        {inforUser._id &&
-                            <Form onFinish={handlePlaceOrder}
-                                initialValues={{
-                                    fullname: inforUser?.fullname,
-                                    phone: inforUser?.phone,
-                                    email: inforUser?.email,
-                                }}
-                            >
-                                <Form.Item name='fullname'>
-                                    <Input defaultValue={inforUser?.fullname} name='fullname' className='text-base dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500 py-2 font-medium' placeholder='Nhập họ và tên' />
-                                </Form.Item>
-                                <Form.Item name='phone'>
-                                    <Input defaultValue={inforUser?.phone} name='phone' className='text-base dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500 py-2 font-medium' placeholder='Nhập số điện thoại' />
-                                </Form.Item>
-                                <Form.Item name='email'>
-                                    <Input defaultValue={inforUser?.email} name='email' className='text-base dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500 py-2 font-medium' placeholder='Nhập email' />
-                                </Form.Item>
-                                <Form.Item name="address_default">
-                                    <Select className='mb-5 w-full h-10 font-bold text-lg' defaultValue={'default'} placeholder="Chọn địa chỉ có sẵn" >
-                                        <Select.Option value='default'>Chọn địa chỉ</Select.Option>
-                                        {inforUser.address.length > 0 &&
-                                            inforUser.address.map((item, index) => (
-                                                <Select.Option key={index} value={item}>{item}</Select.Option>
-                                            ))
-                                        }
-                                    </Select>
-                                </Form.Item>
-                                <Form.Item name='address'>
-                                    <Input name='address' className='text-base py-2 font-medium dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500' placeholder='Nhập địa chỉ' />
-                                </Form.Item>
-                                <Form.Item name='note'>
-                                    <TextArea name='note' rows={7} className='text-base font-medium dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500' placeholder='Ghi chú' />
-                                </Form.Item>
-                                <Button type='primary' htmlType='submit' className='h-24 block text-center w-full'>
-                                    <h2 className='font-bold uppercase text-2xl'>Đặt hàng</h2>
-                                    <div className='text-sm '>Tư vấn viên sẽ gọi điện thoại để xác nhận</div>
-                                </Button>
-                            </Form>
-                        }
+                        <Form onFinish={handlePlaceOrder}
+                            initialValues={{
+                                fullname: inforUser?.fullname,
+                                phone: inforUser?.phone,
+                                email: inforUser?.email,
+                            }}
+                        >
+                            <Form.Item name='fullname'>
+                                <Input defaultValue={inforUser?.fullname} name='fullname' className='text-base dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500 py-2 font-medium' placeholder='Nhập họ và tên' />
+                            </Form.Item>
+                            <Form.Item name='phone'>
+                                <Input defaultValue={inforUser?.phone} name='phone' className='text-base dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500 py-2 font-medium' placeholder='Nhập số điện thoại' />
+                            </Form.Item>
+                            <Form.Item name='email'>
+                                <Input defaultValue={inforUser?.email} name='email' className='text-base dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500 py-2 font-medium' placeholder='Nhập email' />
+                            </Form.Item>
+                            <Form.Item name="address_default">
+                                <Select className='mb-5 w-full h-10 font-bold text-lg' defaultValue={'default'} placeholder="Chọn địa chỉ có sẵn" >
+                                    <Select.Option value='default'>Chọn địa chỉ</Select.Option>
+                                    {inforUser?.address?.length > 0 &&
+                                        inforUser?.address.map((item, index) => (
+                                            <Select.Option key={index} value={item}>{item}</Select.Option>
+                                        ))
+                                    }
+                                </Select>
+                            </Form.Item>
+                            <Form.Item name='address'>
+                                <Input name='address' className='text-base py-2 font-medium dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500' placeholder='Nhập địa chỉ' />
+                            </Form.Item>
+                            <Form.Item name='note'>
+                                <TextArea name='note' rows={7} className='text-base font-medium dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 dark:focus:bg-slate-500' placeholder='Ghi chú' />
+                            </Form.Item>
+                            <Button type='primary' htmlType='submit' className='h-24 block text-center w-full'>
+                                <h2 className='font-bold uppercase text-2xl'>Đặt hàng</h2>
+                                <div className='text-sm '>Tư vấn viên sẽ gọi điện thoại để xác nhận</div>
+                            </Button>
+                        </Form>
                     </div>
                 </div>
             </div>

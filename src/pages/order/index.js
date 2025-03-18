@@ -18,9 +18,7 @@ const OrderSuccess = function () {
         const fetchGetOrder = async () => {
             const dataObject = await get(`order/${order_id}`)
             if(dataObject.code === 200){
-                if(dataObject.data.userInfo.user_id === inforUser._id)
-                    setOrder(dataObject.data);
-                else navigation('/')
+                setOrder(dataObject.data);
             }
         }
         fetchGetOrder();
@@ -30,10 +28,10 @@ const OrderSuccess = function () {
         {
             key: index,
             img: 'https://hoanghapccdn.com/media/product/250_3261_pc_gaming_x_ii_620s_ha1.jpg',
-            productName: product.name,
-            price: ((product.unitPrice).toLocaleString()) + " đ",
-            quanity: product.quanlity,
-            subtotal: (product.unitPrice * product.quanlity).toLocaleString() + " đ"
+            productName: product?.name,
+            price: ((product?.unitPrice).toLocaleString()) + " đ",
+            quanity: product?.quanlity,
+            subtotal: (product?.unitPrice * product?.quanlity).toLocaleString() + " đ"
         }
     ))
 
@@ -111,7 +109,7 @@ const OrderSuccess = function () {
                     />
                 </div>
 
-                {order.totalPrice &&
+                {order?.totalPrice &&
                     <div className='mx-5 xl:mx-32 my-5 py-2 px-5 dark:bg-slate-800 dark:text-white bg-white shadow-xl'>
                         <h2 className='py-3 border-solid border-b-2 border-blue-300 text-2xl font-bold'>Danh sách đơn hàng</h2>
                         <Table pagination={pagination}  scroll={{ x: 700}}  className='dark:!text-white my-5 overflow-y-scroll' dataSource={dataSource} columns={columns} />
@@ -122,7 +120,7 @@ const OrderSuccess = function () {
                     </div>
                 }
 
-                {order.userInfo && 
+                {order?.userInfo && 
                     <div className='mx-5 xl:mx-32 mt-5 pb-5 py-2 px-5 dark:bg-slate-800 dark:text-white bg-white shadow-xl'>
                         <h2 className='py-3 border-solid border-b-2 border-blue-300 text-2xl font-bold'>Thông tin khách hàng</h2>
                         <div className='my-4'>

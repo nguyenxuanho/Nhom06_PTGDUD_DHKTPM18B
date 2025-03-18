@@ -14,10 +14,17 @@ module.exports.order = async (req, res) => {
 // [GET] /order/:order_id
 module.exports.detail = async (req, res) => {
   try {
+
     const order = await Order.findOne({_id: req.params.order_id})
-    res.json({
-      code: 200,
-      data: order
+
+    if(order){
+      return res.json({
+        code: 200,
+        data: order
+      })
+    } else return res.json({
+      code: 400,
+      message: "Không tìm thấy mã đơn hàng"
     })
     
   } catch (error) {
