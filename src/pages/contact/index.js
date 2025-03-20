@@ -34,13 +34,13 @@ const Contact = function(){
                     <h2 className='font-bold text-xl'>Liên hệ với chúng tôi</h2>
                     <Form className='mt-5'>
                         <Form.Item name="fullname">
-                            <Input className='font-medium text-base py-2 dark:bg-gray-500 dark:text-white' placeholder='Họ và tên' />
+                            <Input className='font-medium text-base py-2 hover:text-black  dark:bg-gray-500 dark:text-white' placeholder='Họ và tên' />
                         </Form.Item>
                         <Form.Item name="email">
-                            <Input className='font-medium text-base py-2 dark:bg-gray-500 dark:text-white' placeholder='Email' />
+                            <Input className='font-medium text-base py-2 hover:text-black  dark:bg-gray-500 dark:text-white' placeholder='Email' />
                         </Form.Item>
                         <Form.Item name="content">
-                            <TextArea className='font-medium text-base py-2 rounded-2xl dark:bg-gray-500 dark:text-white' placeholder='Nhập nội dung' rows={7} />
+                            <TextArea className='font-medium text-base py-2 rounded-2xl hover:text-black dark:bg-gray-500 dark:text-white' placeholder='Nhập nội dung' rows={7} />
                         </Form.Item>
                         <Button htmlType='submit' className='button font-semibold text-base py-5 bg-blue-100 dark:bg-blue-900 px-10 rounded-xl' >
                             Gửi liên hệ
