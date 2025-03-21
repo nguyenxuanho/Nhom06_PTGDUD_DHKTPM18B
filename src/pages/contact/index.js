@@ -10,6 +10,7 @@ const Contact = function(){
       <div className="md:pt-3 pt-52 bg-slate-50 dark:bg-gray-900 text-gray-900 dark:text-white">
         
           <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
+<<<<<<< HEAD
               <Link to="/" className="font-medium text-stone-500 mr-3 header-nav active">Trang chủ</Link>
               <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
               <h3 className="font-medium text-stone-400 mr-3">Liên hệ</h3>
@@ -17,6 +18,15 @@ const Contact = function(){
           
           <h3 className='text-center mx-5 xl:mx-32 uppercase py-4 my-5 font-bold text-gray-900 dark:text-white md:text-3xl'>Liên hệ</h3>
           <div className='mx-5 xl:mx-32 my-10 gap-5 grid grid-flow-row grid-cols-12'>
+=======
+              <Link to="/" className="font-medium text-stone-500 mr-3 text-lg header-nav active">Trang chủ</Link>
+              <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
+              <h3 className="font-medium text-lg dark:text-white text-stone-400 mr-3">Liên hệ</h3>
+          </div>
+          
+          <h3 className='text-center mx-5 xl:mx-32 uppercase py-4 my-5 font-bold text-gray-900 dark:text-white md:text-3xl'>Liên hệ</h3>
+          <div className='mx-5 xl:mx-32 mt-10 pb-10 gap-5 grid grid-flow-row grid-cols-12'>
+>>>>>>> 3b4cd7cf60928686bbbea56ad9cf5fe74b812f4f
              <div className='col-span-12 lg:col-span-4 bg-white dark:bg-gray-800 rounded-lg shadow-xl p-5'>
                 <div className='flex cursor-default items-center my-3'>
                     <i className="mr-3 p-2 border-2 border-gray-900 dark:border-white border-solid rounded-full fa-solid fa-location-dot"></i>
@@ -34,6 +44,7 @@ const Contact = function(){
                     <h2 className='font-bold text-xl'>Liên hệ với chúng tôi</h2>
                     <Form className='mt-5'>
                         <Form.Item name="fullname">
+<<<<<<< HEAD
                             <Input className='font-medium text-base py-2 hover:text-black  dark:bg-gray-500 dark:text-white' placeholder='Họ và tên' />
                         </Form.Item>
                         <Form.Item name="email">
@@ -43,6 +54,17 @@ const Contact = function(){
                             <TextArea className='font-medium text-base py-2 rounded-2xl hover:text-black dark:bg-gray-500 dark:text-white' placeholder='Nhập nội dung' rows={7} />
                         </Form.Item>
                         <Button htmlType='submit' className='button font-semibold text-base py-5 bg-blue-100 dark:bg-blue-900 px-10 rounded-xl' >
+=======
+                            <Input className='font-medium text-base py-2 dark:hover:bg-gray-700 dark:focus:bg-gray-700 dark:bg-gray-700 dark:text-white' placeholder='Họ và tên' />
+                        </Form.Item>
+                        <Form.Item name="email">
+                            <Input className='font-medium text-base py-2 dark:hover:bg-gray-700 dark:focus:bg-gray-700 dark:bg-gray-700 dark:text-white' placeholder='Email' />
+                        </Form.Item>
+                        <Form.Item name="content">
+                            <TextArea className='font-medium text-base py-2 rounded-2xl dark:hover:bg-gray-700 dark:focus:bg-gray-700 dark:bg-gray-700 dark:text-white' placeholder='Nhập nội dung' rows={7} />
+                        </Form.Item>
+                        <Button htmlType='submit' className='button font-semibold text-base py-5 dark:text-white bg-blue-100 dark:bg-blue-900 px-10 rounded-xl' >
+>>>>>>> 3b4cd7cf60928686bbbea56ad9cf5fe74b812f4f
                             Gửi liên hệ
                         </Button>
                     </Form>

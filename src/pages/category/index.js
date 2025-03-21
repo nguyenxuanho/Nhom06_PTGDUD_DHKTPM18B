@@ -12,6 +12,7 @@ const Category = function () {
   const [isDisplayRow, setDisplayRow] = useState(false);
   const [products, setProducts] = useState([]);
   const [pagination, setPagination] = useState({});
+  const [categoryTitle, setCategoryTitle] = useState("");
   const {category_slug}  = useParams(); 
   const [queryParams, setQueryParams] = useState(new URLSearchParams(""));
   const {addToCart} = useCart();
@@ -22,6 +23,7 @@ const Category = function () {
       const dataObject = await get(`products/category/${category_slug}`);
       if(dataObject.code === 200){
         setProducts(dataObject.products);
+        setCategoryTitle(dataObject.categoryTitle) 
         setPagination(dataObject.pagination);
       }
     }
@@ -190,10 +192,13 @@ const Category = function () {
 
   return (
     <>
-      <Drawer title="Bộ lọc sản phẩm" placement='bottom' onClose={onClose} open={open} height={550}>
-
+      <Drawer className='dark:!bg-blue-900 dark:!text-white' title="Bộ lọc sản phẩm" placement='bottom' onClose={onClose} open={open} height={550}>
           <div className='mb-5'>
+<<<<<<< HEAD
             <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200 dark:border-b-gray-700'>Khoảng giá</h3>
+=======
+            <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Khoảng giá</h3>
+>>>>>>> 3b4cd7cf60928686bbbea56ad9cf5fe74b812f4f
             <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium text-black dark:text-white' options={prices} />
           </div>
           <div className='my-5'>
@@ -207,16 +212,17 @@ const Category = function () {
           <Button onClick={handleFilterProduct} className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
       </Drawer>
       <div className="md:pt-3 pt-52 bg-slate-50 dark:bg-gray-900 text-gray-900 dark:text-white">
-
         <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
           <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
           <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
-          <h3 className="font-medium text-lg text-stone-500 mr-3">PC Render, Edit Video</h3>
+          {categoryTitle !== "" && 
+            <h3 className="font-medium text-lg dark:text-white text-stone-500 mr-3">{categoryTitle}</h3>
+          }
         </div>
         <h1 className='mx-5 xl:mx-32 py-2 border-b-blue-400 border-solid border-b-2 md:w-2/3 xl:w-1/3 font-bold text-xl lg:text-3xl uppercase text-blue-500'>PC Render, Edit Video
           <span className='ml-2 text-sm border-none text-stone-400 lowercase font-medium'>(Tổng {products.length >= 0 && products.length} sản phẩm)</span>
         </h1>
-        <div className='mx-5 xl:mx-32 my-5 content-body grid grid-flow-row grid-cols-12 lg:gap-12 '>
+        <div className='mx-5 xl:mx-32 mt-5 content-body grid grid-flow-row grid-cols-12 lg:gap-12 '>
         <div className='hidden lg:block lg:col-span-3 p-5 rounded-2xl bg-white dark:bg-gray-800 shadow-lg max-h-max'>
 
             <Button onClick={(e) => handleFilterProduct(e)} className="uppercase w-full my-3 py-6 border-blue-500 font-bold text-blue-500 button">Lọc sản phẩm</Button>
@@ -276,8 +282,8 @@ const Category = function () {
                 <div className='content-list-product-row mt-6 '>
                   {products.length > 0 ?
                     products.map(product => (
-                      <div key={product._id} className='my-2 p-3.5 border-solid border-2 border-stone-100'>
-                          <div className='card rounded-lg bg-white flex' >
+                      <div key={product._id} className='my-2 p-3.5 border-solid border-2 border-stone-100 dark:border-stone-800'>
+                          <div className='card rounded-lg dark:bg-gray-800 bg-white flex' >
                             <div className='card-img w-1/3 md:w-1/5 hover:-translate-y-2 transition-all'>
                               <Image
                                 preview={false}
@@ -329,7 +335,7 @@ const Category = function () {
                 <div className='content-list-product-col grid grid-flow-row grid-cols-12 gap-0.5 md:gap-2 mt-6 '>
                   {products.length > 0 ? 
                     products.map(product => (
-                      <div key={product._id} className=' col-span-6 lg:col-span-3 p-2 border-solid border-2 border-stone-100'>
+                      <div key={product._id} className=' col-span-6 lg:col-span-3 p-1 border-solid border-2 dark:border-stone-900 border-stone-100'>
                         <CardProduct data={product} />
                       </div>
                     )) :

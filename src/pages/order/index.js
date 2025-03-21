@@ -18,9 +18,7 @@ const OrderSuccess = function () {
         const fetchGetOrder = async () => {
             const dataObject = await get(`order/${order_id}`)
             if(dataObject.code === 200){
-                if(dataObject.data.userInfo.user_id === inforUser._id)
-                    setOrder(dataObject.data);
-                else navigation('/')
+                setOrder(dataObject.data);
             }
         }
         fetchGetOrder();
@@ -30,10 +28,10 @@ const OrderSuccess = function () {
         {
             key: index,
             img: 'https://hoanghapccdn.com/media/product/250_3261_pc_gaming_x_ii_620s_ha1.jpg',
-            productName: product.name,
-            price: ((product.unitPrice).toLocaleString()) + " đ",
-            quanity: product.quanlity,
-            subtotal: (product.unitPrice * product.quanlity).toLocaleString() + " đ"
+            productName: product?.name,
+            price: ((product?.unitPrice).toLocaleString()) + " đ",
+            quanity: product?.quanlity,
+            subtotal: (product?.unitPrice * product?.quanlity).toLocaleString() + " đ"
         }
     ))
 
@@ -95,12 +93,12 @@ const OrderSuccess = function () {
 
     return (
         <>
-            <div className="md:pt-3 pt-52 bg-slate-50">
+            <div className="md:pt-3 pt-52 dark:bg-slate-900 bg-slate-50">
 
                 <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
                     <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
                     <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
-                    <h3 className="font-medium text-lg text-stone-500 mr-3">Đặt hàng thành công</h3>
+                    <h3 className="font-medium text-lg dark:text-white text-stone-500 mr-3">Đặt hàng thành công</h3>
                 </div>
                 <div className='mx-5 xl:mx-32 my-5 bg-white shadow-xl'>
                     <Result
@@ -111,10 +109,10 @@ const OrderSuccess = function () {
                     />
                 </div>
 
-                {order.totalPrice &&
-                    <div className='mx-5 xl:mx-32 my-5 py-2 px-5 bg-white shadow-xl'>
+                {order?.totalPrice &&
+                    <div className='mx-5 xl:mx-32 my-5 py-2 px-5 dark:bg-slate-800 dark:text-white bg-white shadow-xl'>
                         <h2 className='py-3 border-solid border-b-2 border-blue-300 text-2xl font-bold'>Danh sách đơn hàng</h2>
-                        <Table pagination={pagination}  scroll={{ x: 700}}  className='my-5 overflow-y-scroll' dataSource={dataSource} columns={columns} />
+                        <Table pagination={pagination}  scroll={{ x: 700}}  className='dark:!text-white my-5 overflow-y-scroll' dataSource={dataSource} columns={columns} />
                         <div className='my-2 text-right font-bold text-xl'> 
                             Tổng thành tiền:
                             <span className='mx-2 text-xl md:text-3xl text-red-500'>{order?.totalPrice?.toLocaleString()} đ</span>
@@ -122,8 +120,8 @@ const OrderSuccess = function () {
                     </div>
                 }
 
-                {order.userInfo && 
-                    <div className='mx-5 xl:mx-32 my-5 py-2 px-5 bg-white shadow-xl'>
+                {order?.userInfo && 
+                    <div className='mx-5 xl:mx-32 mt-5 pb-5 py-2 px-5 dark:bg-slate-800 dark:text-white bg-white shadow-xl'>
                         <h2 className='py-3 border-solid border-b-2 border-blue-300 text-2xl font-bold'>Thông tin khách hàng</h2>
                         <div className='my-4'>
                             <div className='my-2 w-full lg:w-1/2 border-b-2 border-solid border-stone-200 py-2 flex items-center text-lg'>

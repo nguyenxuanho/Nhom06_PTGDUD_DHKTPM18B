@@ -156,27 +156,27 @@ const Header = () => {
 
     return (
         <>
-            <Drawer title="MENU" placement="left" onClose={onClose} open={open}>
+            <Drawer title="MENU" className="dark:!bg-slate-900 dark:!text-white" placement="left" onClose={onClose} open={open}>
                 <ul className="p-0 text-left">
-                    <li onClick={handleClickStatus} className=" item-menu active px-2 py-4 border-solid border-b-2 border-blue-100 hover:text-blue-500 cursor-pointer text-gray-700">
+                    <li onClick={handleClickStatus} className=" item-menu active px-2 py-4 border-solid border-b-2 border-blue-100 hover:text-blue-500 cursor-pointer dark:text-blue-200 text-gray-700">
                         <Link to={"/"}>
                             <i className="fa-solid fa-house mx-3"></i>
                             <span className='relative top-0.5 text-xl font-semibold'>Trang chủ</span>
                         </Link>
                     </li>
-                    <li onClick={handleClickStatus} className=" item-menu px-2 py-4 border-solid border-b-2 border-blue-100 hover:text-blue-500 cursor-pointer text-gray-700">
+                    <li onClick={handleClickStatus} className=" item-menu px-2 py-4 border-solid border-b-2 border-blue-100 hover:text-blue-500 cursor-pointer dark:text-blue-200 text-gray-700">
                         <Link to={"/about"}>
                             <i className="fa-solid fa-users mx-3"></i>
                             <span className='relative top-0.5 text-xl font-semibold'>Giới thiệu</span>
                         </Link>
                     </li>
-                    <li onClick={handleClickStatus} className=" item-menu px-2 py-4 border-solid border-b-2 border-blue-100 hover:text-blue-500 cursor-pointer text-gray-700">
+                    <li onClick={handleClickStatus} className=" item-menu px-2 py-4 border-solid border-b-2 border-blue-100 hover:text-blue-500 cursor-pointer dark:text-blue-200 text-gray-700">
                         <Link to={"/contact"}>
                             <i className="fa-solid fa-phone mx-3"></i>
                             <span className='relative top-0.5 text-xl font-semibold'>Liên lạc</span>
                         </Link>
                     </li>
-                    <li onClick={handleClickStatus} className=" item-menu px-2 py-4 border-solid border-b-2 border-blue-100 hover:text-blue-500 cursor-pointer text-gray-700">
+                    <li onClick={handleClickStatus} className=" item-menu px-2 py-4 border-solid border-b-2 border-blue-100 hover:text-blue-500 cursor-pointer dark:text-blue-200 text-gray-700">
                         <Link to={"/sitemap"}>
                             <i className="fa-solid fa-street-view mx-3"></i>
                             <span className='relative top-0.5 text-xl font-semibold'>Sitemap</span>
@@ -194,7 +194,7 @@ const Header = () => {
                             </div> */}
                             <div className="p-5 flex items-center">
                                 <Switch
-                                    className="w-20"
+                                    className="w-14"
                                     checkedChildren={<CiLight className="text-xl" />}
                                     unCheckedChildren={<CiDark className="text-xl" />}
                                     defaultChecked
@@ -229,12 +229,14 @@ const Header = () => {
                             </ul>
                         </div>
                         <div className="header-right flex items-center">
-                            <Link to={"/account/order"}>
-                                <div className="cursor-pointer flex items-center justify-center px-3 md:mx-9 md:px-4 xl:mx-9 xl:px-4 rounded-xl py-3 dark:bg-blue-900 bg-blue-100">
-                                    <i className="fa-solid fa-box relative top-0.5 text-blue-500"></i>
-                                    <h2 className="text-xs md:text-base xl:text-base xl:px-3 px-0.5 md:px-3 text-blue-500 font-semibold">Danh sách đơn hàng</h2>
-                                </div>
-                            </Link>
+                            {inforUser._id && 
+                                <Link to={"/account/order"}>
+                                    <div className="cursor-pointer flex items-center justify-center px-3 md:mx-9 md:px-4 xl:mx-9 xl:px-4 rounded-xl py-3 dark:bg-blue-900 bg-blue-100">
+                                        <i className="fa-solid fa-box relative top-0.5 text-blue-500"></i>
+                                        <h2 className="text-xs md:text-base xl:text-base xl:px-3 px-0.5 md:px-3 text-blue-500 font-semibold">Danh sách đơn hàng</h2>
+                                    </div>
+                                </Link>
+                            }
                             <div className='md:mr-7 xl:mr-7 relative' >
                                 <div className='cursor-pointer relative flex items-center justify-center' onClick={() => setOpenCart(!isOpenCart)}>
                                     <i className="fa-solid fa-cart-shopping px-3 py-3 bg-blue-100 rounded-full mx-2"></i>

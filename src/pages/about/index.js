@@ -10,14 +10,14 @@ const About = function(){
   
   return (
     <>
-      <div className="md:pt-3 pt-52 bg-slate-50">
+      <div className="md:pt-3 pt-52 dark:bg-slate-900 dark:text-white">
           <div className='mx-5 xl:mx-32 content-header flex items-center flex-wrap'>
               <Link to="/" className="font-medium text-lg text-stone-500 mr-3 header-nav active">Trang chủ</Link>
               <i className="fa-solid fa-chevron-right text-stone-500 mr-3"></i>
-              <h3 className="font-medium text-lg text-stone-500 mr-3">Giới thiệu</h3>
+              <h3 className="font-medium text-lg dark:text-white text-stone-500 mr-3">Giới thiệu</h3>
           </div>
           <h1 className='font-bold text-xl md:text-3xl uppercase mx-5 xl:mx-32 my-5 text-center'>Thành viên nhóm</h1>
-          <div className='my-5 mx-5 xl:mx-32 grid grid-flow-row grid-cols-2 gap-5'>
+          <div className='mt-5 pb-5 mx-5 xl:mx-32 grid grid-flow-row grid-cols-2 gap-5'>
             <div className='col-span-2 lg:col-span-1 rounded-xl shadow-xl max-h-max p-2 border-2 border-solid border-blue-200 flex'>
                 <div className='w-1/3 overflow-hidden'>
                     <Image src='https://static.wikitide.net/bluearchivewiki/c/c8/Mika.png?version=8b315263cc84ee12eee99c5982f2cec1' />
