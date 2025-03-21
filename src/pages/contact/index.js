@@ -11,30 +11,43 @@ const Contact = function(){
   
         const [form] = Form.useForm();
         
-        const sendEmail = (values) => {
-            const templateParams = {
-              name: values.name, 
-              email: values.email,
-              message: values.message, 
-            };
-            
-          
-            emailjs.send(
-              "service_9u4fh1a", 
-              "template_qs0qt1f", 
-              templateParams,
-              "nQca_Au1Iq_qqtlO8" 
-            )
-            .then((response) => {
-              console.log("Email sent successfully!", response.status, response.text);
-              toast.success("Gửi email thành công!")
-              form.resetFields();
-            })
-            .catch((err) => {
-              console.error("Failed to send email:", err);
-              toast.error("Gửi email thất bại!")
-            });
-          };
+const sendEmail = async (values) => {
+  const templateParams = {
+    name: values.name,
+    email: values.email,
+    message: values.message,
+  };
+
+  const autoReplyParams = {
+    name: values.name,
+    email: values.email,
+    title: values.message,
+  };
+
+  try {
+    await Promise.all([
+      emailjs.send(
+        "service_9u4fh1a",
+        "template_qs0qt1f", // Gửi email chính
+        templateParams,
+        "nQca_Au1Iq_qqtlO8"
+      ),
+      emailjs.send(
+        "service_9u4fh1a",
+        "template_3xw24qv", // Gửi email phản hồi tự động
+        autoReplyParams,
+        "nQca_Au1Iq_qqtlO8"
+      ),
+    ]);
+
+    toast.success("Gửi email thành công!");
+    form.resetFields();
+  } catch (error) {
+    console.error("Failed to send email:", error);
+    toast.error("Gửi email thất bại!");
+  }
+};
+
           
   return (
     <>
