@@ -34,7 +34,7 @@ const About = function(){
                     </div>
                     <div className='flex text-wrap flex-wrap my-3 font-medium text-lg '>
                         <p className='w-5/12'>Thực hiện:</p>
-                        <p className='break-words w-7/12'>Blaaaaaacccccccccccccccccaaaaaaaaaaaa</p>
+                        <p className='break-words w-7/12'>Trang chủ, collection, header, footer, backend, Sitemap</p>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@ const About = function(){
                     </div>
                     <div className='flex text-wrap flex-wrap my-3 font-medium text-lg '>
                         <p className='w-5/12'>Thực hiện:</p>
-                        <p className='break-words w-7/12'>Blaaaaaacccccccccccccccccaaaaaaaaaaaa</p>
+                        <p className='break-words w-7/12'>Cart, đăng nhập, đăng ký</p>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@ const About = function(){
                     </div>
                     <div className='flex text-wrap flex-wrap my-3 font-medium text-lg '>
                         <p className='w-5/12'>Thực hiện:</p>
-                        <p className='break-words w-7/12'>Blaaaaaacccccccccccccccccaaaaaaaaaaaa</p>
+                        <p className='break-words w-7/12'> Trang chính sách, About, Contact</p>
                     </div>
                 </div>
             </div>
@@ -94,7 +94,7 @@ const About = function(){
                     </div>
                     <div className='flex text-wrap flex-wrap my-3 font-medium text-lg '>
                         <p className='w-5/12'>Thực hiện:</p>
-                        <p className='break-words w-7/12'>Blaaaaaacccccccccccccccccaaaaaaaaaaaa</p>
+                        <p className='break-words w-7/12'>Page 404, mục tài khoản </p>
                     </div>
                 </div>
             </div>
@@ -114,7 +114,7 @@ const About = function(){
                     </div>
                     <div className='flex text-wrap flex-wrap my-3 font-medium text-lg '>
                         <p className='w-5/12'>Thực hiện:</p>
-                        <p className='break-words w-7/12'>Blaaaaaacccccccccccccccccaaaaaaaaaaaa</p>
+                        <p className='break-words w-7/12'>Trang đặt hàng thành công, trang chi tiết sản phẩm</p>
                     </div>
                 </div>
             </div>
