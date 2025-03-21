@@ -1,9 +1,9 @@
 import {Link} from 'react-router-dom'
 
-import { Button, Form, Image, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import emailjs from "@emailjs/browser";
-
+import {toast} from 'react-toastify'
 
 
 
@@ -17,6 +17,7 @@ const Contact = function(){
               email: values.email,
               message: values.message, 
             };
+            
           
             emailjs.send(
               "service_9u4fh1a", 
@@ -26,12 +27,12 @@ const Contact = function(){
             )
             .then((response) => {
               console.log("Email sent successfully!", response.status, response.text);
-              alert("Gửi email thành công!");
+              toast.success("Gửi email thành công!")
               form.resetFields();
             })
             .catch((err) => {
               console.error("Failed to send email:", err);
-              alert("Gửi email thất bại!");
+              toast.error("Gửi email thất bại!")
             });
           };
           
@@ -79,15 +80,15 @@ const Contact = function(){
                 </div>
              </div>
              <div className="col-span-12 lg:col-span-8">
-  <iframe
-    title="Google Maps"
-    className="w-full h-[500px] md:h-[600px] lg:h-[700px] rounded-lg shadow-lg"
-    style={{ minWidth: "100%" }}
-    src="https://www.google.com/maps?q=260+Lý+Thường+Kiệt,+Phường+14,+Quận+10,+Hồ+Chí+Minh&output=embed"
-    allowFullScreen
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-  ></iframe>
+          <iframe
+            title="Google Maps"
+            className="w-full h-[500px] md:h-[600px] lg:h-[700px] rounded-lg shadow-lg"
+            style={{ minWidth: "100%" }}
+            src="https://www.google.com/maps?q=260+Lý+Thường+Kiệt,+Phường+14,+Quận+10,+Hồ+Chí+Minh&output=embed"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
 </div>
 
 
