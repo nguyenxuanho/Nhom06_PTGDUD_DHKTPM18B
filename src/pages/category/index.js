@@ -194,11 +194,7 @@ const Category = function () {
     <>
       <Drawer className='dark:!bg-blue-900 dark:!text-white' title="Bộ lọc sản phẩm" placement='bottom' onClose={onClose} open={open} height={550}>
           <div className='mb-5'>
-<<<<<<< HEAD
-            <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200 dark:border-b-gray-700'>Khoảng giá</h3>
-=======
             <h3 className='uppercase font-semibold py-3 border-solid border-b-2 border-b-stone-200'>Khoảng giá</h3>
->>>>>>> 3b4cd7cf60928686bbbea56ad9cf5fe74b812f4f
             <Checkbox.Group className='flex flex-col gap-3 mt-3 font-medium text-black dark:text-white' options={prices} />
           </div>
           <div className='my-5'>
