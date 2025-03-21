@@ -1,10 +1,40 @@
 import {Link} from 'react-router-dom'
-import {Button, Form, Image, Input} from 'antd'
-import TextArea from 'antd/es/input/TextArea';
+
+import { Button, Form, Image, Input } from "antd";
+import TextArea from "antd/es/input/TextArea";
+import emailjs from "@emailjs/browser";
+
+
 
 
 const Contact = function(){
-
+  
+        const [form] = Form.useForm();
+        
+        const sendEmail = (values) => {
+            const templateParams = {
+              name: values.name, 
+              email: values.email,
+              message: values.message, 
+            };
+          
+            emailjs.send(
+              "service_9u4fh1a", 
+              "template_qs0qt1f", 
+              templateParams,
+              "nQca_Au1Iq_qqtlO8" 
+            )
+            .then((response) => {
+              console.log("Email sent successfully!", response.status, response.text);
+              alert("Gửi email thành công!");
+              form.resetFields();
+            })
+            .catch((err) => {
+              console.error("Failed to send email:", err);
+              alert("Gửi email thất bại!");
+            });
+          };
+          
   return (
     <>
       <div className="md:pt-3 pt-52 bg-slate-50 dark:bg-gray-900 text-gray-900 dark:text-white">
@@ -32,15 +62,15 @@ const Contact = function(){
                 </div>
                 <div className='pt-10'>
                     <h2 className='font-bold text-xl'>Liên hệ với chúng tôi</h2>
-                    <Form className='mt-5'>
-                        <Form.Item name="fullname">
-                            <Input className='font-medium text-base py-2 dark:hover:bg-gray-700 dark:focus:bg-gray-700 dark:bg-gray-700 dark:text-white' placeholder='Họ và tên' />
+                    <Form form={form} onFinish={sendEmail}  className='mt-5'>
+                        <Form.Item name="name" rules={[{ required: true, message: "Vui lòng nhập họ và tên!" }]}>
+                            <Input className='font-medium text-base py-2 dark:hover:bg-gray-700 dark:focus:bg-gray-700 dark:bg-gray-700 dark:text-white placeholder-gray-400 dark:placeholder-gray-300' placeholder='Họ và tên' />
                         </Form.Item>
-                        <Form.Item name="email">
-                            <Input className='font-medium text-base py-2 dark:hover:bg-gray-700 dark:focus:bg-gray-700 dark:bg-gray-700 dark:text-white' placeholder='Email' />
+                        <Form.Item name="email" rules={[{ required: true, message: "Vui lòng nhập email!" }]}>
+                            <Input className='font-medium text-base py-2 dark:hover:bg-gray-700 dark:focus:bg-gray-700 dark:bg-gray-700 dark:text-white placeholder-gray-400 dark:placeholder-gray-300' placeholder='Email' />
                         </Form.Item>
-                        <Form.Item name="content">
-                            <TextArea className='font-medium text-base py-2 rounded-2xl dark:hover:bg-gray-700 dark:focus:bg-gray-700 dark:bg-gray-700 dark:text-white' placeholder='Nhập nội dung' rows={7} />
+                        <Form.Item name="message" rules={[{ required: true, message: "Vui lòng nhập nội dung!" }]}>
+                            <TextArea className='font-medium text-base py-2 rounded-2xl dark:hover:bg-gray-700 dark:focus:bg-gray-700 dark:bg-gray-700 dark:text-white placeholder-gray-400 dark:placeholder-gray-300' placeholder='Nhập nội dung' rows={7} />
                         </Form.Item>
                         <Button htmlType='submit' className='button font-semibold text-base py-5 dark:text-white bg-blue-100 dark:bg-blue-900 px-10 rounded-xl' >
                             Gửi liên hệ
@@ -48,9 +78,19 @@ const Contact = function(){
                     </Form>
                 </div>
              </div>
-             <div className='col-span-12 lg:col-span-8'>
-                <Image src='./map.png' />
-             </div>
+             <div className="col-span-12 lg:col-span-8">
+  <iframe
+    title="Google Maps"
+    className="w-full h-[500px] md:h-[600px] lg:h-[700px] rounded-lg shadow-lg"
+    style={{ minWidth: "100%" }}
+    src="https://www.google.com/maps?q=260+Lý+Thường+Kiệt,+Phường+14,+Quận+10,+Hồ+Chí+Minh&output=embed"
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
+
+
           </div>
       </div>
     </> 
